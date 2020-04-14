@@ -38,8 +38,8 @@ public class Puzzle {
 
     @Builder
     public Puzzle(String title,
-                  String p_desc,
                   Integer category_grade,
+                  String p_desc,
                   String category_subject,
                   String p_keyword){
         this.title = title;
@@ -53,8 +53,11 @@ public class Puzzle {
         if(this.quizzes == null) {
             this.quizzes = new ArrayList<>();
         }
-        quizzes.add(quiz);
-        quiz.setPuzzle(this);
+        this.quizzes.add(quiz);
+        // 무한 루프 체크
+        if(quiz.getPuzzle() != this) {
+            quiz.setPuzzle(this);
+        }
     }
 
 }

@@ -1,8 +1,9 @@
 package io.botle.game.crossword.web;
 
 import io.botle.game.crossword.domain.puzzle.PuzzleRepository;
+import io.botle.game.crossword.domain.quiz.Quiz;
 import io.botle.game.crossword.domain.quiz.QuizRepository;
-import io.botle.game.crossword.web.dto.PuzzleSaveRequestDto;
+import io.botle.game.crossword.web.dto.CrosswordSaveRequestDto;
 import io.botle.game.crossword.web.dto.QuizSaveRequestDto;
 import org.junit.After;
 import org.junit.Test;
@@ -11,11 +12,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.server.LocalServerPort;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -49,7 +53,7 @@ public class CrosswordApiControllerTest {
         String category_subject = "영어";
         String p_keyword = "테스트";
 
-        PuzzleSaveRequestDto requestDto = PuzzleSaveRequestDto.builder()
+        CrosswordSaveRequestDto requestDto = CrosswordSaveRequestDto.builder()
                 .title(title)
                 .category_grade(category_grade)
                 .p_desc(p_desc)
@@ -72,11 +76,21 @@ public class CrosswordApiControllerTest {
                     .build();
             quizSaveRequestDtoList.add(quizSaveRequestDto);
         }
+        requestDto.setQuizSaveRequestDtoList(quizSaveRequestDtoList);
 
         String url = "http://localhost:"+port+"/api/v1/puzzle";
 
         //when
-//        ResponseEntity<Long> responseEntity = restTemplate.postForEntity(url, requestDto, quizSaveRequestDtoList, Long.class);
+        ResponseEntity<Long> responseEntity = restTemplate.postForEntity(url, requestDto, Long.class);
+
+        //then
+        assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
+        assertThat(responseEntity.getBody()).isGreaterThan(0L);
+
+        List<Quiz> quizList = quizRepository.findAll();
+
+        assertThat(quizList.get(0).getWord()).isEqualTo("단어0");
+        assertThat(quizList.get(0).getPuzzle().getTitle()).isEqualTo(title);
 
     }
 }

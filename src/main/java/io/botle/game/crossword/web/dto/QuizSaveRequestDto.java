@@ -20,7 +20,7 @@ public class QuizSaveRequestDto {
     private String hint;
     private String q_keyword;
 
-    private PuzzleSaveRequestDto puzzleSaveRequestDto;
+    private CrosswordSaveRequestDto crosswordSaveRequestDto;
 
     // 자기 자신 참조 - 나중에 form에서 받을 때 필요
     private List<QuizSaveRequestDto> quizSaveRequestDtoList;
@@ -45,7 +45,5 @@ public class QuizSaveRequestDto {
                 .build();
     }
 
-    public void setPuzzleSaveRequestDto(PuzzleSaveRequestDto puzzleSaveRequestDto) {
-        this.puzzleSaveRequestDto = puzzleSaveRequestDto;
-    }
+
 }

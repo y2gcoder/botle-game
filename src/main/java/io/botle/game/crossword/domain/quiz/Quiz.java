@@ -30,7 +30,7 @@ public class Quiz {
     private String q_keyword;
 
     @ManyToOne
-    @JoinColumn(name = "puzzle_id")
+    @JoinColumn(name = "puzzle_p_seq")
     private Puzzle puzzle;
 
     @Builder
@@ -46,5 +46,9 @@ public class Quiz {
 
     public void setPuzzle(Puzzle puzzle) {
         this.puzzle = puzzle;
+        // 무한 루프 체크
+        if(!puzzle.getQuizzes().contains(this)){
+            puzzle.getQuizzes().add(this);
+        }
     }
 }
