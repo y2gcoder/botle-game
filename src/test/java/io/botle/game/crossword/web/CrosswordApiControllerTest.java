@@ -91,6 +91,5 @@ public class CrosswordApiControllerTest {
 
         assertThat(quizList.get(0).getWord()).isEqualTo("단어0");
         assertThat(quizList.get(0).getPuzzle().getTitle()).isEqualTo(title);
-
     }
 }

@@ -22,11 +22,11 @@ public class Puzzle {
     @Column(length = 255, nullable = false)
     private String title;
 
-    @Column(columnDefinition = "TEXT")
-    private String p_desc;
-
     @Column(nullable = false)
     private Integer category_grade;
+
+    @Column(columnDefinition = "TEXT")
+    private String p_desc;
 
     private String category_subject;
 

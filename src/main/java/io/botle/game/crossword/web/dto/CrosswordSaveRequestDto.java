@@ -2,16 +2,16 @@ package io.botle.game.crossword.web.dto;
 
 import io.botle.game.crossword.domain.puzzle.Puzzle;
 import io.botle.game.crossword.domain.quiz.Quiz;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Setter
 @Getter
 @NoArgsConstructor
-public class PuzzleSaveRequestDto {
+public class CrosswordSaveRequestDto {
+    // puzzle
     // 필수
     private String title;
     private Integer category_grade;
@@ -21,14 +21,15 @@ public class PuzzleSaveRequestDto {
     private String category_subject;
     private String p_keyword;
 
+    // quiz
     private List<QuizSaveRequestDto> quizSaveRequestDtoList = new ArrayList<>();
 
     @Builder
-    public PuzzleSaveRequestDto(String title,
-                                Integer category_grade,
-                                String p_desc,
-                                String category_subject,
-                                String p_keyword) {
+    public CrosswordSaveRequestDto(String title,
+                                   Integer category_grade,
+                                   String p_desc,
+                                   String category_subject,
+                                   String p_keyword) {
         this.title = title;
         this.category_grade = category_grade;
         this.p_desc = p_desc;
@@ -45,14 +46,5 @@ public class PuzzleSaveRequestDto {
                 .p_keyword(p_keyword)
                 .build();
     }
-
-    public void addQuizSaveRequestDto(QuizSaveRequestDto quizSaveRequestDto) {
-        if(this.quizSaveRequestDtoList == null) {
-            this.quizSaveRequestDtoList = new ArrayList<>();
-        }
-        quizSaveRequestDtoList.add(quizSaveRequestDto);
-        quizSaveRequestDto.setPuzzleSaveRequestDto(this);
-    }
-
 
 }

@@ -4,6 +4,7 @@ import io.botle.game.crossword.domain.puzzle.Puzzle;
 import io.botle.game.crossword.domain.puzzle.PuzzleRepository;
 import io.botle.game.crossword.domain.quiz.Quiz;
 import io.botle.game.crossword.domain.quiz.QuizRepository;
+import io.botle.game.crossword.web.dto.CrosswordResponseDto;
 import io.botle.game.crossword.web.dto.CrosswordSaveRequestDto;
 import io.botle.game.crossword.web.dto.QuizSaveRequestDto;
 import lombok.RequiredArgsConstructor;
@@ -43,5 +44,11 @@ public class CrosswordService {
         }
         return puzzleRepository.save(puzzle).getP_seq();
     }
+
+//    @Transactional
+//    public List<CrosswordResponseDto> findAllDesc () {
+//        List<CrosswordResponseDto> crosswordResponseDtoList = puzzleRepository.findAllDesc();
+//        return crosswordResponseDtoList;
+//    }
 
 }
