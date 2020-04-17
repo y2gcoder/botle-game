@@ -1,8 +1,11 @@
 package io.botle.game.crossword.web;
 
+import io.botle.game.crossword.domain.puzzle.Puzzle;
 import io.botle.game.crossword.domain.puzzle.PuzzleRepository;
+import io.botle.game.crossword.domain.puzzle.PuzzleRepositorySupport;
 import io.botle.game.crossword.domain.quiz.Quiz;
 import io.botle.game.crossword.domain.quiz.QuizRepository;
+import io.botle.game.crossword.web.dto.CrosswordResponseDto;
 import io.botle.game.crossword.web.dto.CrosswordSaveRequestDto;
 import io.botle.game.crossword.web.dto.QuizSaveRequestDto;
 import org.junit.After;
@@ -33,6 +36,9 @@ public class CrosswordApiControllerTest {
 
     @Autowired
     private PuzzleRepository puzzleRepository;
+
+    @Autowired
+    private PuzzleRepositorySupport puzzleRepositorySupport;
 
     @Autowired
     private QuizRepository quizRepository;
@@ -91,5 +97,62 @@ public class CrosswordApiControllerTest {
 
         assertThat(quizList.get(0).getWord()).isEqualTo("단어0");
         assertThat(quizList.get(0).getPuzzle().getTitle()).isEqualTo(title);
+
+        List<CrosswordResponseDto> crosswordResponseDtoList = puzzleRepositorySupport.findPuzzles();
+        assertThat(crosswordResponseDtoList.get(0).getQuizzes().size()).isEqualTo(10);
+
+
+    }
+
+    @Test
+    public void Puzzle_리스트_불러오기() throws Exception{
+        //given
+        String title = "테스트 퍼즐";
+        Integer category_grade = 9;
+
+        String p_desc = "테스트 퍼즐 설명입니다.";
+        String category_subject = "영어";
+        String p_keyword = "테스트";
+
+        Puzzle puzzle = puzzleRepository.save(Puzzle.builder()
+                .title(title)
+                .p_desc(p_desc)
+                .category_grade(category_grade)
+                .category_subject(category_subject)
+                .p_keyword(p_keyword)
+                .build()
+        );
+
+        for(int i=0;i<10;i++){
+            String word = "단어"+i;
+            String q_desc = word+"에 대한 설명";
+            String hint = word+"에 대한 힌트";
+            String q_keyword = "테스트";
+
+            Quiz quiz = Quiz.builder()
+                    .word(word)
+                    .q_desc(q_desc)
+                    .hint(hint)
+                    .q_keyword(q_keyword)
+                    .build();
+            quiz.setPuzzle(puzzle);
+
+            quizRepository.save(quiz);
+        }
+
+        // 불러오기
+        List<CrosswordResponseDto> crosswordResponseDtoList = puzzleRepositorySupport.findPuzzles();
+        Long target_seq = crosswordResponseDtoList.get(0).getP_seq();
+
+        String url = "http://localhost:"+port+"/api/v1/puzzle";
+
+        //when
+        CrosswordResponseDto responseDto = restTemplate.getForObject(url, CrosswordResponseDto.class);
+
+        //then
+        assertThat(responseDto.getTitle()).isEqualTo(title);
+
+
+
     }
 }

@@ -1,5 +1,6 @@
 package io.botle.game.crossword.domain.puzzle;
 
+import io.botle.game.crossword.domain.BaseTimeEntity;
 import io.botle.game.crossword.domain.quiz.Quiz;
 import lombok.Builder;
 import lombok.Getter;
@@ -14,12 +15,12 @@ import java.util.List;
 @Getter
 @NoArgsConstructor
 @Entity
-public class Puzzle {
+public class Puzzle extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long p_seq;
 
-    @Column(length = 255, nullable = false)
+    @Column(length = 255, nullable = false, unique = true)
     private String title;
 
     @Column(nullable = false)

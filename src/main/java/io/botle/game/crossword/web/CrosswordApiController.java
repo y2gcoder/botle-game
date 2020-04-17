@@ -25,8 +25,13 @@ public class CrosswordApiController {
 //        return crosswordService.update(p_seq, requestDto);
 //    }
 
-//    @GetMapping("/api/v1/puzzle")
-//    public List<CrosswordResponseDto> findAllDesc () {
-//        return crosswordService.findAllDesc();
-//    }
+    @GetMapping("/api/v1/puzzle")
+    public List<CrosswordResponseDto> findPuzzles () {
+        return crosswordService.findPuzzles();
+    }
+
+    @GetMapping("/api/v1/puzzle/{p_seq}")
+    public CrosswordResponseDto findPuzzleBySeq (@PathVariable Long p_seq) {
+        return crosswordService.findPuzzleBySeq(p_seq);
+    }
 }

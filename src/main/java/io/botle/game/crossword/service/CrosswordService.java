@@ -2,6 +2,7 @@ package io.botle.game.crossword.service;
 
 import io.botle.game.crossword.domain.puzzle.Puzzle;
 import io.botle.game.crossword.domain.puzzle.PuzzleRepository;
+import io.botle.game.crossword.domain.puzzle.PuzzleRepositorySupport;
 import io.botle.game.crossword.domain.quiz.Quiz;
 import io.botle.game.crossword.domain.quiz.QuizRepository;
 import io.botle.game.crossword.web.dto.CrosswordResponseDto;
@@ -20,6 +21,7 @@ import java.util.List;
 public class CrosswordService {
     private final PuzzleRepository puzzleRepository;
     private final QuizRepository quizRepository;
+    private final PuzzleRepositorySupport puzzleRepositorySupport;
 
 //    @Transactional
 //    public Long save(PuzzleSaveRequestDto requestDto, List<QuizSaveRequestDto> quizSaveRequestDtoList) {
@@ -45,10 +47,15 @@ public class CrosswordService {
         return puzzleRepository.save(puzzle).getP_seq();
     }
 
-//    @Transactional
-//    public List<CrosswordResponseDto> findAllDesc () {
-//        List<CrosswordResponseDto> crosswordResponseDtoList = puzzleRepository.findAllDesc();
-//        return crosswordResponseDtoList;
-//    }
+    @Transactional
+    public List<CrosswordResponseDto> findPuzzles () {
+        List<CrosswordResponseDto> crosswordResponseDtoList = puzzleRepositorySupport.findPuzzles();
+        return crosswordResponseDtoList;
+    }
+
+    @Transactional
+    public CrosswordResponseDto findPuzzleBySeq(Long p_seq) {
+        return puzzleRepositorySupport.findPuzzleBySeq(p_seq);
+    }
 
 }
