@@ -26,7 +26,9 @@ public class IndexController {
 
     @GetMapping("/puzzle/{p_seq}")
     public String findPuzzleBySeq(@PathVariable Long p_seq, Model model) {
+        System.out.println("번호 : "+p_seq);
         CrosswordResponseDto dto = crosswordService.findPuzzleBySeq(p_seq);
+        System.out.println("가져온 녀석 제목: "+dto.getTitle());
         model.addAttribute("puzzle", dto);
 
         return "puzzle-game";
