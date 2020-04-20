@@ -1,0 +1,35 @@
+{{>layout/header}}
+    <h1>크로스워드</h1>
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-6">
+                <a href="/puzzle/save" role="button" class="btn btn-primary">글 등록</a>
+            </div>
+        </div>
+        <br />
+        <table class="table talbe-horizontal table-bordered">
+            <thead class="thead-strong">
+            <tr>
+                <th>퍼즐 번호</th>
+                <th>제목</th>
+                <th>대상 학년</th>
+                <th>과목</th>
+                <th>퍼즐 설명</th>
+                <th>퍼즐 키워드</th>
+            </tr>
+            </thead>
+            <tbody id="tbody">
+            {{#puzzles}}
+                <tr>
+                    <td>{{p_seq}}</td>
+                    <td><a href="/puzzle/{{p_seq}}">{{title}}</a></td>
+                    <td>{{category_grade}}</td>
+                    <td>{{category_subject}}</td>
+                    <td>{{p_desc}}</td>
+                    <td>{{p_keyword}}</td>
+                </tr>
+            {{/puzzles}}
+            </tbody>
+        </table>
+    </div>
+{{>layout/footer}}
