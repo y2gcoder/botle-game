@@ -3,6 +3,7 @@ package io.botle.game.crossword.web;
 import io.botle.game.crossword.service.CrosswordService;
 import io.botle.game.crossword.web.dto.CrosswordResponseDto;
 import io.botle.game.crossword.web.dto.CrosswordSaveRequestDto;
+import io.botle.game.crossword.web.dto.PuzzleListResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,6 +13,12 @@ import java.util.List;
 @RestController
 public class CrosswordApiController {
     private final CrosswordService crosswordService;
+
+    // 퍼즐 이름 중복 체크
+    @GetMapping("/api/v1/puzzle/chk/{title}")
+    public Integer chkTitle(@PathVariable String title) {
+        return crosswordService.chkTitle(title);
+    }
 
     // 다시 만들어본다.
     @PostMapping("/api/v1/puzzle")
@@ -26,7 +33,7 @@ public class CrosswordApiController {
 //    }
 
     @GetMapping("/api/v1/puzzle")
-    public List<CrosswordResponseDto> findPuzzles () {
+    public List<PuzzleListResponseDto> findPuzzles () throws Exception{
         return crosswordService.findPuzzles();
     }
 

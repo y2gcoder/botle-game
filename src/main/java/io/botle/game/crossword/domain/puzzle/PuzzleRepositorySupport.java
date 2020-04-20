@@ -33,14 +33,17 @@ public class PuzzleRepositorySupport extends QuerydslRepositorySupport {
                 .fetch();
     }
 
-    public List<CrosswordResponseDto> findPuzzles() {
-        List<Puzzle> puzzleList = queryFactory
+    public CrosswordResponseDto findPuzzleBySeq(Long p_seq) {
+        List<Puzzle> puzzles = queryFactory
                 .selectFrom(puzzle)
                 .leftJoin(puzzle.quizzes, quiz).fetchJoin()
                 .fetch();
+        System.out.println(">>>>>>>>>>>>>>>가즈아");
+        System.out.println(puzzles.get(0).getQuizzes().size());
 
-        return puzzleList.stream()
-                .map(p -> new CrosswordResponseDto(p.getP_seq(),
+        return puzzles.stream()
+                .map(p -> new CrosswordResponseDto(
+                        p.getP_seq(),
                         p.getTitle(),
                         p.getCategory_grade(),
                         p.getP_desc(),
@@ -48,17 +51,6 @@ public class PuzzleRepositorySupport extends QuerydslRepositorySupport {
                         p.getP_keyword(),
                         p.getQuizzes()
                 ))
-                .collect(Collectors.toList());
-    }
-
-    public CrosswordResponseDto findPuzzleBySeq(Long p_seq) {
-        List<Puzzle> puzzleOne = queryFactory
-                .selectFrom(puzzle)
-                .leftJoin(puzzle.quizzes, quiz).fetchJoin()
-                .where(puzzle.p_seq.eq(p_seq))
-                .fetch();
-
-        CrosswordResponseDto result = new CrosswordResponseDto(puzzleOne.get(0));
-        return result;
+                .collect(Collectors.toList()).get(0);
     }
 }

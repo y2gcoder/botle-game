@@ -7,13 +7,14 @@ import io.botle.game.crossword.domain.quiz.Quiz;
 import io.botle.game.crossword.domain.quiz.QuizRepository;
 import io.botle.game.crossword.web.dto.CrosswordResponseDto;
 import io.botle.game.crossword.web.dto.CrosswordSaveRequestDto;
+import io.botle.game.crossword.web.dto.PuzzleListResponseDto;
 import io.botle.game.crossword.web.dto.QuizSaveRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 @RequiredArgsConstructor
@@ -34,6 +35,11 @@ public class CrosswordService {
 //        return puzzleRepository.save(puzzle).getP_seq();
 //    }
 
+    @Transactional
+    public Integer chkTitle(String title) {
+        return puzzleRepository.countByTitle(title);
+    }
+
     // 다시 만들어본다.
     @Transactional
     public Long save(CrosswordSaveRequestDto requestDto) {
@@ -47,10 +53,11 @@ public class CrosswordService {
         return puzzleRepository.save(puzzle).getP_seq();
     }
 
-    @Transactional
-    public List<CrosswordResponseDto> findPuzzles () {
-        List<CrosswordResponseDto> crosswordResponseDtoList = puzzleRepositorySupport.findPuzzles();
-        return crosswordResponseDtoList;
+    @Transactional(readOnly = true)
+    public List<PuzzleListResponseDto> findPuzzles () throws Exception{
+        return puzzleRepository.findAllDesc().stream()
+                .map(PuzzleListResponseDto::new)
+                .collect(Collectors.toList());
     }
 
     @Transactional

@@ -20,13 +20,4 @@ public class CrosswordResponseDto {
 
     private List<Quiz> quizzes = new ArrayList<>();
 
-    public CrosswordResponseDto(Puzzle entity) {
-        this.p_seq = entity.getP_seq();
-        this.title = entity.getTitle();
-        this.category_grade = entity.getCategory_grade();
-        this.p_desc = entity.getP_desc();
-        this.category_subject = entity.getCategory_subject();
-        this.p_keyword = entity.getP_keyword();
-        this.quizzes = entity.getQuizzes();
-    }
 }
