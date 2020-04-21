@@ -5,6 +5,9 @@ var index = {
     $("#btn-save").on("click", function () {
       _this.save();
     });
+    $("#btn-start").on("click", function () {
+      _this.start();
+    });
 
     // 단어 체크 막기
     $(".input_only_en").on("keyup", function () {
@@ -143,6 +146,15 @@ var index = {
       .fail(function (error) {
         alert(JSON.stringify(error));
       });
+  },
+  start: function () {
+    var p_seq = $("#puzzle_title").val();
+    if (p_seq == null || p_seq == "") {
+      alert("게임을 선택하고 시작버튼을 눌러주세요!");
+      $("#puzzle_title").focus();
+      return;
+    }
+    window.location.href = "/puzzle/" + p_seq;
   },
 };
 index.init();
