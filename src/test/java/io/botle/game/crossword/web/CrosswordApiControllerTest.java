@@ -99,8 +99,8 @@ public class CrosswordApiControllerTest {
         assertThat(quizList.get(0).getWord()).isEqualTo("단어0");
         assertThat(quizList.get(0).getPuzzle().getTitle()).isEqualTo(title);
 
-        List<CrosswordResponseDto> crosswordResponseDtoList = puzzleRepositorySupport.findPuzzles();
-        assertThat(crosswordResponseDtoList.get(0).getQuizzes().size()).isEqualTo(10);
+//        List<CrosswordResponseDto> crosswordResponseDtoList = puzzleRepositorySupport.findPuzzles();
+//        assertThat(crosswordResponseDtoList.get(0).getQuizzes().size()).isEqualTo(10);
 
 
     }
@@ -236,10 +236,10 @@ public class CrosswordApiControllerTest {
         }
 
         // 불러오기
-        List<CrosswordResponseDto> crosswordResponseDtoList = puzzleRepositorySupport.findPuzzles();
-        Long target_seq = crosswordResponseDtoList.get(0).getP_seq();
+//        List<CrosswordResponseDto> crosswordResponseDtoList = puzzleRepositorySupport.findPuzzles();
+//        Long target_seq = crosswordResponseDtoList.get(0).getP_seq();
 
-        String url = "http://localhost:"+port+"/api/v1/puzzle/"+target_seq;
+//        String url = "http://localhost:"+port+"/api/v1/puzzle/"+target_seq;
 
 //
 

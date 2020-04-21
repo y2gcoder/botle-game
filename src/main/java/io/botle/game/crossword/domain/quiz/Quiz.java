@@ -1,5 +1,6 @@
 package io.botle.game.crossword.domain.quiz;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import io.botle.game.crossword.domain.BaseTimeEntity;
 import io.botle.game.crossword.domain.puzzle.Puzzle;
 import lombok.Builder;
@@ -30,6 +31,7 @@ public class Quiz extends BaseTimeEntity {
     @Column(columnDefinition = "TEXT")
     private String q_keyword;
 
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "puzzle_p_seq")
     private Puzzle puzzle;

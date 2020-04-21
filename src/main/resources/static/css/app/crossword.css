@@ -1,0 +1,303 @@
+.crossword-board-container {
+  position: relative;
+  background: #ffffff;
+}
+
+.crossword-board {
+  position: absolute;
+  z-index: 1;
+  background: transparent;
+  border: 1px solid #000000;
+  width: 600px;
+  height: 600px;
+  display: grid;
+  grid-template: repeat(12, 8.3333333333%) / repeat(12, 8.3333333333%);
+  list-style-type: none;
+  padding: 0;
+  margin: 0 auto;
+}
+
+.crossword-board__item {
+  border: 1px solid #000000;
+  background: transparent;
+  position: relative;
+  z-index: 100;
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.crossword-board__item:active,
+.crossword-board__item:focus {
+  background: #ffff74;
+  border: 1px solid #000000;
+  outline: 1px solid #000000;
+}
+
+.crossword-board__item--blank {
+  background: #000000;
+  border: 1px solid #000000;
+  outline: 1px solid #000000;
+}
+
+.crossword-board--labels {
+  position: absolute;
+  z-index: 60;
+}
+
+.crossword-board__item-label {
+  position: relative;
+}
+
+.crossword-board__item-label-text {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  font-size: 14px;
+  line-height: 1;
+}
+
+/* 그리드 위치는 알아서 잡아야 함! */
+.crossword-board__item-label--1 {
+  grid-column: 1/1;
+}
+
+.crossword-board__item-label--2 {
+  grid-column: 4/4;
+}
+
+.crossword-board__item-label--3 {
+  grid-column: 6/6;
+}
+
+.crossword-board__item-label--4 {
+  grid-column: 9/9;
+}
+
+.crossword-board__item-label--5 {
+  grid-column: 11/11;
+}
+
+.crossword-board__item-label--6 {
+  grid-column: 13/13;
+}
+
+.crossword-board__item-label--7 {
+  grid-column: 6/6;
+  grid-row: 2/2;
+}
+
+.crossword-board__item-label--8 {
+  grid-column: 3/3;
+  grid-row: 3/3;
+}
+
+.crossword-board__item-label--9 {
+  grid-column: 5/5;
+  grid-row: 3/3;
+}
+
+.crossword-board__item-label--10 {
+  grid-column: 1/1;
+  grid-row: 4/4;
+}
+
+.crossword-board--highlight {
+  position: absolute;
+  z-index: 50;
+}
+
+.crossword-board__item-highlight {
+  background: #9aff67;
+  display: grid;
+  opacity: 0;
+  -webkit-transition: opacity 0.3s linear;
+  transition: opacity 0.3s linear;
+}
+
+/***********************************************************/
+/** ACROSS ANSWERS HIGHLIGHTING START                      */
+/***********************************************************/
+/* 여기도 동적 생성 */
+.crossword-board__item-highlight--across-1 {
+  grid-column: 1/7;
+}
+
+#item-0-0:valid
+  ~ #item-0-1:valid
+  ~ #item-0-2:valid
+  ~ #item-0-3:valid
+  ~ #item-0-4:valid
+  ~ #item-0-5:valid
+  ~ .crossword-board--highlight
+  .crossword-board__item-highlight--across-1 {
+  opacity: 1;
+}
+/***********************************************************/
+/** ACROSS ANSWERS HIGHLIGHTING END                        */
+/***********************************************************/
+/***********************************************************/
+/** DOWN ANSWERS HIGHLIGHTING START                        */
+/***********************************************************/
+.crossword-board__item-highlight--down-1 {
+  grid-column: 1;
+  grid-row: 1/7;
+}
+#item-0-0:valid
+  ~ #item-1-0:valid
+  ~ #item-2-0:valid
+  ~ #item-3-0:valid
+  ~ #item-4-0:valid
+  ~ #item-5-0:valid
+  ~ .crossword-board--highlight
+  .crossword-board__item-highlight--down-1 {
+  opacity: 1;
+}
+/***********************************************************/
+/** DOWN ANSWERS HIGHLIGHTING END                          */
+/***********************************************************/
+/* 힌트랑 어떻게 할 지도 고민 */
+
+.crossword-complete {
+  position: absolute;
+  z-index: 1000;
+  top: 50%;
+  left: 200%;
+  font-size: 100px;
+  line-height: 1;
+  color: red;
+  width: 100%;
+  opacity: 0;
+  -webkit-transition: opacity 0.3s ease-in-out;
+  transition: opacity 0.3s ease-in-out;
+}
+/* 유효한 값일 때 opacity를 바꿔주는 구나 빈칸들. 아직 수정 하지 말자 */
+#item-0-0:valid
+  ~ #item-0-1:valid
+  ~ #item-0-2:valid
+  ~ #item-0-3:valid
+  ~ #item-0-4:valid
+  ~ #item1-6:valid
+  ~ #item1-9:valid
+  ~ #item1-11:valid
+  ~ #item1-13:valid
+  ~ #item2-1:valid
+  ~ #item2-4:valid
+  ~ #item2-6:valid
+  ~ #item2-7:valid
+  ~ #item2-8:valid
+  ~ #item2-9:valid
+  ~ #item2-10:valid
+  ~ #item2-11:valid
+  ~ #item2-12:valid
+  ~ #item2-13:valid
+  ~ #item3-1:valid
+  ~ #item3-3:valid
+  ~ #item3-4:valid
+  ~ #item3-5:valid
+  ~ #item3-6:valid
+  ~ #item3-9:valid
+  ~ #item3-11:valid
+  ~ #item3-13:valid
+  ~ #item4-1:valid
+  ~ #item4-2:valid
+  ~ #item4-3:valid
+  ~ #item4-4:valid
+  ~ #item4-5:valid
+  ~ #item4-6:valid
+  ~ #item4-8:valid
+  ~ #item4-9:valid
+  ~ #item4-10:valid
+  ~ #item4-11:valid
+  ~ #item4-12:valid
+  ~ #item4-13:valid
+  ~ #item5-1:valid
+  ~ #item5-3:valid
+  ~ #item5-4:valid
+  ~ #item5-5:valid
+  ~ #item5-7:valid
+  ~ #item5-9:valid
+  ~ #item5-10:valid
+  ~ #item5-11:valid
+  ~ #item5-12:valid
+  ~ #item5-13:valid
+  ~ #item6-1:valid
+  ~ #item6-2:valid
+  ~ #item6-3:valid
+  ~ #item6-4:valid
+  ~ #item6-6:valid
+  ~ #item6-7:valid
+  ~ #item6-8:valid
+  ~ #item6-9:valid
+  ~ #item6-10:valid
+  ~ #item6-12:valid
+  ~ #item7-2:valid
+  ~ #item7-5:valid
+  ~ #item7-6:valid
+  ~ #item7-7:valid
+  ~ #item7-8:valid
+  ~ #item7-9:valid
+  ~ #item7-12:valid
+  ~ #item8-2:valid
+  ~ #item8-4:valid
+  ~ #item8-5:valid
+  ~ #item8-6:valid
+  ~ #item8-7:valid
+  ~ #item8-8:valid
+  ~ #item8-10:valid
+  ~ #item8-11:valid
+  ~ #item8-12:valid
+  ~ #item8-13:valid
+  ~ #item9-1:valid
+  ~ #item9-2:valid
+  ~ #item9-3:valid
+  ~ #item9-4:valid
+  ~ #item9-5:valid
+  ~ #item9-7:valid
+  ~ #item9-9:valid
+  ~ #item9-10:valid
+  ~ #item9-11:valid
+  ~ #item9-13:valid
+  ~ #item10-1:valid
+  ~ #item10-2:valid
+  ~ #item10-3:valid
+  ~ #item10-4:valid
+  ~ #item10-5:valid
+  ~ #item10-6:valid
+  ~ #item10-8:valid
+  ~ #item10-9:valid
+  ~ #item10-10:valid
+  ~ #item10-11:valid
+  ~ #item10-12:valid
+  ~ #item10-13:valid
+  ~ #item11-1:valid
+  ~ #item11-3:valid
+  ~ #item11-5:valid
+  ~ #item11-8:valid
+  ~ #item11-9:valid
+  ~ #item11-10:valid
+  ~ #item11-11:valid
+  ~ #item11-13:valid
+  ~ #item12-1:valid
+  ~ #item12-2:valid
+  ~ #item12-3:valid
+  ~ #item12-4:valid
+  ~ #item12-5:valid
+  ~ #item12-6:valid
+  ~ #item12-7:valid
+  ~ #item12-8:valid
+  ~ #item12-10:valid
+  ~ #item12-13:valid
+  ~ #item13-1:valid
+  ~ #item13-3:valid
+  ~ #item13-5:valid
+  ~ #item13-8:valid
+  ~ #item13-9:valid
+  ~ #item13-10:valid
+  ~ #item13-11:valid
+  ~ #item13-12:valid
+  ~ #item13-13:valid
+  ~ .crossword-complete {
+  opacity: 1;
+}

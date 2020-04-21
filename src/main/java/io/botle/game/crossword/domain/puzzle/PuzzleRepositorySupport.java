@@ -38,7 +38,7 @@ public class PuzzleRepositorySupport extends QuerydslRepositorySupport {
                 .selectFrom(puzzle)
                 .leftJoin(puzzle.quizzes, quiz).fetchJoin()
                 .fetch();
-        System.out.println(">>>>>>>>>>>>>>>가즈아");
+//        System.out.println(">>>>>>>>>>>>>>>가즈아");
         System.out.println(puzzles.get(0).getQuizzes().size());
 
         return puzzles.stream()

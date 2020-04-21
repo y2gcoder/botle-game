@@ -1,0 +1,12 @@
+{{>layout/header}}
+{{#puzzle}}
+    <h1>퍼즐 이름</h1>
+
+{{/puzzle}}
+<script>
+    var rawdata = '{{puzzle}}';
+    var puzzle = JSON.parse(rawdata.replace(/&quot;/g, '"'));
+</script>
+{{>layout/footer}}
+<!-- crossword.js 추가 -->
+<!--<script src="/js/app/crossword.js"></script>-->

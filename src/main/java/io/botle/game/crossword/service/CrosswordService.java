@@ -5,6 +5,7 @@ import io.botle.game.crossword.domain.puzzle.PuzzleRepository;
 import io.botle.game.crossword.domain.puzzle.PuzzleRepositorySupport;
 import io.botle.game.crossword.domain.quiz.Quiz;
 import io.botle.game.crossword.domain.quiz.QuizRepository;
+import io.botle.game.crossword.util.CrosswordMod;
 import io.botle.game.crossword.web.dto.CrosswordResponseDto;
 import io.botle.game.crossword.web.dto.CrosswordSaveRequestDto;
 import io.botle.game.crossword.web.dto.PuzzleListResponseDto;
@@ -13,7 +14,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 
@@ -65,4 +68,19 @@ public class CrosswordService {
         return puzzleRepositorySupport.findPuzzleBySeq(p_seq);
     }
 
+    @Transactional
+    public Map<String, Object> paintPuzzle(Long p_seq) {
+        Map<String, Object> map = null;
+        CrosswordResponseDto dto = puzzleRepositorySupport.findPuzzleBySeq(p_seq);
+        List<Quiz> quizList = dto.getQuizzes();
+
+        List<String> words = quizList.stream().map(q -> q.getWord()).collect(Collectors.toList());
+
+        CrosswordMod makingCrossword = new CrosswordMod();
+        map = makingCrossword.makePuzzle(words);
+
+        map.put("info", dto);
+
+        return map;
+    }
 }
