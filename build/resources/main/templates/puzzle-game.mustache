@@ -278,15 +278,7 @@
                     </div>
                     <!-- (작업중) 힌트보기 칸-->
                     <div>
-                        <div class="form-group">
-                            <label for="puzzle_title">제목</label>
-                            <select id="puzzle_title" class="form-control custom-select">
-                                <option selected disabled value="">선택...</option>
-                                {{#puzzles}}
-                                    <option value="{{p_seq}}">{{title}}</option>
-                                {{/puzzles}}
-                            </select>
-                        </div>
+
                         <a href="/puzzle/save" role="button" class="btn btn-primary">글 등록</a>
                         <button type="button" class="btn btn-secondary" id="btn-start">게임 시작</button>
                     </div>

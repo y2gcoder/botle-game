@@ -7,11 +7,175 @@ var crossword = {
       $(".crossword-board").html("");
       _this.paintPuzzle(puzzle);
 
-      $(".crossword-board").on("mouseenter", `input[id^="item-"]`, function () {
-        // var word = $(this).attr("id");
-        // console.log(word);
-        // 누르면
-      });
+      var inputVal = "";
+      $(".crossword-board").on(
+        "propertychange change keyup paste",
+        `input[id^="item-"]`,
+        function () {
+          var idVal = $(this).attr("id");
+          var idArray = idVal.split("-");
+          var x = parseInt(idArray[1]);
+          var y = parseInt(idArray[2]);
+
+          var currentVal = $(this).val();
+          if (currentVal == inputVal) {
+            return;
+          }
+          inputVal = currentVal;
+
+          var across = $(this).attr("across-word") ? true : false;
+
+          // down으로 쓰고 내려올 때
+          if (
+            x - 1 > 0 &&
+            $(`#item-${x - 1}-${y}`).is("input") &&
+            $(`#item-${x - 1}-${y}`)
+              .val()
+              .trim() != "" &&
+            x + 1 < 12 &&
+            $(`#item-${x + 1}-${y}`).is("input") &&
+            $(`#item-${x + 1}-${y}`)
+              .val()
+              .trim() == ""
+          ) {
+            across = false;
+          }
+          var word = $(this).attr("across-word")
+            ? $(this).attr("across-word")
+            : $(this).attr("down-word");
+
+          // console.log(`x: ${x}, y: ${y}`);
+
+          if (inputVal != "" || inputVal != " ") {
+            // console.log(inputVal);
+            if (across) {
+              // console.log(`x = ${x}, y = ${y + 1}`);
+              // console.log($(`#item-${x}-${y + 1}`).is("input"));
+              if ($(`#item-${x}-${y + 1}`).is("input")) {
+                //값이 있을 경우 다음으로 넘어가자.
+                var nextVal = $(`#item-${x}-${y + 1}`)
+                  .val()
+                  .trim();
+                console.log(nextVal);
+
+                if (
+                  nextVal != "" &&
+                  y + 2 < 12 &&
+                  $(`#item-${x}-${y + 2}`).is("input")
+                ) {
+                  // coneole.log("실행");
+                  $(`#item-${x}-${y + 2}`).focus();
+                } else if (
+                  nextVal != "" &&
+                  y + 2 < 12 &&
+                  !$(`#item-${x}-${y + 2}`).is("input")
+                ) {
+                  // 다음 문제 번호로 넘어가기.
+                  var current_q_num = parseInt($(this).attr("across-num-end"));
+
+                  for (var i = 0; i < 12; i++) {
+                    for (var j = 0; j < 12; j++) {
+                      var q_num = $(`#item-${i}-${j}`).attr("across-num-start")
+                        ? parseInt(
+                            $(`#item-${i}-${j}`).attr("across-num-start")
+                          )
+                        : parseInt($(`#item-${i}-${j}`).attr("down-num-start"));
+
+                      if (q_num == current_q_num + 1) {
+                        $(`#item-${i}-${j}`).focus();
+                      }
+                    }
+                  }
+                } else {
+                  $(`#item-${x}-${y + 1}`).focus();
+                }
+              } else {
+                // 다음 문제 번호로 넘어가기.
+                var current_q_num = parseInt($(this).attr("across-num-end"));
+
+                for (var i = 0; i < 12; i++) {
+                  for (var j = 0; j < 12; j++) {
+                    var q_num = $(`#item-${i}-${j}`).attr("across-num-start")
+                      ? parseInt($(`#item-${i}-${j}`).attr("across-num-start"))
+                      : parseInt($(`#item-${i}-${j}`).attr("down-num-start"));
+
+                    if (q_num == current_q_num + 1) {
+                      $(`#item-${i}-${j}`).focus();
+                    }
+                  }
+                }
+              }
+            } else {
+              if ($(`#item-${x + 1}-${y}`).is("input")) {
+                var nextVal = $(`#item-${x + 1}-${y}`)
+                  .val()
+                  .trim();
+
+                if (
+                  nextVal != "" &&
+                  x + 2 < 12 &&
+                  $(`#item-${x + 2}-${y}`).is("input")
+                ) {
+                  $(`#item-${x + 2}-${y}`).focus();
+                } else if (
+                  nextVal != "" &&
+                  x + 2 < 12 &&
+                  !$(`#item-${x + 2}-${y}`).is("input")
+                ) {
+                  // 다음 문제 번호로 넘어가기.
+                  var current_q_num = parseInt($(this).attr("down-num-end"));
+
+                  for (var i = 0; i < 12; i++) {
+                    for (var j = 0; j < 12; j++) {
+                      var q_num = $(`#item-${i}-${j}`).attr("across-num-start")
+                        ? parseInt(
+                            $(`#item-${i}-${j}`).attr("across-num-start")
+                          )
+                        : parseInt($(`#item-${i}-${j}`).attr("down-num-start"));
+
+                      if (q_num == current_q_num + 1) {
+                        $(`#item-${i}-${j}`).focus();
+                      }
+                    }
+                  }
+                } else {
+                  $(`#item-${x + 1}-${y}`).focus();
+                }
+              } else {
+                // 다음 문제 번호로 넘어가기.
+                var current_q_num = parseInt($(this).attr("down-num-end"));
+
+                for (var i = 0; i < 12; i++) {
+                  for (var j = 0; j < 12; j++) {
+                    var q_num = $(`#item-${i}-${j}`).attr("across-num-start")
+                      ? parseInt($(`#item-${i}-${j}`).attr("across-num-start"))
+                      : parseInt($(`#item-${i}-${j}`).attr("down-num-start"));
+
+                    if (q_num == current_q_num + 1) {
+                      $(`#item-${i}-${j}`).focus();
+                    }
+                  }
+                }
+              }
+            }
+          }
+          inputVal = "";
+        }
+      );
+      // var oldVal = "";
+      // $(".crossword-board").on(
+      //   "propertychange change keyup paste input",
+      //   `input[id^="item-"]`,
+      //   function () {
+      //     var currentVal = $(this).val();
+      //     currentVal = currentVal.toLowerCase();
+      //     if (currentVal == oldVal) {
+      //       return;
+      //     }
+      //     oldVal = currentVal;
+
+      //   }
+      // );
 
       $(".crossword-board").on("click", `input[id^="item-"]`, function () {
         // 내용 떠야지
@@ -99,14 +263,26 @@ var crossword = {
       // 가로 / 세로에 따라 하기
       if (across) {
         for (var j = y; j < y + length; j++) {
+          if (j == y) {
+            $(`#item-${x}-${j}`).attr("across-num-start", num);
+          }
           // item-i-j에 word넣기
           $(`#item-${x}-${j}`).attr("across-word", word);
+
+          $(`#item-${x}-${j}`).attr("across-num-end", num);
         }
       } else {
         for (var j = x; j < x + length; j++) {
+          if (j == x) {
+            $(`#item-${j}-${y}`).attr("down-num-start", num);
+          }
           $(`#item-${j}-${y}`).attr("down-word", word);
+
+          $(`#item-${j}-${y}`).attr("down-num-end", num);
         }
       }
+
+      // 현재 문제의 번호도 입력해놓기
     }
     crosswordBoard.appendChild(newLabelDiv);
   },
@@ -118,7 +294,7 @@ var crossword = {
       if (targetWord == word) {
         var across = matrixWord["across"];
         var isAcross = across == true ? "across" : "down";
-        console.log(isAcross);
+        // console.log(isAcross);
         var num = i + 1;
 
         $("#quiz-across").html(isAcross);
