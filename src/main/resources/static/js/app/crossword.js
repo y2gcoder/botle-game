@@ -82,7 +82,7 @@ var crossword = {
             _this.checkVictory();
 
             // 넘어가기
-
+            // 먼저 가로인지 세로인지 결정하자.
             // if (across) {
             //   // console.log(`x = ${x}, y = ${y + 1}`);
             //   // console.log($(`#item-${x}-${y + 1}`).is("input"));
@@ -409,6 +409,7 @@ var crossword = {
     if (wholeItems.length == correctItems.length) {
       alert("게임 끝!");
       // 아닐 경우 틀린 답으로 이동해주자(예정)
+      // window.location.href="/";
     } else {
     }
   },
