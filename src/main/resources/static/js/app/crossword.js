@@ -47,9 +47,8 @@ var crossword = {
 
           // console.log(`x: ${x}, y: ${y}`);
           // 여기부터 뒤로 넘어가는 것
-
+          console.log(`inputVal:${inputVal}끝`);
           if (inputVal != "") {
-            console.log(`inputVal:${inputVal}끝`);
             // 한 글자씩 체크
             if ($(`#item-${x}-${y}`).is(":valid")) {
               if (
@@ -273,6 +272,19 @@ var crossword = {
           _this.showQuiz(word);
         }
       );
+
+      document
+        .querySelector(".crossword-board")
+        .addEventListener("focusout", function (e) {
+          const input = e.target;
+          const inputVal = input.value.trim();
+          if (inputVal == "") {
+            input.classList.remove("crossword-board__item-letter-incorrect");
+            input.classList.remove("crossword-board__item-letter-correct");
+          } else {
+            //
+          }
+        });
     }
   },
   paintPuzzle: function (puzzle) {
