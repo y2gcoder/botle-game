@@ -135,6 +135,15 @@
   grid-row: 12/12;
 }
 
+/* crossword  answer correct*/
+.crossword-board__item-letter-correct {
+  background: #9aff67;
+}
+
+.crossword-board__item-letter-incorrect {
+  background: #fa9461;
+}
+
 .crossword-board--highlight {
   position: absolute;
   z-index: 50;

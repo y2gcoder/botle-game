@@ -17,13 +17,16 @@ var crossword = {
           var x = parseInt(idArray[1]);
           var y = parseInt(idArray[2]);
 
-          var currentVal = $(this).val();
+          var currentVal = $(this).val().trim();
           if (currentVal == inputVal) {
             return;
           }
-          inputVal = currentVal;
+          inputVal = currentVal.trim();
 
           var across = $(this).attr("across-word") ? true : false;
+          var word = $(this).attr("across-word")
+            ? $(this).attr("across-word")
+            : $(this).attr("down-word");
 
           // down으로 쓰고 내려올 때
           if (
@@ -39,135 +42,197 @@ var crossword = {
               .trim() == ""
           ) {
             across = false;
+            word = $(this).attr("down-word");
           }
-          var word = $(this).attr("across-word")
-            ? $(this).attr("across-word")
-            : $(this).attr("down-word");
 
           // console.log(`x: ${x}, y: ${y}`);
           // 여기부터 뒤로 넘어가는 것
-          if (inputVal != "" || inputVal != " ") {
-            // console.log(inputVal);
-            if (across) {
-              // console.log(`x = ${x}, y = ${y + 1}`);
-              // console.log($(`#item-${x}-${y + 1}`).is("input"));
-              if ($(`#item-${x}-${y + 1}`).is("input")) {
-                //값이 있을 경우 다음으로 넘어가자.
-                var nextVal = $(`#item-${x}-${y + 1}`)
-                  .val()
-                  .trim();
-                console.log(nextVal);
 
-                if (
-                  nextVal != "" &&
-                  y + 2 < 12 &&
-                  $(`#item-${x}-${y + 2}`).is("input")
-                ) {
-                  // coneole.log("실행");
-                  $(`#item-${x}-${y + 2}`).focus();
-                } else if (
-                  nextVal != "" &&
-                  y + 2 < 12 &&
-                  !$(`#item-${x}-${y + 2}`).is("input")
-                ) {
-                  // 여기서 한 줄 체크
-
-                  // 다음 문제 번호로 넘어가기.
-                  var current_q_num = parseInt($(this).attr("across-num-end"));
-
-                  for (var i = 0; i < 12; i++) {
-                    for (var j = 0; j < 12; j++) {
-                      var q_num = $(`#item-${i}-${j}`).attr("across-num-start")
-                        ? parseInt(
-                            $(`#item-${i}-${j}`).attr("across-num-start")
-                          )
-                        : parseInt($(`#item-${i}-${j}`).attr("down-num-start"));
-
-                      if (q_num == current_q_num + 1) {
-                        $(`#item-${i}-${j}`).focus();
-                      }
-                    }
-                  }
-                } else {
-                  $(`#item-${x}-${y + 1}`).focus();
-                }
-              } else {
-                // 여기서 한 줄 체크
-
-                // 다음 문제 번호로 넘어가기.
-                var current_q_num = parseInt($(this).attr("across-num-end"));
-
-                for (var i = 0; i < 12; i++) {
-                  for (var j = 0; j < 12; j++) {
-                    var q_num = $(`#item-${i}-${j}`).attr("across-num-start")
-                      ? parseInt($(`#item-${i}-${j}`).attr("across-num-start"))
-                      : parseInt($(`#item-${i}-${j}`).attr("down-num-start"));
-
-                    if (q_num == current_q_num + 1) {
-                      $(`#item-${i}-${j}`).focus();
-                    }
-                  }
-                }
+          if (inputVal != "") {
+            console.log(`inputVal:${inputVal}끝`);
+            // 한 글자씩 체크
+            if ($(`#item-${x}-${y}`).is(":valid")) {
+              if (
+                $(`#item-${x}-${y}`).hasClass(
+                  "crossword-board__item-letter-incorrect"
+                )
+              ) {
+                $(`#item-${x}-${y}`).removeClass(
+                  "crossword-board__item-letter-incorrect"
+                );
               }
+              $(`#item-${x}-${y}`).addClass(
+                "crossword-board__item-letter-correct"
+              );
             } else {
-              if ($(`#item-${x + 1}-${y}`).is("input")) {
-                var nextVal = $(`#item-${x + 1}-${y}`)
-                  .val()
-                  .trim();
-
-                if (
-                  nextVal != "" &&
-                  x + 2 < 12 &&
-                  $(`#item-${x + 2}-${y}`).is("input")
-                ) {
-                  $(`#item-${x + 2}-${y}`).focus();
-                } else if (
-                  nextVal != "" &&
-                  x + 2 < 12 &&
-                  !$(`#item-${x + 2}-${y}`).is("input")
-                ) {
-                  // 여기서 한 줄 체크
-
-                  // 다음 문제 번호로 넘어가기.
-                  var current_q_num = parseInt($(this).attr("down-num-end"));
-
-                  for (var i = 0; i < 12; i++) {
-                    for (var j = 0; j < 12; j++) {
-                      var q_num = $(`#item-${i}-${j}`).attr("across-num-start")
-                        ? parseInt(
-                            $(`#item-${i}-${j}`).attr("across-num-start")
-                          )
-                        : parseInt($(`#item-${i}-${j}`).attr("down-num-start"));
-
-                      if (q_num == current_q_num + 1) {
-                        $(`#item-${i}-${j}`).focus();
-                      }
-                    }
-                  }
-                } else {
-                  $(`#item-${x + 1}-${y}`).focus();
-                }
-              } else {
-                // 여기서 한 줄 체크
-
-                // 다음 문제 번호로 넘어가기.
-                var current_q_num = parseInt($(this).attr("down-num-end"));
-
-                for (var i = 0; i < 12; i++) {
-                  for (var j = 0; j < 12; j++) {
-                    var q_num = $(`#item-${i}-${j}`).attr("across-num-start")
-                      ? parseInt($(`#item-${i}-${j}`).attr("across-num-start"))
-                      : parseInt($(`#item-${i}-${j}`).attr("down-num-start"));
-
-                    if (q_num == current_q_num + 1) {
-                      $(`#item-${i}-${j}`).focus();
-                    }
-                  }
-                }
+              if (
+                $(`#item-${x}-${y}`).hasClass(
+                  "crossword-board__item-letter-correct"
+                )
+              ) {
+                $(`#item-${x}-${y}`).removeClass(
+                  "crossword-board__item-letter-correct"
+                );
               }
+              $(`#item-${x}-${y}`).addClass(
+                "crossword-board__item-letter-incorrect"
+              );
             }
+
+            _this.checkVictory();
+
+            // 넘어가기
+
+            // if (across) {
+            //   // console.log(`x = ${x}, y = ${y + 1}`);
+            //   // console.log($(`#item-${x}-${y + 1}`).is("input"));
+            //   if ($(`#item-${x}-${y + 1}`).is("input")) {
+            //     //값이 있을 경우 다음으로 넘어가자.
+            //     var nextVal = $(`#item-${x}-${y + 1}`)
+            //       .val()
+            //       .trim();
+            //     // console.log(nextVal);
+
+            //     if (
+            //       nextVal != "" &&
+            //       y + 2 < 12 &&
+            //       $(`#item-${x}-${y + 2}`).is("input")
+            //     ) {
+            //       // coneole.log("실행");
+            //       $(`#item-${x}-${y + 2}`).focus();
+            //       inputVal = "";
+            //     } else if (
+            //       nextVal != "" &&
+            //       y + 2 < 12 &&
+            //       !$(`#item-${x}-${y + 2}`).is("input")
+            //     ) {
+            //       // 여기서 한 줄 체크
+
+            //       // 다음 문제 번호로 넘어가기.
+            //       var current_q_num = parseInt($(this).attr("across-num-end"));
+
+            //       for (var i = 0; i < 12; i++) {
+            //         for (var j = 0; j < 12; j++) {
+            //           var q_num = $(`#item-${i}-${j}`).attr("across-num-start")
+            //             ? parseInt(
+            //                 $(`#item-${i}-${j}`).attr("across-num-start")
+            //               )
+            //             : parseInt($(`#item-${i}-${j}`).attr("down-num-start"));
+
+            //           if (q_num == current_q_num + 1) {
+            //             $(`#item-${i}-${j}`).focus();
+            //             inputVal = "";
+            //           }
+            //         }
+            //       }
+            //     } else {
+            //       $(`#item-${x}-${y + 1}`).focus();
+            //       inputVal = "";
+            //     }
+            //   } else {
+            //     // 여기서 한 줄 체크
+            //     // _this.checkAnswer();
+            //     // console.log(`word : ${word}`);
+            //     // // 가로니까.
+            //     // var wholeItems = document.getElementsByClassName(
+            //     //   "crossword-board__item"
+            //     // );
+            //     // var wordItems = [];
+            //     // for (var i = 0; i < wholeItems.length; i++) {
+            //     //   var wholeItemsWord = wholeItems[i].getAttribute(
+            //     //     "across-word"
+            //     //   );
+            //     //   if (wholeItemsWord == word) {
+            //     //     wordItems.push(wholeItems[i]);
+            //     //   }
+            //     // }
+            //     // console.log(wordItems);
+
+            //     // 다음 문제 번호로 넘어가기.
+            //     var current_q_num = parseInt($(this).attr("across-num-end"));
+
+            //     for (var i = 0; i < 12; i++) {
+            //       for (var j = 0; j < 12; j++) {
+            //         var q_num = $(`#item-${i}-${j}`).attr("across-num-start")
+            //           ? parseInt($(`#item-${i}-${j}`).attr("across-num-start"))
+            //           : parseInt($(`#item-${i}-${j}`).attr("down-num-start"));
+
+            //         if (q_num == current_q_num + 1) {
+            //           $(`#item-${i}-${j}`).focus();
+            //           inputVal = "";
+            //         }
+            //       }
+            //     }
+            //   }
+            // } else {
+            //   if ($(`#item-${x + 1}-${y}`).is("input")) {
+            //     var nextVal = $(`#item-${x + 1}-${y}`)
+            //       .val()
+            //       .trim();
+            //     console.log(`x:${x + 1}, y:${y}, nextVal:${nextVal}`);
+            //     if (
+            //       nextVal != "" &&
+            //       x + 2 < 12 &&
+            //       $(`#item-${x + 2}-${y}`).is("input")
+            //     ) {
+            //       $(`#item-${x + 2}-${y}`).focus();
+            //       inputVal = "";
+            //     } else if (
+            //       nextVal != "" &&
+            //       x + 2 < 12 &&
+            //       !$(`#item-${x + 2}-${y}`).is("input")
+            //     ) {
+            //       // 여기서 한 줄 체크
+
+            //       // 다음 문제 번호로 넘어가기.
+            //       var current_q_num = parseInt($(this).attr("down-num-end"));
+
+            //       for (var i = 0; i < 12; i++) {
+            //         for (var j = 0; j < 12; j++) {
+            //           var q_num = $(`#item-${i}-${j}`).attr("across-num-start")
+            //             ? parseInt(
+            //                 $(`#item-${i}-${j}`).attr("across-num-start")
+            //               )
+            //             : parseInt($(`#item-${i}-${j}`).attr("down-num-start"));
+
+            //           if (q_num == current_q_num + 1) {
+            //             $(`#item-${i}-${j}`).focus();
+            //             inputVal = "";
+            //           }
+            //         }
+            //       }
+            //     } else {
+            //       $(`#item-${x + 1}-${y}`).focus();
+            //       inputVal = "";
+            //     }
+            //   } else {
+            //     // 여기서 한 줄 체크
+
+            //     // 다음 문제 번호로 넘어가기.
+            //     var current_q_num = parseInt($(this).attr("down-num-end"));
+
+            //     for (var i = 0; i < 12; i++) {
+            //       for (var j = 0; j < 12; j++) {
+            //         var q_num = $(`#item-${i}-${j}`).attr("across-num-start")
+            //           ? parseInt($(`#item-${i}-${j}`).attr("across-num-start"))
+            //           : parseInt($(`#item-${i}-${j}`).attr("down-num-start"));
+
+            //         if (q_num == current_q_num + 1) {
+            //           $(`#item-${i}-${j}`).focus();
+            //           inputVal = "";
+            //         }
+            //       }
+            //     }
+            //   }
+            // }
+          } else {
+            $(`#item-${x}-${y}`).removeClass(
+              "crossword-board__item-letter-incorrect"
+            );
+            $(`#item-${x}-${y}`).removeClass(
+              "crossword-board__item-letter-correct"
+            );
           }
-          inputVal = "";
         }
       );
       var word = "";
@@ -291,8 +356,9 @@ var crossword = {
           }
           // item-i-j에 word넣기
           $(`#item-${x}-${j}`).attr("across-word", word);
-
-          $(`#item-${x}-${j}`).attr("across-num-end", num);
+          if (j != y) {
+            $(`#item-${x}-${j}`).attr("across-num-end", num);
+          }
         }
       } else {
         for (var j = x; j < x + length; j++) {
@@ -301,7 +367,9 @@ var crossword = {
           }
           $(`#item-${j}-${y}`).attr("down-word", word);
 
-          $(`#item-${j}-${y}`).attr("down-num-end", num);
+          if (j != x) {
+            $(`#item-${j}-${y}`).attr("down-num-end", num);
+          }
         }
       }
 
@@ -332,6 +400,16 @@ var crossword = {
         var desc = quiz.q_desc;
         $("#quiz-desc").html(desc);
       }
+    }
+  },
+  // 승리 여부 확인
+  checkVictory: function () {
+    var wholeItems = $(".crossword-board__item");
+    var correctItems = $(".crossword-board__item-letter-correct");
+    if (wholeItems.length == correctItems.length) {
+      alert("게임 끝!");
+      // 아닐 경우 틀린 답으로 이동해주자(예정)
+    } else {
     }
   },
 };
