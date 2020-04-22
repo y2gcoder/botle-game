@@ -264,19 +264,21 @@
                 </div>
                 <!--게임 설명 및 힌트 칸-->
                 <div class="col-md-6 ">
-                    <!-- 설명 칸 -->
-                    <div></div>
-                    <!-- 게임 선택과 시작(만들기도 지금은 여기에)-->
+                    <!-- 문제 칸 -->
                     <div>
-                        <div class="form-group">
-                            <label for="puzzle_title">제목</label>
-                            <select id="puzzle_title" class="form-control custom-select">
-                                <option selected disabled value="">선택...</option>
-                                {{#puzzles}}
-                                    <option value="{{p_seq}}">{{title}}</option>
-                                {{/puzzles}}
-                            </select>
+                        <!-- 문제 식별칸 -->
+                        <div id="quiz-indicator">
+                            <span id="quiz-across"></span><span> </span><span id="quiz-number"></span>
                         </div>
+                        <!-- 문제 내용 칸 -->
+                        <div>
+                            <div>설명</div>
+                            <div id="quiz-desc"></div>
+                        </div>
+                    </div>
+                    <!-- (작업중) 힌트보기 칸-->
+                    <div>
+
                         <a href="/puzzle/save" role="button" class="btn btn-primary">글 등록</a>
                         <button type="button" class="btn btn-secondary" id="btn-start">게임 시작</button>
                     </div>
