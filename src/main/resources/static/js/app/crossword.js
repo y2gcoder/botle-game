@@ -45,7 +45,7 @@ var crossword = {
             : $(this).attr("down-word");
 
           // console.log(`x: ${x}, y: ${y}`);
-
+          // 여기부터 뒤로 넘어가는 것
           if (inputVal != "" || inputVal != " ") {
             // console.log(inputVal);
             if (across) {
@@ -70,6 +70,8 @@ var crossword = {
                   y + 2 < 12 &&
                   !$(`#item-${x}-${y + 2}`).is("input")
                 ) {
+                  // 여기서 한 줄 체크
+
                   // 다음 문제 번호로 넘어가기.
                   var current_q_num = parseInt($(this).attr("across-num-end"));
 
@@ -90,6 +92,8 @@ var crossword = {
                   $(`#item-${x}-${y + 1}`).focus();
                 }
               } else {
+                // 여기서 한 줄 체크
+
                 // 다음 문제 번호로 넘어가기.
                 var current_q_num = parseInt($(this).attr("across-num-end"));
 
@@ -122,6 +126,8 @@ var crossword = {
                   x + 2 < 12 &&
                   !$(`#item-${x + 2}-${y}`).is("input")
                 ) {
+                  // 여기서 한 줄 체크
+
                   // 다음 문제 번호로 넘어가기.
                   var current_q_num = parseInt($(this).attr("down-num-end"));
 
@@ -142,6 +148,8 @@ var crossword = {
                   $(`#item-${x + 1}-${y}`).focus();
                 }
               } else {
+                // 여기서 한 줄 체크
+
                 // 다음 문제 번호로 넘어가기.
                 var current_q_num = parseInt($(this).attr("down-num-end"));
 
@@ -162,15 +170,44 @@ var crossword = {
           inputVal = "";
         }
       );
+      var word = "";
+      $(".crossword-board").on(
+        "click focus",
+        `input[id^="item-"]`,
+        function () {
+          var idVal = $(this).attr("id");
+          var idArray = idVal.split("-");
+          var x = parseInt(idArray[1]);
+          var y = parseInt(idArray[2]);
 
-      $(".crossword-board").on("click", `input[id^="item-"]`, function () {
-        // 내용 떠야지
-        var word = $(this).attr("across-word")
-          ? $(this).attr("across-word")
-          : $(this).attr("down-word");
+          // 내용 떠야지
+          var targetWord = $(this).attr("across-word")
+            ? $(this).attr("across-word")
+            : $(this).attr("down-word");
 
-        _this.showQuiz(word);
-      });
+          // down으로 쓰고 내려올 때
+          if (
+            x - 1 > 0 &&
+            $(`#item-${x - 1}-${y}`).is("input") &&
+            $(`#item-${x - 1}-${y}`)
+              .val()
+              .trim() != "" &&
+            x + 1 < 12 &&
+            $(`#item-${x + 1}-${y}`).is("input") &&
+            $(`#item-${x + 1}-${y}`)
+              .val()
+              .trim() == ""
+          ) {
+            targetWord = $(this).attr("down-word");
+          }
+          if (targetWord == word) {
+            return;
+          }
+          word = targetWord;
+
+          _this.showQuiz(word);
+        }
+      );
     }
   },
   paintPuzzle: function (puzzle) {
