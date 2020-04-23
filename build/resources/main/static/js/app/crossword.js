@@ -2,9 +2,14 @@ var crossword = {
   init: function () {
     var _this = this;
 
-    console.log(_this);
-
     if (puzzle) {
+      console.log(puzzle);
+      /**
+       * puzzle.info == crosswordResponseDto;
+       * puzzle.matrix == board 자체
+       * puzzle.matrixWords == board의 단어들과 좌표값 넣어 놓음.
+       */
+
       // 시간 관련 변수들
       let stTime = 0;
       let endTime = 0;
@@ -311,15 +316,15 @@ var crossword = {
             //
           }
         });
+
+      document
+        .querySelector("#btn-crossword-hint")
+        .addEventListener("click", function (e) {
+          _this.showHint();
+        });
     }
   },
   paintPuzzle: function (puzzle) {
-    console.log(puzzle);
-    /**
-     * puzzle.info == crosswordResponseDto;
-     * puzzle.matrix == board 자체
-     * puzzle.matrixWords == board의 단어들과 좌표값 넣어 놓음.
-     */
     const crosswordBoard = document.getElementsByClassName(
       "crossword-board"
     )[0];
@@ -503,6 +508,27 @@ var crossword = {
   showResult: function (result) {
     alert(`게임 끝!
     푼 시간 : ${result}`);
+  },
+  showHint: function () {
+    const q_num =
+      document.getElementById("quiz-number").innerText.trim() != ""
+        ? parseInt(document.getElementById("quiz-number").innerText) - 1
+        : -1;
+    if (q_num < 0) {
+      return;
+    }
+    const word = puzzle.matrixWords[q_num].word;
+
+    const quizzes = puzzle.info.quizzes;
+    for (var i = 0; i < quizzes.length; i++) {
+      const quiz = quizzes[i];
+      const quizWord = quiz.word;
+      console.log(`찾는 단어 : ${word}, for문 단어 : ${quizWord}`);
+      if (word == quizWord) {
+        const hint = quiz.hint;
+        console.log(`hint: ${hint}`);
+      }
+    }
   },
 };
 crossword.init();
