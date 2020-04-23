@@ -32,7 +32,10 @@ var crossword = {
         milisec
       );
 
-      var inputVal = "";
+      // 그전의 처음 그리드
+      let directionIndexItem;
+
+      let inputVal;
       $(".crossword-board").on(
         "propertychange change keyup paste",
         `input[id^="item-"]`,
@@ -42,66 +45,331 @@ var crossword = {
           var x = parseInt(idArray[1]);
           var y = parseInt(idArray[2]);
 
+          // let current_num = _this.findQ_num(x, y);
+          // const index_item = _this.findIndexItem(current_num);
+
           var currentVal = $(this).val().trim();
           if (currentVal == inputVal) {
             return;
           }
           inputVal = currentVal.trim();
 
-          var across = $(this).attr("across-word") ? true : false;
-          var word = $(this).attr("across-word")
-            ? $(this).attr("across-word")
-            : $(this).attr("down-word");
+          let across;
+          let word;
 
-          // down으로 쓰고 내려올 때
+          const currentItem = document.getElementById(`item-${x}-${y}`);
+
           if (
-            x - 1 > 0 &&
-            $(`#item-${x - 1}-${y}`).is("input") &&
-            $(`#item-${x - 1}-${y}`)
-              .val()
-              .trim() != "" &&
-            x + 1 < 12 &&
-            $(`#item-${x + 1}-${y}`).is("input") &&
-            $(`#item-${x + 1}-${y}`)
-              .val()
-              .trim() == ""
+            currentItem.hasAttribute("across-word") &&
+            !currentItem.hasAttribute("down-word")
+          ) {
+            across = true;
+            word = currentItem.getAttribute("across-word");
+          } else if (
+            !currentItem.hasAttribute("across-word") &&
+            currentItem.hasAttribute("down-word")
           ) {
             across = false;
-            word = $(this).attr("down-word");
+            word = currentItem.getAttribute("down-word");
+          } else if (
+            currentItem.hasAttribute("across-word") &&
+            currentItem.hasAttribute("down-word")
+          ) {
           }
 
+          // if (
+          //   (currentItem.getAttribute("across-word") != null ||
+          //     currentItem.getAttribute("across-word") != "") &&
+          //   (currentItem.getAttribute("down-word") == null ||
+          //     currentItem.getAttribute("down-word") == "")
+          // ) {
+          //   across = true;
+          //   word = currentItem.getAttribute("across-word");
+          //   if (
+          //     y - 1 >= 0 &&
+          //     document
+          //       .getElementById(`item-${x}-${y - 1}`)
+          //       .classList.contains("crossword-board__item")
+          //   ) {
+          //     prevAcrossItem = document.getElementById(`item-${x}-${y - 1}`);
+          //   }
+          //   if (
+          //     y + 1 < 12 &&
+          //     document
+          //       .getElementById(`item-${x}-${y + 1}`)
+          //       .classList.contains("crossword-board__item")
+          //   ) {
+          //     nextAcrossItem = document.getElementById(`item-${x}-${y + 1}`);
+          //   }
+          // } else if (
+          //   (currentItem.getAttribute("across-word") == null ||
+          //     currentItem.getAttribute("across-word") == "") &&
+          //   (currentItem.getAttribute("down-word") != null ||
+          //     currentItem.getAttribute("down-word") != "")
+          // ) {
+          //   across = false;
+          //   word = currentItem.getAttribute("down-word");
+          //   if (
+          //     x - 1 >= 0 &&
+          //     document
+          //       .getElementById(`item-${x - 1}-${y}`)
+          //       .classList.contains("crossword-board__item")
+          //   ) {
+          //     prevDownItem = document.getElementById(`item-${x - 1}-${y}`);
+          //   }
+          //   if (
+          //     x + 1 < 12 &&
+          //     document
+          //       .getElementById(`item-${x + 1}-${y}`)
+          //       .classList.contains("crossword-board__item")
+          //   ) {
+          //     nextDownItem = document.getElementById(`item-${x + 1}-${y}`);
+          //   }
+          // } else if (
+          //   // 가로 세로 다 있음.
+          //   (currentItem.getAttribute("across-word") != null ||
+          //     currentItem.getAttribute("across-word") != "") &&
+          //   (currentItem.getAttribute("down-word") != null ||
+          //     currentItem.getAttribute("down-word") != "")
+          // ) {
+          //   if (
+          //     y - 1 >= 0 &&
+          //     document
+          //       .getElementById(`item-${x}-${y - 1}`)
+          //       .classList.contains("crossword-board__item")
+          //   ) {
+          //     prevAcrossItem = document.getElementById(`item-${x}-${y - 1}`);
+          //   }
+          //   if (
+          //     y + 1 < 12 &&
+          //     document
+          //       .getElementById(`item-${x}-${y + 1}`)
+          //       .classList.contains("crossword-board__item")
+          //   ) {
+          //     nextAcrossItem = document.getElementById(`item-${x}-${y + 1}`);
+          //   }
+          //   if (
+          //     x - 1 >= 0 &&
+          //     document
+          //       .getElementById(`item-${x - 1}-${y}`)
+          //       .classList.contains("crossword-board__item")
+          //   ) {
+          //     prevDownItem = document.getElementById(`item-${x - 1}-${y}`);
+          //   }
+          //   if (
+          //     x + 1 < 12 &&
+          //     document
+          //       .getElementById(`item-${x + 1}-${y}`)
+          //       .classList.contains("crossword-board__item")
+          //   ) {
+          //     nextDownItem = document.getElementById(`item-${x + 1}-${y}`);
+          //   }
+
+          //   // undefined에 따라서 정하자
+          //   if (prevAcrossItem == undefined) {
+          //     if (
+          //       nextAcrossItem.value == "" &&
+          //       prevDownItem.value == "" &&
+          //       nextDownItem.value == ""
+          //     ) {
+          //       across = true;
+          //       word = currentItem.getAttribute("across-word");
+          //     } else if (
+          //       nextAcrossItem.value == "" &&
+          //       prevDownItem.value != "" &&
+          //       nextDownItem.value != ""
+          //     ) {
+          //       across = true;
+          //       word = currentItem.getAttribute("across-word");
+          //     } else if (
+          //       nextAcrossItem.value == "" &&
+          //       prevDownItem.value != "" &&
+          //       nextDownItem.value == ""
+          //     ) {
+          //       across = false;
+          //       word = currentItem.getAttribute("down-word");
+          //     } else if (
+          //       nextAcrossItem.value != "" &&
+          //       prevDownItem.value != "" &&
+          //       nextDownItem.value == ""
+          //     ) {
+          //       across = false;
+          //       word = currentItem.getAttribute("down-word");
+          //     } else {
+          //       across = true;
+          //       word = currentItem.getAttribute("across-word");
+          //     }
+          //   } else if (nextAcrossItem == undefined) {
+          //     if (
+          //       prevAcrossItem.value == "" &&
+          //       prevDownItem.value == "" &&
+          //       nextDownItem.value == ""
+          //     ) {
+          //       across = true;
+          //       word = currentItem.getAttribute("across-word");
+          //     } else if (
+          //       prevAcrossItem.value != "" &&
+          //       prevDownItem.value == "" &&
+          //       nextDownItem.value == ""
+          //     ) {
+          //       across = true;
+          //       word = currentItem.getAttribute("across-word");
+          //     } else if (
+          //       prevAcrossItem.value != "" &&
+          //       prevDownItem.value != "" &&
+          //       nextDownItem.value != ""
+          //     ) {
+          //       across = true;
+          //       word = currentItem.getAttribute("across-word");
+          //     } else if (
+          //       prevAcrossItem.value == "" &&
+          //       prevDownItem.value != "" &&
+          //       nextDownItem.value == ""
+          //     ) {
+          //       across = false;
+          //       word = currentItem.getAttribute("down-word");
+          //     } else if (
+          //       prevAcrossItem.value != "" &&
+          //       prevDownItem.value != "" &&
+          //       nextDownItem.value == ""
+          //     ) {
+          //       across = false;
+          //       word = currentItem.getAttribute("down-word");
+          //     } else {
+          //       across = true;
+          //       word = currentItem.getAttribute("across-word");
+          //     }
+          //   } else if (prevDownItem == undefined) {
+          //     if (
+          //       prevAcrossItem.value == "" &&
+          //       nextAcrossItem.value == "" &&
+          //       nextDownItem.value == ""
+          //     ) {
+          //       across = true;
+          //       word = currentItem.getAttribute("across-word");
+          //     } else if (
+          //       prevAcrossItem.value != "" &&
+          //       nextAcrossItem.value == "" &&
+          //       nextDownItem.value == ""
+          //     ) {
+          //       across = true;
+          //       word = currentItem.getAttribute("across-word");
+          //     } else if (
+          //       prevAcrossItem.value != "" &&
+          //       nextAcrossItem.value == "" &&
+          //       nextDownItem.value != ""
+          //     ) {
+          //       across = true;
+          //       word = currentItem.getAttribute("across-word");
+          //     } else if (
+          //       prevAcrossItem.value != "" &&
+          //       nextAcrossItem.value != "" &&
+          //       nextDownItem.value == ""
+          //     ) {
+          //       across = false;
+          //       word = currentItem.getAttribute("down-word");
+          //     } else {
+          //       across = true;
+          //       word = currentItem.getAttribute("across-word");
+          //     }
+          //   } else if (nextDownItem == undefined) {
+          //     if (
+          //       prevAcrossItem.value == "" &&
+          //       nextAcrossItem.value == "" &&
+          //       prevDownItem.value == ""
+          //     ) {
+          //       across = true;
+          //       word = currentItem.getAttribute("across-word");
+          //     } else if (
+          //       prevAcrossItem.value != "" &&
+          //       nextAcrossItem.value == "" &&
+          //       prevDownItem.value == ""
+          //     ) {
+          //       across = true;
+          //       word = currentItem.getAttribute("across-word");
+          //     } else if (
+          //       prevAcrossItem.value != "" &&
+          //       nextAcrossItem.value == "" &&
+          //       prevDownItem.value != ""
+          //     ) {
+          //       across = true;
+          //       word = currentItem.getAttribute("across-word");
+          //     } else if (
+          //       prevAcrossItem.value == "" &&
+          //       nextAcrossItem.value == "" &&
+          //       prevDownItem.value != ""
+          //     ) {
+          //       across = false;
+          //       word = currentItem.getAttribute("down-word");
+          //     } else if (
+          //       prevAcrossItem.value != "" &&
+          //       nextAcrossItem.value != "" &&
+          //       prevDownItem.value != ""
+          //     ) {
+          //       across = false;
+          //       word = currentItem.getAttribute("down-word");
+          //     } else {
+          //       across = true;
+          //       word = currentItem.getAttribute("across-word");
+          //     }
+          //   } else {
+          //     if (
+          //       prevAcrossItem.value == "" &&
+          //       nextAcrossItem.value == "" &&
+          //       prevDownItem.value == "" &&
+          //       nextDownItem.value == ""
+          //     ) {
+          //       across = true;
+          //       word = currentItem.getAttribute("across-word");
+          //     } else if (
+          //       prevAcrossItem.value != "" &&
+          //       nextAcrossItem.value == "" &&
+          //       prevDownItem.value == "" &&
+          //       nextDownItem.value == ""
+          //     ) {
+          //       across = true;
+          //       word = currentItem.getAttribute("across-word");
+          //     } else if (
+          //       prevAcrossItem.value != "" &&
+          //       nextAcrossItem.value == "" &&
+          //       prevDownItem.value != "" &&
+          //       nextDownItem.value != ""
+          //     ) {
+          //       across = true;
+          //       word = currentItem.getAttribute("across-word");
+          //     } else if (
+          //       prevAcrossItem.value == "" &&
+          //       nextAcrossItem.value == "" &&
+          //       prevDownItem.value != "" &&
+          //       nextDownItem.value == ""
+          //     ) {
+          //       across = false;
+          //       word = currentItem.getAttribute("down-word");
+          //     } else if (
+          //       prevAcrossItem.value != "" &&
+          //       nextAcrossItem.value != "" &&
+          //       prevDownItem.value != "" &&
+          //       nextDownItem.value == ""
+          //     ) {
+          //       across = false;
+          //       word = currentItem.getAttribute("down-word");
+          //     } else {
+          //       across = true;
+          //       word = currentItem.getAttribute("across-word");
+          //     }
+          //   }
+          // }
+          // console.log(prevAcrossItem);
+          // console.log(prevDownItem);
+          // console.log(nextAcrossItem);
+          // console.log(nextDownItem);
           // console.log(`x: ${x}, y: ${y}`);
           // 여기부터 정답 체크
           console.log(`inputVal:${inputVal}끝`);
+
           if (inputVal != "") {
             // 한 글자씩 체크
-            if ($(`#item-${x}-${y}`).is(":valid")) {
-              if (
-                $(`#item-${x}-${y}`).hasClass(
-                  "crossword-board__item-letter-incorrect"
-                )
-              ) {
-                $(`#item-${x}-${y}`).removeClass(
-                  "crossword-board__item-letter-incorrect"
-                );
-              }
-              $(`#item-${x}-${y}`).addClass(
-                "crossword-board__item-letter-correct"
-              );
-            } else {
-              if (
-                $(`#item-${x}-${y}`).hasClass(
-                  "crossword-board__item-letter-correct"
-                )
-              ) {
-                $(`#item-${x}-${y}`).removeClass(
-                  "crossword-board__item-letter-correct"
-                );
-              }
-              $(`#item-${x}-${y}`).addClass(
-                "crossword-board__item-letter-incorrect"
-              );
-            }
+            _this.checkInput(inputVal, x, y);
 
             const result = _this.checkVictory();
             // console.log(result);
@@ -110,151 +378,68 @@ var crossword = {
               _this.stopTime(stTime, endTime, timerStart, min, sec, milisec);
               _this.showResult(result);
             }
-
+            // 시작점의 좌표, 단어 길이, 현재 좌표를 가지고 다음 커서 위치를 정할까?
+            // 다음 퀴즈로 넘어가는 flag
+            let nextQuiz = false;
+            let q_num;
             // 넘어가기
-            // 먼저 가로인지 세로인지 결정하자.
-            // if (across) {
-            //   // console.log(`x = ${x}, y = ${y + 1}`);
-            //   // console.log($(`#item-${x}-${y + 1}`).is("input"));
-            //   if ($(`#item-${x}-${y + 1}`).is("input")) {
-            //     //값이 있을 경우 다음으로 넘어가자.
-            //     var nextVal = $(`#item-${x}-${y + 1}`)
-            //       .val()
-            //       .trim();
-            //     // console.log(nextVal);
-
-            //     if (
-            //       nextVal != "" &&
-            //       y + 2 < 12 &&
-            //       $(`#item-${x}-${y + 2}`).is("input")
-            //     ) {
-            //       // coneole.log("실행");
-            //       $(`#item-${x}-${y + 2}`).focus();
-            //       inputVal = "";
-            //     } else if (
-            //       nextVal != "" &&
-            //       y + 2 < 12 &&
-            //       !$(`#item-${x}-${y + 2}`).is("input")
-            //     ) {
-            //       // 여기서 한 줄 체크
-
-            //       // 다음 문제 번호로 넘어가기.
-            //       var current_q_num = parseInt($(this).attr("across-num-end"));
-
-            //       for (var i = 0; i < 12; i++) {
-            //         for (var j = 0; j < 12; j++) {
-            //           var q_num = $(`#item-${i}-${j}`).attr("across-num-start")
-            //             ? parseInt(
-            //                 $(`#item-${i}-${j}`).attr("across-num-start")
-            //               )
-            //             : parseInt($(`#item-${i}-${j}`).attr("down-num-start"));
-
-            //           if (q_num == current_q_num + 1) {
-            //             $(`#item-${i}-${j}`).focus();
-            //             inputVal = "";
-            //           }
-            //         }
-            //       }
-            //     } else {
-            //       $(`#item-${x}-${y + 1}`).focus();
-            //       inputVal = "";
-            //     }
-            //   } else {
-            //     // 여기서 한 줄 체크
-            //     // _this.checkAnswer();
-            //     // console.log(`word : ${word}`);
-            //     // // 가로니까.
-            //     // var wholeItems = document.getElementsByClassName(
-            //     //   "crossword-board__item"
-            //     // );
-            //     // var wordItems = [];
-            //     // for (var i = 0; i < wholeItems.length; i++) {
-            //     //   var wholeItemsWord = wholeItems[i].getAttribute(
-            //     //     "across-word"
-            //     //   );
-            //     //   if (wholeItemsWord == word) {
-            //     //     wordItems.push(wholeItems[i]);
-            //     //   }
-            //     // }
-            //     // console.log(wordItems);
-
-            //     // 다음 문제 번호로 넘어가기.
-            //     var current_q_num = parseInt($(this).attr("across-num-end"));
-
-            //     for (var i = 0; i < 12; i++) {
-            //       for (var j = 0; j < 12; j++) {
-            //         var q_num = $(`#item-${i}-${j}`).attr("across-num-start")
-            //           ? parseInt($(`#item-${i}-${j}`).attr("across-num-start"))
-            //           : parseInt($(`#item-${i}-${j}`).attr("down-num-start"));
-
-            //         if (q_num == current_q_num + 1) {
-            //           $(`#item-${i}-${j}`).focus();
-            //           inputVal = "";
-            //         }
-            //       }
-            //     }
-            //   }
-            // } else {
-            //   if ($(`#item-${x + 1}-${y}`).is("input")) {
-            //     var nextVal = $(`#item-${x + 1}-${y}`)
-            //       .val()
-            //       .trim();
-            //     console.log(`x:${x + 1}, y:${y}, nextVal:${nextVal}`);
-            //     if (
-            //       nextVal != "" &&
-            //       x + 2 < 12 &&
-            //       $(`#item-${x + 2}-${y}`).is("input")
-            //     ) {
-            //       $(`#item-${x + 2}-${y}`).focus();
-            //       inputVal = "";
-            //     } else if (
-            //       nextVal != "" &&
-            //       x + 2 < 12 &&
-            //       !$(`#item-${x + 2}-${y}`).is("input")
-            //     ) {
-            //       // 여기서 한 줄 체크
-
-            //       // 다음 문제 번호로 넘어가기.
-            //       var current_q_num = parseInt($(this).attr("down-num-end"));
-
-            //       for (var i = 0; i < 12; i++) {
-            //         for (var j = 0; j < 12; j++) {
-            //           var q_num = $(`#item-${i}-${j}`).attr("across-num-start")
-            //             ? parseInt(
-            //                 $(`#item-${i}-${j}`).attr("across-num-start")
-            //               )
-            //             : parseInt($(`#item-${i}-${j}`).attr("down-num-start"));
-
-            //           if (q_num == current_q_num + 1) {
-            //             $(`#item-${i}-${j}`).focus();
-            //             inputVal = "";
-            //           }
-            //         }
-            //       }
-            //     } else {
-            //       $(`#item-${x + 1}-${y}`).focus();
-            //       inputVal = "";
-            //     }
-            //   } else {
-            //     // 여기서 한 줄 체크
-
-            //     // 다음 문제 번호로 넘어가기.
-            //     var current_q_num = parseInt($(this).attr("down-num-end"));
-
-            //     for (var i = 0; i < 12; i++) {
-            //       for (var j = 0; j < 12; j++) {
-            //         var q_num = $(`#item-${i}-${j}`).attr("across-num-start")
-            //           ? parseInt($(`#item-${i}-${j}`).attr("across-num-start"))
-            //           : parseInt($(`#item-${i}-${j}`).attr("down-num-start"));
-
-            //         if (q_num == current_q_num + 1) {
-            //           $(`#item-${i}-${j}`).focus();
-            //           inputVal = "";
-            //         }
-            //       }
-            //     }
-            //   }
-            // }
+            if (across) {
+              q_num = currentItem.getAttribute("across-num-end")
+                ? parseInt(currentItem.getAttribute("across-num-end"))
+                : parseInt(currentItem.getAttribute("across-num-start"));
+              // 시작점 좌표 구하기
+              const indexItem = _this.findIndexItem(q_num);
+              // console.log(indexItem);
+              const indexItemId = indexItem.getAttribute("id");
+              const indexItemIdArray = indexItemId.split("-");
+              const indexX = parseInt(indexItemIdArray[1]);
+              const indexY = parseInt(indexItemIdArray[2]);
+              for (let i = indexY; i < indexY + word.length; i++) {
+                var targetItem = document.getElementById(`item-${x}-${i}`);
+                if (targetItem.value == "") {
+                  targetItem.focus();
+                  break;
+                } else {
+                  if (i == indexY + word.length - 1) {
+                    nextQuiz = true;
+                  }
+                  continue;
+                }
+              }
+            } else {
+              q_num = currentItem.getAttribute("down-num-end")
+                ? parseInt(currentItem.getAttribute("down-num-end"))
+                : parseInt(currentItem.getAttribute("down-num-start"));
+              // 시작점 좌표 구하기
+              const indexItem = _this.findIndexItem(q_num);
+              const indexItemId = indexItem.getAttribute("id");
+              const indexItemIdArray = indexItemId.split("-");
+              const indexX = parseInt(indexItemIdArray[1]);
+              const indexY = parseInt(indexItemIdArray[2]);
+              for (let i = indexX; i < indexX + word.length; i++) {
+                var targetItem = document.getElementById(`item-${i}-${y}`);
+                if (targetItem.value == "") {
+                  targetItem.focus();
+                  break;
+                } else {
+                  if (i == indexX + word.length - 1) {
+                    nextQuiz = true;
+                  }
+                  continue;
+                }
+              }
+            }
+            // 다음 단어로 넘어가기
+            if (nextQuiz) {
+              if (q_num < puzzle.matrixWords.length) {
+                const nextIndexItem = _this.findIndexItem(q_num + 1);
+                nextIndexItem.focus();
+              } else {
+                const firstIndexItem = _this.findIndexItem(1);
+                firstIndexItem.focus();
+              }
+              nextQuiz = false;
+            }
           } else {
             $(`#item-${x}-${y}`).removeClass(
               "crossword-board__item-letter-incorrect"
@@ -263,6 +448,7 @@ var crossword = {
               "crossword-board__item-letter-correct"
             );
           }
+          inputVal = null;
         }
       );
       var word = "";
@@ -330,8 +516,29 @@ var crossword = {
     )[0];
     var matrix = puzzle.matrix;
     var matrixWords = puzzle.matrixWords;
-    console.log(matrix);
-    // puzzle 그리기부터
+    for (let i = 0; i < matrixWords.length; i++) {
+      const matrixWord = matrixWords[i];
+      const length = matrixWord.word.length;
+      const x = matrixWord.x;
+      const y = matrixWord.y;
+      console.log(x);
+      console.log(y);
+      const across = matrixWord.across;
+
+      const newDiv = document.createElement("div");
+      if (across) {
+        newDiv.style.gridColumn = `${y + 1}/${y + length + 1}`;
+        newDiv.style.gridRow = `${x + 1}/${x + 1}`;
+        console.log(newDiv.style);
+      } else {
+        newDiv.style.gridColumn = `${y + 1}/${y + 1}`;
+        newDiv.style.gridRow = `${x + 1}/${x + length + 1}`;
+      }
+
+      crosswordBoard.appendChild(newDiv);
+    }
+
+    // // puzzle 그리기부터
     for (var i = 0; i < matrix.length; i++) {
       for (var j = 0; j < matrix[i].length; j++) {
         // console.log(`${i}, ${j} : ${matrix[i][j]}`);
@@ -343,22 +550,23 @@ var crossword = {
           newSpan.setAttribute("id", `item-${i}-${j}`);
           crosswordBoard.appendChild(newSpan);
           // 값이 있을 때
-        } else {
-          const newInput = document.createElement("input");
-
-          var letter = matrix[i][j];
-          var upperLetter = letter.toUpperCase();
-
-          newInput.setAttribute("id", `item-${i}-${j}`);
-          newInput.setAttribute("class", `crossword-board__item`);
-          newInput.setAttribute("type", "text");
-          newInput.setAttribute("minlength", "1");
-          newInput.setAttribute("maxlength", "1");
-          newInput.setAttribute("pattern", `^[${letter}${upperLetter}]{1}$`);
-          newInput.setAttribute("required", "required");
-
-          crosswordBoard.appendChild(newInput);
         }
+        // else {
+        //   const newInput = document.createElement("input");
+
+        //   var letter = matrix[i][j];
+        //   var upperLetter = letter.toUpperCase();
+
+        //   newInput.setAttribute("id", `item-${i}-${j}`);
+        //   newInput.setAttribute("class", `crossword-board__item`);
+        //   newInput.setAttribute("type", "text");
+        //   newInput.setAttribute("minlength", "1");
+        //   newInput.setAttribute("maxlength", "1");
+        //   newInput.setAttribute("pattern", `^[${letter}${upperLetter}]{1}$`);
+        //   newInput.setAttribute("required", "required");
+
+        //   crosswordBoard.appendChild(newInput);
+        // }
       }
     }
     const newLabelDiv = document.createElement("div");
@@ -441,7 +649,10 @@ var crossword = {
       var quiz = quizzes[i];
       if (word == quiz.word) {
         var desc = quiz.q_desc;
+        var keyword = `#${quiz.q_keyword}`;
+
         $("#quiz-desc").html(desc);
+        document.getElementById("quiz-keyword").innerText = keyword;
       }
     }
   },
@@ -523,12 +734,68 @@ var crossword = {
     for (var i = 0; i < quizzes.length; i++) {
       const quiz = quizzes[i];
       const quizWord = quiz.word;
-      console.log(`찾는 단어 : ${word}, for문 단어 : ${quizWord}`);
+      // console.log(`찾는 단어 : ${word}, for문 단어 : ${quizWord}`);
       if (word == quizWord) {
         const hint = quiz.hint;
         console.log(`hint: ${hint}`);
+        return;
       }
     }
   },
+  checkInput: function (inputVal, x, y) {
+    if ($(`#item-${x}-${y}`).is(":valid")) {
+      if (
+        $(`#item-${x}-${y}`).hasClass("crossword-board__item-letter-incorrect")
+      ) {
+        $(`#item-${x}-${y}`).removeClass(
+          "crossword-board__item-letter-incorrect"
+        );
+      }
+      $(`#item-${x}-${y}`).addClass("crossword-board__item-letter-correct");
+    } else {
+      if (
+        $(`#item-${x}-${y}`).hasClass("crossword-board__item-letter-correct")
+      ) {
+        $(`#item-${x}-${y}`).removeClass(
+          "crossword-board__item-letter-correct"
+        );
+      }
+      $(`#item-${x}-${y}`).addClass("crossword-board__item-letter-incorrect");
+    }
+  },
+  findIndexItem: function (num) {
+    const wholeItems = document.getElementsByClassName("crossword-board__item");
+    for (let i = 0; i < wholeItems.length; i++) {
+      const item = wholeItems[i];
+
+      if (
+        !item.hasAttribute("across-num-start") &&
+        !item.hasAttribute("down-num-start")
+      ) {
+        continue;
+      }
+      if (item.hasAttribute("across-num-start")) {
+        if (item.getAttribute("across-num-start") == num) {
+          return item;
+        } else {
+          continue;
+        }
+      }
+      if (item.hasAttribute("down-num-start")) {
+        if (item.getAttribute("down-num-start") == num) {
+          return item;
+        } else {
+          continue;
+        }
+      }
+    }
+  },
+  // findQ_num: function (x, y) {
+  //   const targetItem = document.getElementById(`item-${x}-${y}`);
+  //   if (targetItem.hasAttribute("across-num-start")) {
+  //     return parseInt(targetItem.hasAttribute("across-num-start"));
+  //   }
+  //   if (target)
+  // },
 };
 crossword.init();
