@@ -2,10 +2,30 @@ var crossword = {
   init: function () {
     var _this = this;
 
+    console.log(_this);
+
     if (puzzle) {
+      // 시간 관련 변수들
+      let stTime = 0;
+      let endTime = 0;
+      let timerStart;
+
+      let min;
+      let sec;
+      let milisec;
+
       /* 초기화 후 만들자 */
       $(".crossword-board").html("");
       _this.paintPuzzle(puzzle);
+
+      timerStart = _this.startTime(
+        stTime,
+        endTime,
+        timerStart,
+        min,
+        sec,
+        milisec
+      );
 
       var inputVal = "";
       $(".crossword-board").on(
@@ -46,7 +66,7 @@ var crossword = {
           }
 
           // console.log(`x: ${x}, y: ${y}`);
-          // 여기부터 뒤로 넘어가는 것
+          // 여기부터 정답 체크
           console.log(`inputVal:${inputVal}끝`);
           if (inputVal != "") {
             // 한 글자씩 체크
@@ -78,7 +98,13 @@ var crossword = {
               );
             }
 
-            _this.checkVictory();
+            const result = _this.checkVictory();
+            // console.log(result);
+
+            if (result != null) {
+              _this.stopTime(stTime, endTime, timerStart, min, sec, milisec);
+              _this.showResult(result);
+            }
 
             // 넘어가기
             // 먼저 가로인지 세로인지 결정하자.
@@ -419,11 +445,64 @@ var crossword = {
     var wholeItems = $(".crossword-board__item");
     var correctItems = $(".crossword-board__item-letter-correct");
     if (wholeItems.length == correctItems.length) {
-      alert("게임 끝!");
+      var resultMin = document.getElementById("time-min").innerText;
+      var resultSec = document.getElementById("time-sec").innerText;
+      var resultMilisec = document.getElementById("time-milisec").innerText;
+
+      return `${resultMin}:${resultSec}.${resultMilisec}`;
+
       // 아닐 경우 틀린 답으로 이동해주자(예정)
       // window.location.href="/";
     } else {
+      return null;
     }
+  },
+  startTime: function (stTime, endTime, timerStart, min, sec, milisec) {
+    // 최초 시작
+    if (!stTime) {
+      stTime = Date.now();
+    } else {
+      stTime += Date.now() - endTime;
+    }
+
+    timerStart = setInterval(function () {
+      var nowTime = new Date(Date.now() - stTime);
+
+      min = addZero(nowTime.getMinutes());
+      sec = addZero(nowTime.getSeconds());
+      milisec = addZero(Math.floor(nowTime.getMilliseconds() / 10));
+
+      document.getElementById("time-min").innerText = min;
+      document.getElementById("time-sec").innerText = sec;
+      document.getElementById("time-milisec").innerText = milisec;
+    }, 1);
+
+    function addZero(num) {
+      return num < 10 ? "0" + num : "" + num;
+    }
+
+    return timerStart;
+  },
+  stopTime: function (stTime, endTime, timerStart, min, sec, milisec) {
+    if (timerStart) {
+      clearInterval(timerStart);
+      // console.log("시간 멈추기");
+      endTime = Date.now();
+      // 초기화
+      stTime = 0;
+      min = 0;
+      sec = 0;
+      milisec = 0;
+
+      document.getElementById("time-min").innerText = "00";
+      document.getElementById("time-sec").innerText = "00";
+      document.getElementById("time-milisec").innerText = "00";
+      timerStart = null;
+    }
+  },
+  showResult: function (result) {
+    alert(`게임 끝!
+    푼 시간 : ${result}`);
   },
 };
 crossword.init();

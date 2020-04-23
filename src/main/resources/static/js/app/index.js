@@ -72,7 +72,7 @@ var index = {
       return;
     }
     var category_subject = $("#category_subject").val();
-    console.log(category_subject);
+    // console.log(category_subject);
     if (category_subject == null || category_subject == "") {
       category_subject = "영어";
     }
@@ -90,7 +90,7 @@ var index = {
       var quizSaveRequestDto = {};
       var word = $("#word_" + i).val();
       var q_desc = $("#desc_" + i).val();
-      console.log(word.length);
+      // console.log(word.length);
       if (word != "" && (word.length < 3 || word.length > 9)) {
         alert("단어의 길이는 3~9자만 가능합니다.");
         $("#word_" + i).focus();
