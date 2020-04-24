@@ -16,12 +16,20 @@
   padding: 0;
   margin: 0 auto;
 }
+.crossword-board__block {
+  background: transparent;
+  position: relative;
+  z-index: 15;
+}
+.crossword-board__block:hover {
+  background: skyblue;
+}
 
 .crossword-board__item {
   border: 1px solid #000000;
   background: transparent;
   position: relative;
-  z-index: 100;
+  z-index: 9;
   text-align: center;
   font-size: 15px;
   font-weight: bold;
@@ -43,7 +51,7 @@
 
 .crossword-board--labels {
   position: absolute;
-  z-index: 60;
+  z-index: 6;
 }
 
 .crossword-board__item-label {

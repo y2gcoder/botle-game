@@ -36,6 +36,7 @@ const crossword = {
       _this.showQuiz(
         document.getElementsByClassName("crossword-board__item")[0]
       );
+
       // 번호 및 설명
       document
         .querySelector(".crossword-board")
@@ -44,44 +45,57 @@ const crossword = {
           _this.showQuiz(input);
         });
 
+      document
+        .querySelector("#btn-crossword-hint")
+        .addEventListener("click", function () {
+          _this.showHint();
+        });
+
+      let intersection = true;
       // 교차점일 경우 클릭할 때마다 입력칸 바꾸기
-      let clickCnt = 0;
       document
         .querySelector(".crossword-board")
         .addEventListener("click", function (e) {
           const targetInput = e.target;
-          // console.log(`input 바꾸기 : ${input.getAttribute("id")}`);
-          const targetId = targetInput.getAttribute("id");
-          const idArray = targetId.split("-");
-          const across = idArray[1] == "across" ? true : false;
-          const inputX = parseInt(idArray[2]);
-          const inputY = parseInt(idArray[3]);
 
-          if (across) {
-            if (
-              document.querySelector(`#item-down-${inputX}-${inputY}`) !=
-                null &&
-              clickCnt == 1
-            ) {
-              document.querySelector(`#item-down-${inputX}-${inputY}`).focus();
-              clickCnt = 0;
+          if (targetInput.classList.contains("crossword-board__item")) {
+            // 교차점이 있을 경우 거기도 값을 입력해주자.
+            //x, y 어차피 구해와야 하네?
+            const targetId = targetInput.getAttribute("id");
+            const idArray = targetId.split("-");
+            const across = idArray[1] == "across" ? true : false;
+            const inputX = parseInt(idArray[2]);
+            const inputY = parseInt(idArray[3]);
 
-              return;
+            let opposite = null;
+            if (across) {
+              if (
+                document.getElementById(`item-down-${inputX}-${inputY}`) != null
+              ) {
+                console.log("down 교차점 있음");
+                opposite = document.getElementById(
+                  `item-down-${inputX}-${inputY}`
+                );
+              }
+            } else {
+              if (
+                document.getElementById(`item-across-${inputX}-${inputY}`) !=
+                null
+              ) {
+                console.log("across 교차점 있음");
+                opposite = document.getElementById(
+                  `item-across-${inputX}-${inputY}`
+                );
+              }
             }
-          } else {
-            if (
-              document.querySelector(`#item-across-${inputX}-${inputY}`) !=
-                null &&
-              clickCnt == 1
-            ) {
-              document
-                .querySelector(`#item-across-${inputX}-${inputY}`)
-                .focus();
-              clickCnt = 0;
-              return;
+            if (opposite != null && intersection == true) {
+              targetInput.focus();
+              intersection = false;
+            } else if (opposite != null && intersection == false) {
+              opposite.focus();
+              intersection = true;
             }
           }
-          clickCnt++;
         });
 
       // 입력했을 시 처리
@@ -92,13 +106,13 @@ const crossword = {
 
           inputLetter(input);
         });
-      document
-        .querySelector(".crossword-board")
-        .addEventListener("change", function (e) {
-          const input = e.target;
+      // document
+      //   .querySelector(".crossword-board")
+      //   .addEventListener("change", function (e) {
+      //     const input = e.target;
 
-          inputLetter(input);
-        });
+      //     inputLetter(input);
+      //   });
       document
         .querySelector(".crossword-board")
         .addEventListener("keyup", function (e) {
@@ -166,9 +180,14 @@ const crossword = {
         if (inputVal != "" && checkingBlock) {
           isBlank = _this.findNext(input);
         }
-
+        let result = "";
         if (!isBlank) {
-          _this.checkVictory();
+          result = _this.checkVictory();
+          _this.stopTime(stTime, endTime, timerStart, min, sec, milisec);
+          console.log(result);
+        }
+        if (result != "" && result != null) {
+          _this.showResult(result);
         }
 
         // console.log(insert);
@@ -393,7 +412,7 @@ const crossword = {
         return true;
       } else if (i == siblings.length - 1 && sibling.value != "") {
         const anotherBlock = block.nextSibling;
-        console.log(anotherBlock);
+        // console.log(anotherBlock);
         if (
           anotherBlock != null &&
           anotherBlock.classList.contains("crossword-board__item")
@@ -410,10 +429,10 @@ const crossword = {
               return true;
             }
           }
+          return false;
         }
       }
     }
-    return false;
   },
   checkCorrectBlock: function (input) {
     const block = input.parentNode;
@@ -543,59 +562,20 @@ const crossword = {
         return true;
       }
     }
-    // else {
-    //   for (let i = 0; i < correctInputs.length; i++) {
-    //     correctInputs[i].classList.add("crossword-board__item-letter-correct");
-    //     if (
-    //       correctInputs[i].classList.contains(
-    //         "crossword-board__item-letter-incorrect"
-    //       )
-    //     ) {
-    //       correctInputs[i].classList.remove(
-    //         "crossword-board__item-letter-incorrect"
-    //       );
-    //     }
-    //   }
-    //   for (let i = 0; i < incorrectInputs.length; i++) {
-    //     incorrectInputs[i].classList.add(
-    //       "crossword-board__item-letter-incorrect"
-    //     );
-    //     if (
-    //       incorrectInputs[i].classList.contains(
-    //         "crossword-board__item-letter-correct"
-    //       )
-    //     ) {
-    //       incorrectInputs[i].classList.remove(
-    //         "crossword-board__item-letter-correct"
-    //       );
-    //     }
-    //     incorrectInputs[i].focus();
-    //   }
-    //   for (let i = 0; i < blankInputs.length; i++) {
-    //     blankInputs[i].classList.add("crossword-board__item-letter-incorrect");
-    //     if (
-    //       blankInputs[i].classList.contains(
-    //         "crossword-board__item-letter-correct"
-    //       )
-    //     ) {
-    //       blankInputs[i].classList.remove(
-    //         "crossword-board__item-letter-correct"
-    //       );
-    //     }
-    //   }
-    //   return false;
-    // }
 
     // 아무것도 해당안되면 넘겨야하니까 true;
     return true;
   },
-
-  // 공사중
-
   // 승리 여부 확인
   checkVictory: function () {
-    var wholeItems = $(".crossword-board__item");
-    var correctItems = $(".crossword-board__item-letter-correct");
+    const wholeItems = document.getElementsByClassName("crossword-board__item");
+    const correctItems = document.getElementsByClassName(
+      "crossword-board__item-letter-correct"
+    );
+    const incorrectItems = document.getElementsByClassName(
+      "crossword-board__item-letter-incorrect"
+    );
+
     if (wholeItems.length == correctItems.length) {
       var resultMin = document.getElementById("time-min").innerText;
       var resultSec = document.getElementById("time-sec").innerText;
@@ -606,6 +586,7 @@ const crossword = {
       // 아닐 경우 틀린 답으로 이동해주자(예정)
       // window.location.href="/";
     } else {
+      incorrectItems[0].focus();
       return null;
     }
   },
@@ -613,12 +594,16 @@ const crossword = {
     alert(`게임 끝!
     푼 시간 : ${result}`);
   },
+
+  // 공사중
+
   showHint: function () {
     const q_num =
       document.getElementById("quiz-number").innerText.trim() != ""
         ? parseInt(document.getElementById("quiz-number").innerText) - 1
         : -1;
     if (q_num < 0) {
+      alert("문제를 선택해주십시오!");
       return;
     }
     const word = puzzle.matrixWords[q_num].word;
@@ -630,65 +615,10 @@ const crossword = {
       // console.log(`찾는 단어 : ${word}, for문 단어 : ${quizWord}`);
       if (word == quizWord) {
         const hint = quiz.hint;
-        console.log(`hint: ${hint}`);
+        console.log(`${q_num + 1}번 hint: ${hint}`);
         return;
       }
     }
   },
-  checkInput: function (inputVal, x, y) {
-    if ($(`#item-${x}-${y}`).is(":valid")) {
-      if (
-        $(`#item-${x}-${y}`).hasClass("crossword-board__item-letter-incorrect")
-      ) {
-        $(`#item-${x}-${y}`).removeClass(
-          "crossword-board__item-letter-incorrect"
-        );
-      }
-      $(`#item-${x}-${y}`).addClass("crossword-board__item-letter-correct");
-    } else {
-      if (
-        $(`#item-${x}-${y}`).hasClass("crossword-board__item-letter-correct")
-      ) {
-        $(`#item-${x}-${y}`).removeClass(
-          "crossword-board__item-letter-correct"
-        );
-      }
-      $(`#item-${x}-${y}`).addClass("crossword-board__item-letter-incorrect");
-    }
-  },
-  findIndexItem: function (num) {
-    const wholeItems = document.getElementsByClassName("crossword-board__item");
-    for (let i = 0; i < wholeItems.length; i++) {
-      const item = wholeItems[i];
-
-      if (
-        !item.hasAttribute("across-num-start") &&
-        !item.hasAttribute("down-num-start")
-      ) {
-        continue;
-      }
-      if (item.hasAttribute("across-num-start")) {
-        if (item.getAttribute("across-num-start") == num) {
-          return item;
-        } else {
-          continue;
-        }
-      }
-      if (item.hasAttribute("down-num-start")) {
-        if (item.getAttribute("down-num-start") == num) {
-          return item;
-        } else {
-          continue;
-        }
-      }
-    }
-  },
-  // findQ_num: function (x, y) {
-  //   const targetItem = document.getElementById(`item-${x}-${y}`);
-  //   if (targetItem.hasAttribute("across-num-start")) {
-  //     return parseInt(targetItem.hasAttribute("across-num-start"));
-  //   }
-  //   if (target)
-  // },
 };
 crossword.init();
