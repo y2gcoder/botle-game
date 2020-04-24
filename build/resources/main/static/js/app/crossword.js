@@ -32,6 +32,10 @@ const crossword = {
         sec,
         milisec
       );
+      document.getElementsByClassName("crossword-board__item")[0].focus();
+      _this.showQuiz(
+        document.getElementsByClassName("crossword-board__item")[0]
+      );
       // 번호 및 설명
       document
         .querySelector(".crossword-board")
@@ -45,10 +49,10 @@ const crossword = {
       document
         .querySelector(".crossword-board")
         .addEventListener("click", function (e) {
-          const input = e.target;
+          const targetInput = e.target;
           // console.log(`input 바꾸기 : ${input.getAttribute("id")}`);
-          const id = input.getAttribute("id");
-          const idArray = id.split("-");
+          const targetId = targetInput.getAttribute("id");
+          const idArray = targetId.split("-");
           const across = idArray[1] == "across" ? true : false;
           const inputX = parseInt(idArray[2]);
           const inputY = parseInt(idArray[3]);
@@ -61,6 +65,7 @@ const crossword = {
             ) {
               document.querySelector(`#item-down-${inputX}-${inputY}`).focus();
               clickCnt = 0;
+
               return;
             }
           } else {
@@ -117,7 +122,7 @@ const crossword = {
           return;
         }
         inputVal = currentVal;
-        console.log(inputVal);
+        // console.log(inputVal);
 
         // 교차점이 있을 경우 거기도 값을 입력해주자.
         //x, y 어차피 구해와야 하네?
@@ -146,11 +151,19 @@ const crossword = {
           }
         }
 
-        var checkingBlock = _this.checkCorrectBlock(input);
+        const checkingBlock = _this.checkCorrectBlock(input);
+        if (inputVal == "") {
+          console.log(`빈칸도 되는 지 확인 : ${checkingBlock}`);
+        }
 
+        let isBlank = true;
         if (inputVal != "" && checkingBlock) {
           const block = input.parentNode;
-          var insert = _this.findNext(block);
+          isBlank = _this.findNext(block);
+        }
+
+        if (!isBlank) {
+          _this.checkVictory();
         }
 
         // console.log(insert);
@@ -461,10 +474,105 @@ const crossword = {
               "crossword-board__item-letter-correct"
             );
           }
+          incorrectInputs[i].focus();
         }
         return false;
       }
+    } else {
+      if (
+        input.classList.contains("crossword-board__item-letter-correct") ||
+        input.classList.contains("crossword-board__item-letter-incorrect")
+      ) {
+        for (let i = 0; i < correctInputs.length; i++) {
+          correctInputs[i].classList.add(
+            "crossword-board__item-letter-correct"
+          );
+          if (
+            correctInputs[i].classList.contains(
+              "crossword-board__item-letter-incorrect"
+            )
+          ) {
+            correctInputs[i].classList.remove(
+              "crossword-board__item-letter-incorrect"
+            );
+          }
+        }
+        for (let i = 0; i < incorrectInputs.length; i++) {
+          incorrectInputs[i].classList.add(
+            "crossword-board__item-letter-incorrect"
+          );
+          if (
+            incorrectInputs[i].classList.contains(
+              "crossword-board__item-letter-correct"
+            )
+          ) {
+            incorrectInputs[i].classList.remove(
+              "crossword-board__item-letter-correct"
+            );
+          }
+          incorrectInputs[i].focus();
+        }
+        for (let i = 0; i < blankInputs.length; i++) {
+          blankInputs[i].classList.add(
+            "crossword-board__item-letter-incorrect"
+          );
+          if (
+            blankInputs[i].classList.contains(
+              "crossword-board__item-letter-correct"
+            )
+          ) {
+            blankInputs[i].classList.remove(
+              "crossword-board__item-letter-correct"
+            );
+          }
+        }
+        return false;
+      } else {
+        return true;
+      }
     }
+    // else {
+    //   for (let i = 0; i < correctInputs.length; i++) {
+    //     correctInputs[i].classList.add("crossword-board__item-letter-correct");
+    //     if (
+    //       correctInputs[i].classList.contains(
+    //         "crossword-board__item-letter-incorrect"
+    //       )
+    //     ) {
+    //       correctInputs[i].classList.remove(
+    //         "crossword-board__item-letter-incorrect"
+    //       );
+    //     }
+    //   }
+    //   for (let i = 0; i < incorrectInputs.length; i++) {
+    //     incorrectInputs[i].classList.add(
+    //       "crossword-board__item-letter-incorrect"
+    //     );
+    //     if (
+    //       incorrectInputs[i].classList.contains(
+    //         "crossword-board__item-letter-correct"
+    //       )
+    //     ) {
+    //       incorrectInputs[i].classList.remove(
+    //         "crossword-board__item-letter-correct"
+    //       );
+    //     }
+    //     incorrectInputs[i].focus();
+    //   }
+    //   for (let i = 0; i < blankInputs.length; i++) {
+    //     blankInputs[i].classList.add("crossword-board__item-letter-incorrect");
+    //     if (
+    //       blankInputs[i].classList.contains(
+    //         "crossword-board__item-letter-correct"
+    //       )
+    //     ) {
+    //       blankInputs[i].classList.remove(
+    //         "crossword-board__item-letter-correct"
+    //       );
+    //     }
+    //   }
+    //   return false;
+    // }
 
     // 아무것도 해당안되면 넘겨야하니까 true;
     return true;
