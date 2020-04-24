@@ -46,7 +46,7 @@ const crossword = {
         .querySelector(".crossword-board")
         .addEventListener("click", function (e) {
           const input = e.target;
-          console.log(`input 바꾸기 : ${input.getAttribute("id")}`);
+          // console.log(`input 바꾸기 : ${input.getAttribute("id")}`);
           const id = input.getAttribute("id");
           const idArray = id.split("-");
           const across = idArray[1] == "across" ? true : false;
@@ -146,9 +146,14 @@ const crossword = {
           }
         }
 
-        const block = input.parentNode;
-        var insert = _this.findNext(block);
-        console.log(insert);
+        var checkingBlock = _this.checkCorrectBlock(input);
+
+        if (inputVal != "" && checkingBlock) {
+          const block = input.parentNode;
+          var insert = _this.findNext(block);
+        }
+
+        // console.log(insert);
 
         inputVal = null;
       }
@@ -352,23 +357,6 @@ const crossword = {
     }
   },
 
-  // 승리 여부 확인
-  checkVictory: function () {
-    var wholeItems = $(".crossword-board__item");
-    var correctItems = $(".crossword-board__item-letter-correct");
-    if (wholeItems.length == correctItems.length) {
-      var resultMin = document.getElementById("time-min").innerText;
-      var resultSec = document.getElementById("time-sec").innerText;
-      var resultMilisec = document.getElementById("time-milisec").innerText;
-
-      return `${resultMin}:${resultSec}.${resultMilisec}`;
-
-      // 아닐 경우 틀린 답으로 이동해주자(예정)
-      // window.location.href="/";
-    } else {
-      return null;
-    }
-  },
   findNext: function (block) {
     // 먼저 그 블록에서 자식들 찾기
     const siblings = block.childNodes;
@@ -392,7 +380,6 @@ const crossword = {
           );
           for (let j = 0; j < wholeInputs.length; j++) {
             inputOne = wholeInputs[j];
-            console.log(inputOne.value);
             if (inputOne.value == "") {
               inputOne.focus();
               return true;
@@ -403,7 +390,105 @@ const crossword = {
     }
     return false;
   },
+  checkCorrectBlock: function (input) {
+    const block = input.parentNode;
+
+    // console.log(block);
+    const totalInputs = block.childNodes;
+    let blankInputs = [];
+    let correctInputs = [];
+    let incorrectInputs = [];
+    for (let i = 0; i < totalInputs.length; i++) {
+      const input = totalInputs[i];
+      const inputValue = input.value.trim();
+
+      const inputValid = new RegExp(input.pattern);
+      if (inputValue == "") {
+        blankInputs.push(input);
+      } else if (inputValid.test(inputValue)) {
+        correctInputs.push(input);
+      } else {
+        incorrectInputs.push(input);
+      }
+
+      // if(input.value == "" || input.classList))
+    }
+
+    if (correctInputs.length + incorrectInputs.length == totalInputs.length) {
+      if (correctInputs.length == totalInputs.length) {
+        // 확장성을 위해
+
+        for (let i = 0; i < correctInputs.length; i++) {
+          correctInputs[i].classList.add(
+            "crossword-board__item-letter-correct"
+          );
+          if (
+            correctInputs[i].classList.contains(
+              "crossword-board__item-letter-incorrect"
+            )
+          ) {
+            correctInputs[i].classList.remove(
+              "crossword-board__item-letter-incorrect"
+            );
+          }
+        }
+        return true;
+      } else {
+        for (let i = 0; i < correctInputs.length; i++) {
+          correctInputs[i].classList.add(
+            "crossword-board__item-letter-correct"
+          );
+          if (
+            correctInputs[i].classList.contains(
+              "crossword-board__item-letter-incorrect"
+            )
+          ) {
+            correctInputs[i].classList.remove(
+              "crossword-board__item-letter-incorrect"
+            );
+          }
+        }
+        for (let i = 0; i < incorrectInputs.length; i++) {
+          incorrectInputs[i].classList.add(
+            "crossword-board__item-letter-incorrect"
+          );
+          if (
+            incorrectInputs[i].classList.contains(
+              "crossword-board__item-letter-correct"
+            )
+          ) {
+            incorrectInputs[i].classList.remove(
+              "crossword-board__item-letter-correct"
+            );
+          }
+        }
+        return false;
+      }
+    }
+
+    // 아무것도 해당안되면 넘겨야하니까 true;
+    return true;
+  },
+
   // 공사중
+
+  // 승리 여부 확인
+  checkVictory: function () {
+    var wholeItems = $(".crossword-board__item");
+    var correctItems = $(".crossword-board__item-letter-correct");
+    if (wholeItems.length == correctItems.length) {
+      var resultMin = document.getElementById("time-min").innerText;
+      var resultSec = document.getElementById("time-sec").innerText;
+      var resultMilisec = document.getElementById("time-milisec").innerText;
+
+      return `${resultMin}:${resultSec}.${resultMilisec}`;
+
+      // 아닐 경우 틀린 답으로 이동해주자(예정)
+      // window.location.href="/";
+    } else {
+      return null;
+    }
+  },
   showResult: function (result) {
     alert(`게임 끝!
     푼 시간 : ${result}`);
