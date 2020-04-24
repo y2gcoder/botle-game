@@ -124,6 +124,8 @@ const crossword = {
         inputVal = currentVal;
         // console.log(inputVal);
 
+        const checkingBlock = _this.checkCorrectBlock(input);
+
         // 교차점이 있을 경우 거기도 값을 입력해주자.
         //x, y 어차피 구해와야 하네?
         const id = input.getAttribute("id");
@@ -131,8 +133,8 @@ const crossword = {
         const across = idArray[1] == "across" ? true : false;
         const inputX = parseInt(idArray[2]);
         const inputY = parseInt(idArray[3]);
-        const word = input.getAttribute("data-answer");
 
+        let oppositeInput = "";
         if (across) {
           if (
             document.querySelector(`#item-down-${inputX}-${inputY}`) != null
@@ -140,6 +142,9 @@ const crossword = {
             document.querySelector(
               `#item-down-${inputX}-${inputY}`
             ).value = inputVal;
+            oppositeInput = document.querySelector(
+              `#item-down-${inputX}-${inputY}`
+            );
           }
         } else {
           if (
@@ -148,18 +153,18 @@ const crossword = {
             document.querySelector(
               `#item-across-${inputX}-${inputY}`
             ).value = inputVal;
+            oppositeInput = document.querySelector(
+              `#item-across-${inputX}-${inputY}`
+            );
           }
         }
-
-        const checkingBlock = _this.checkCorrectBlock(input);
-        if (inputVal == "") {
-          console.log(`빈칸도 되는 지 확인 : ${checkingBlock}`);
+        if (oppositeInput != null && oppositeInput != "") {
+          _this.checkCorrectBlock(oppositeInput);
         }
 
         let isBlank = true;
         if (inputVal != "" && checkingBlock) {
-          const block = input.parentNode;
-          isBlank = _this.findNext(block);
+          isBlank = _this.findNext(input);
         }
 
         if (!isBlank) {
@@ -370,10 +375,18 @@ const crossword = {
     }
   },
 
-  findNext: function (block) {
+  findNext: function (input) {
     // 먼저 그 블록에서 자식들 찾기
+    const block = input.parentNode;
     const siblings = block.childNodes;
+    let indexThis;
     for (let i = 0; i < siblings.length; i++) {
+      const sibling = siblings[i];
+      if (input.getAttribute("id") == sibling.getAttribute("id")) {
+        indexThis = i;
+      }
+    }
+    for (let i = indexThis; i < siblings.length; i++) {
       const sibling = siblings[i];
       if (sibling.value == "") {
         sibling.focus();
@@ -387,7 +400,6 @@ const crossword = {
         ) {
           this.findNext(anotherBlock);
         } else {
-          console.log("실행");
           const wholeInputs = document.getElementsByClassName(
             "crossword-board__item"
           );
