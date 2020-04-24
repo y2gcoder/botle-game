@@ -273,7 +273,13 @@
                             <select id="puzzle_title" class="form-control custom-select">
                                 <option selected disabled value="">선택...</option>
                                 {{#puzzles}}
-                                    <option value="{{p_seq}}">{{title}}</option>
+                                    <option value="{{p_seq}}">
+                                        <span>{{title}}</span>
+                                        <span> / </span>
+                                        <span class="puzzle_category_grade">{{category_grade}}</span>
+                                        <span> / </span>
+                                        <span class="puzzle_category_subject">{{category_subject}}</span>
+                                    </option>
                                 {{/puzzles}}
                             </select>
                         </div>

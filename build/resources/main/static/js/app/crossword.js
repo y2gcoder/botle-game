@@ -72,7 +72,7 @@ const crossword = {
               if (
                 document.getElementById(`item-down-${inputX}-${inputY}`) != null
               ) {
-                console.log("down 교차점 있음");
+                // console.log("down 교차점 있음");
                 opposite = document.getElementById(
                   `item-down-${inputX}-${inputY}`
                 );
@@ -82,7 +82,7 @@ const crossword = {
                 document.getElementById(`item-across-${inputX}-${inputY}`) !=
                 null
               ) {
-                console.log("across 교차점 있음");
+                // console.log("across 교차점 있음");
                 opposite = document.getElementById(
                   `item-across-${inputX}-${inputY}`
                 );
@@ -97,52 +97,6 @@ const crossword = {
             }
           }
         });
-
-      // let clickCnt = 0;
-      // document
-      //   .querySelector(".crossword-board")
-      //   .addEventListener("mouseover", function (e) {
-      //     const targetBlock = e.target;
-      //     console.log(targetBlock);
-      //     if (targetBlock.classList.contains("crossword-board__block")) {
-      //       const blocks = document.getElementsByClassName(
-      //         "crossword-board__block"
-      //       );
-      //       for (let i = 0; i < blocks.length; i++) {
-      //         const blockI = blocks[i];
-      //         blockI.classList.remove("crossword-board__block_prior");
-      //       }
-      //       targetBlock.classList.add("crossword-board__block_prior");
-      // console.log(`input 바꾸기 : ${input.getAttribute("id")}`);
-      // const targetId = targetInput.getAttribute("id");
-      // const idArray = targetId.split("-");
-      // const across = idArray[1] == "across" ? true : false;
-      // const inputX = parseInt(idArray[2]);
-      // const inputY = parseInt(idArray[3]);
-      // if (across) {
-      //   if (
-      //     document.querySelector(`#item-down-${inputX}-${inputY}`) != null
-      //   ) {
-      //     console.log("1교차점 실행");
-      //     document
-      //       .querySelector(`#item-down-${inputX}-${inputY}`)
-      //       .focus();
-      //     return;
-      //   }
-      // } else {
-      //   if (
-      //     document.querySelector(`#item-across-${inputX}-${inputY}`) !=
-      //     null
-      //   ) {
-      //     console.log("2교차점 실행");
-      //     document
-      //       .querySelector(`#item-across-${inputX}-${inputY}`)
-      //       .focus();
-      //     return;
-      //   }
-      // }
-      //   }
-      // });
 
       // 입력했을 시 처리
       document
@@ -230,7 +184,7 @@ const crossword = {
         if (!isBlank) {
           result = _this.checkVictory();
           _this.stopTime(stTime, endTime, timerStart, min, sec, milisec);
-          console.log(result);
+          // console.log(result);
         }
         if (result != "" && result != null) {
           _this.showResult(result);
@@ -524,17 +478,19 @@ const crossword = {
         }
         return true;
       } else {
+        console.log(correctInputs);
+        console.log(incorrectInputs);
         for (let i = 0; i < correctInputs.length; i++) {
           correctInputs[i].classList.add(
-            "crossword-board__item-letter-correct"
+            "crossword-board__item-letter-incorrect"
           );
           if (
             correctInputs[i].classList.contains(
-              "crossword-board__item-letter-incorrect"
+              "crossword-board__item-letter-correct"
             )
           ) {
             correctInputs[i].classList.remove(
-              "crossword-board__item-letter-incorrect"
+              "crossword-board__item-letter-correct"
             );
           }
         }
@@ -551,7 +507,6 @@ const crossword = {
               "crossword-board__item-letter-correct"
             );
           }
-          incorrectInputs[i].focus();
         }
         return false;
       }
@@ -560,17 +515,31 @@ const crossword = {
         input.classList.contains("crossword-board__item-letter-correct") ||
         input.classList.contains("crossword-board__item-letter-incorrect")
       ) {
+        // for (let i = 0; i < correctInputs.length; i++) {
+        //   correctInputs[i].classList.add(
+        //     "crossword-board__item-letter-correct"
+        //   );
+        //   if (
+        //     correctInputs[i].classList.contains(
+        //       "crossword-board__item-letter-incorrect"
+        //     )
+        //   ) {
+        //     correctInputs[i].classList.remove(
+        //       "crossword-board__item-letter-incorrect"
+        //     );
+        //   }
+        // }
         for (let i = 0; i < correctInputs.length; i++) {
           correctInputs[i].classList.add(
-            "crossword-board__item-letter-correct"
+            "crossword-board__item-letter-incorrect"
           );
           if (
             correctInputs[i].classList.contains(
-              "crossword-board__item-letter-incorrect"
+              "crossword-board__item-letter-correct"
             )
           ) {
             correctInputs[i].classList.remove(
-              "crossword-board__item-letter-incorrect"
+              "crossword-board__item-letter-correct"
             );
           }
         }
@@ -587,12 +556,12 @@ const crossword = {
               "crossword-board__item-letter-correct"
             );
           }
-          incorrectInputs[i].focus();
+          // incorrectInputs[i].focus();
         }
         for (let i = 0; i < blankInputs.length; i++) {
-          blankInputs[i].classList.add(
-            "crossword-board__item-letter-incorrect"
-          );
+          // blankInputs[i].classList.add(
+          //   "crossword-board__item-letter-incorrect"
+          // );
           if (
             blankInputs[i].classList.contains(
               "crossword-board__item-letter-correct"
@@ -600,6 +569,15 @@ const crossword = {
           ) {
             blankInputs[i].classList.remove(
               "crossword-board__item-letter-correct"
+            );
+          }
+          if (
+            blankInputs[i].classList.contains(
+              "crossword-board__item-letter-incorrect"
+            )
+          ) {
+            blankInputs[i].classList.remove(
+              "crossword-board__item-letter-incorrect"
             );
           }
         }
