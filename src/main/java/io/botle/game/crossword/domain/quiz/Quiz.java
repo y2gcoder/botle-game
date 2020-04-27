@@ -54,4 +54,14 @@ public class Quiz extends BaseTimeEntity {
             puzzle.getQuizzes().add(this);
         }
     }
+
+    public void update(String word,
+                       String q_desc,
+                       String hint,
+                       String q_keyword) {
+        this.word = word;
+        this.q_desc = q_desc;
+        this.hint = hint;
+        this.q_keyword = q_keyword;
+    }
 }

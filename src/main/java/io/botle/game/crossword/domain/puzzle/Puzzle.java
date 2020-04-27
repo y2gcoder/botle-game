@@ -63,4 +63,16 @@ public class Puzzle extends BaseTimeEntity {
         }
     }
 
+    public void update(String title,
+                       Integer category_grade,
+                       String p_desc,
+                       String category_subject,
+                       String p_keyword) {
+        this.title = title;
+        this.category_grade = category_grade;
+        this.p_desc = p_desc;
+        this.category_subject = category_subject;
+        this.p_keyword = p_keyword;
+    }
+
 }

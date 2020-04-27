@@ -37,6 +37,7 @@ public class PuzzleRepositorySupport extends QuerydslRepositorySupport {
         List<Puzzle> puzzles = queryFactory
                 .selectFrom(puzzle)
                 .leftJoin(puzzle.quizzes, quiz).fetchJoin()
+                .where(puzzle.p_seq.eq(p_seq))
                 .fetch();
 //        System.out.println(">>>>>>>>>>>>>>>가즈아");
         System.out.println(puzzles.get(0).getQuizzes().size());
@@ -52,5 +53,11 @@ public class PuzzleRepositorySupport extends QuerydslRepositorySupport {
                         p.getQuizzes()
                 ))
                 .collect(Collectors.toList()).get(0);
+    }
+    public Puzzle findPuzzleBySeq2(Long p_seq) {
+        return queryFactory
+                .selectFrom(puzzle)
+                .leftJoin(puzzle.quizzes, quiz).fetchJoin()
+                .where(puzzle.p_seq.eq(p_seq)).fetch().get(0);
     }
 }

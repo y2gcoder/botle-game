@@ -1,10 +1,7 @@
 package io.botle.game.crossword.web;
 
 import io.botle.game.crossword.service.CrosswordService;
-import io.botle.game.crossword.web.dto.CrosswordResponseDto;
-import io.botle.game.crossword.web.dto.CrosswordSaveRequestDto;
-import io.botle.game.crossword.web.dto.PuzzleListResponseDto;
-import io.botle.game.crossword.web.dto.QuizSaveRequestDto;
+import io.botle.game.crossword.web.dto.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -38,11 +35,7 @@ public class CrosswordApiController {
         return crosswordService.save(requestDto);
     }
 
-//    @PutMapping("/api/v1/puzzle/{p_seq}")
-//    public Long update(@PathVariable Long p_seq,
-//                       @RequestBody CrosswordUpdateRequestDto requestDto) {
-//        return crosswordService.update(p_seq, requestDto);
-//    }
+
 
     @GetMapping("/api/v1/puzzle")
     public List<PuzzleListResponseDto> findPuzzles () throws Exception{
@@ -52,5 +45,16 @@ public class CrosswordApiController {
     @GetMapping("/api/v1/puzzle/{p_seq}")
     public CrosswordResponseDto findPuzzleBySeq (@PathVariable Long p_seq) {
         return crosswordService.findPuzzleBySeq(p_seq);
+    }
+
+    @PutMapping("/api/v1/puzzle/{p_seq}")
+    public Long update(@PathVariable Long p_seq, @RequestBody PuzzleUpdateRequestDto requestDto) {
+        return crosswordService.update(p_seq, requestDto);
+    }
+
+    @DeleteMapping("/api/v1/puzzle/{p_seq}")
+    public Long delete(@PathVariable Long p_seq) {
+        crosswordService.delete(p_seq);
+        return p_seq;
     }
 }

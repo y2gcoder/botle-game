@@ -5,10 +5,7 @@ import io.botle.game.crossword.domain.puzzle.PuzzleRepository;
 import io.botle.game.crossword.domain.puzzle.PuzzleRepositorySupport;
 import io.botle.game.crossword.domain.quiz.Quiz;
 import io.botle.game.crossword.domain.quiz.QuizRepository;
-import io.botle.game.crossword.web.dto.CrosswordResponseDto;
-import io.botle.game.crossword.web.dto.CrosswordSaveRequestDto;
-import io.botle.game.crossword.web.dto.PuzzleListResponseDto;
-import io.botle.game.crossword.web.dto.QuizSaveRequestDto;
+import io.botle.game.crossword.web.dto.*;
 import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,6 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.server.LocalServerPort;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -252,6 +251,88 @@ public class CrosswordApiControllerTest {
 //        assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
 
     }
+    @Test
+    public void Puzzle_수정된다() throws Exception {
+        //given
+        String title = "테스트 퍼즐";
+        Integer category_grade = 9;
 
+        String p_desc = "테스트 퍼즐 설명입니다.";
+        String category_subject = "영어";
+        String p_keyword = "테스트";
+
+        Puzzle puzzle = puzzleRepository.save(Puzzle.builder()
+                .title(title)
+                .p_desc(p_desc)
+                .category_grade(category_grade)
+                .category_subject(category_subject)
+                .p_keyword(p_keyword)
+                .build()
+        );
+
+        for(int i=0;i<10;i++){
+            String word = "단어"+i;
+            String q_desc = word+"에 대한 설명";
+            String hint = word+"에 대한 힌트";
+            String q_keyword = "테스트";
+
+            Quiz quiz = Quiz.builder()
+                    .word(word)
+                    .q_desc(q_desc)
+                    .hint(hint)
+                    .q_keyword(q_keyword)
+                    .build();
+            quiz.setPuzzle(puzzle);
+
+            quizRepository.save(quiz);
+        }
+        Long updateSeq = puzzle.getP_seq();
+        String expectedTitle = "테스트 퍼즐2";
+
+        String expected_category_subject = "수정 영어";
+
+        List<QuizUpdateRequestDto> quizUpdateRequestDtos = new ArrayList<>();
+        for(int i=0;i<9;i++){
+
+            String word = "수정"+i;
+            String q_desc = word+"에 대한 설명";
+            String hint = word+"에 대한 힌트";
+            String q_keyword = "테스트";
+            QuizUpdateRequestDto quizUpdateRequestDto = QuizUpdateRequestDto.builder()
+                    .word(word)
+                    .q_desc(q_desc)
+                    .hint(hint)
+                    .q_keyword(q_keyword)
+                    .build();
+            quizUpdateRequestDtos.add(quizUpdateRequestDto);
+        }
+
+        PuzzleUpdateRequestDto requestDto = PuzzleUpdateRequestDto.builder()
+                .title(expectedTitle)
+                .category_grade(category_grade)
+                .category_subject(expected_category_subject)
+                .quizzes(quizUpdateRequestDtos)
+                .build();
+
+        String url = "http://localhost:"+port+"/api/v1/puzzle/"+updateSeq;
+        HttpEntity<PuzzleUpdateRequestDto> requestEntity = new HttpEntity<>(requestDto);
+
+        //when
+        ResponseEntity<Long> responseEntity = restTemplate.exchange(url,
+                HttpMethod.PUT,
+                requestEntity,
+                Long.class);
+
+        //then
+        assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
+        assertThat(responseEntity.getBody()).isGreaterThan(0L);
+
+        Puzzle updatedPuzzle = puzzleRepositorySupport.findPuzzleBySeq2(updateSeq);
+        assertThat(updatedPuzzle.getTitle()).isEqualTo(expectedTitle);
+        assertThat(updatedPuzzle.getQuizzes().size()).isEqualTo(9);
+
+
+
+    }
 
 }

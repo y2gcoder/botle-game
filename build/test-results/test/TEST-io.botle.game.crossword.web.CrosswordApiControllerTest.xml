@@ -1,0 +1,905 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="io.botle.game.crossword.web.CrosswordApiControllerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-04-27T02:22:58" hostname="DESKTOP-RLST5FL" time="2.009">
+  <properties/>
+  <testcase name="Puzzle_수정된다" classname="io.botle.game.crossword.web.CrosswordApiControllerTest" time="2.009"/>
+  <system-out><![CDATA[11:22:48.405 [Test worker] DEBUG org.springframework.test.context.junit4.SpringJUnit4ClassRunner - SpringJUnit4ClassRunner constructor called with [class io.botle.game.crossword.web.CrosswordApiControllerTest]
+11:22:48.421 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating CacheAwareContextLoaderDelegate from class [org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate]
+11:22:48.466 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating BootstrapContext using constructor [public org.springframework.test.context.support.DefaultBootstrapContext(java.lang.Class,org.springframework.test.context.CacheAwareContextLoaderDelegate)]
+11:22:48.514 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating TestContextBootstrapper for test class [io.botle.game.crossword.web.CrosswordApiControllerTest] from class [org.springframework.boot.test.context.SpringBootTestContextBootstrapper]
+11:22:48.546 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [io.botle.game.crossword.web.CrosswordApiControllerTest], using SpringBootContextLoader
+11:22:48.551 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [io.botle.game.crossword.web.CrosswordApiControllerTest]: class path resource [io/botle/game/crossword/web/CrosswordApiControllerTest-context.xml] does not exist
+11:22:48.552 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [io.botle.game.crossword.web.CrosswordApiControllerTest]: class path resource [io/botle/game/crossword/web/CrosswordApiControllerTestContext.groovy] does not exist
+11:22:48.552 [Test worker] INFO org.springframework.test.context.support.AbstractContextLoader - Could not detect default resource locations for test class [io.botle.game.crossword.web.CrosswordApiControllerTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+11:22:48.554 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [io.botle.game.crossword.web.CrosswordApiControllerTest]: CrosswordApiControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+11:22:48.627 [Test worker] DEBUG org.springframework.test.context.support.ActiveProfilesUtils - Could not find an 'annotation declaring class' for annotation type [org.springframework.test.context.ActiveProfiles] and class [io.botle.game.crossword.web.CrosswordApiControllerTest]
+11:22:48.772 [Test worker] DEBUG org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider - Identified candidate component class: file [C:\Users\VinnsMedia\Documents\project\botle-game\build\classes\java\main\io\botle\game\crossword\Application.class]
+11:22:48.774 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration io.botle.game.crossword.Application for test class io.botle.game.crossword.web.CrosswordApiControllerTest
+11:22:48.924 [Test worker] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - @TestExecutionListeners is not present for class [io.botle.game.crossword.web.CrosswordApiControllerTest]: using defaults.
+11:22:48.925 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+11:22:48.955 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@5ece5e9a, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@15742216, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@57e7e364, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@447957ce, org.springframework.test.context.support.DirtiesContextTestExecutionListener@68effb55, org.springframework.test.context.transaction.TransactionalTestExecutionListener@5cbf00cc, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@342b34fc, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@3ae2d290, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@2dc0b3ca, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@9dd6fde, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@643c26cd, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@48661e88]
+11:22:48.962 [Test worker] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved @ProfileValueSourceConfiguration [null] for test class [io.botle.game.crossword.web.CrosswordApiControllerTest]
+11:22:48.963 [Test worker] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [io.botle.game.crossword.web.CrosswordApiControllerTest]
+11:22:48.971 [Test worker] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved @ProfileValueSourceConfiguration [null] for test class [io.botle.game.crossword.web.CrosswordApiControllerTest]
+11:22:48.972 [Test worker] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [io.botle.game.crossword.web.CrosswordApiControllerTest]
+11:22:48.973 [Test worker] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved @ProfileValueSourceConfiguration [null] for test class [io.botle.game.crossword.web.CrosswordApiControllerTest]
+11:22:48.973 [Test worker] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [io.botle.game.crossword.web.CrosswordApiControllerTest]
+11:22:48.982 [Test worker] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test class: context [DefaultTestContext@3f4a37b4 testClass = CrosswordApiControllerTest, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@55312fbb testClass = CrosswordApiControllerTest, locations = '{}', classes = '{class io.botle.game.crossword.Application}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true, server.port=0}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@7434ce52, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@711b34, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@6a601174, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@491ced2b], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -> false]], class annotated with @DirtiesContext [false] with mode [null].
+11:22:48.983 [Test worker] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved @ProfileValueSourceConfiguration [null] for test class [io.botle.game.crossword.web.CrosswordApiControllerTest]
+11:22:48.983 [Test worker] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [io.botle.game.crossword.web.CrosswordApiControllerTest]
+11:22:48.990 [Test worker] DEBUG org.springframework.test.context.support.DependencyInjectionTestExecutionListener - Performing dependency injection for test context [[DefaultTestContext@3f4a37b4 testClass = CrosswordApiControllerTest, testInstance = io.botle.game.crossword.web.CrosswordApiControllerTest@1df2b1f1, testMethod = [null], testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@55312fbb testClass = CrosswordApiControllerTest, locations = '{}', classes = '{class io.botle.game.crossword.Application}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true, server.port=0}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@7434ce52, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@711b34, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@6a601174, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@491ced2b], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -> false]]].
+11:22:49.022 [Test worker] DEBUG org.springframework.test.context.support.TestPropertySourceUtils - Adding inlined properties to environment: {spring.jmx.enabled=false, org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true, server.port=0}
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v2.1.9.RELEASE)
+
+2020-04-27 11:22:49.485  INFO 3212 --- [    Test worker] i.b.g.c.web.CrosswordApiControllerTest   : Starting CrosswordApiControllerTest on DESKTOP-RLST5FL with PID 3212 (started by VinnsMedia in C:\Users\VinnsMedia\Documents\project\botle-game)
+2020-04-27 11:22:49.488  INFO 3212 --- [    Test worker] i.b.g.c.web.CrosswordApiControllerTest   : No active profile set, falling back to default profiles: default
+2020-04-27 11:22:50.821  INFO 3212 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2020-04-27 11:22:50.977  INFO 3212 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 139ms. Found 2 repository interfaces.
+2020-04-27 11:22:51.642  INFO 3212 --- [    Test worker] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$2c40b1bc] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-04-27 11:22:52.228  INFO 3212 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 0 (http)
+2020-04-27 11:22:52.263  INFO 3212 --- [    Test worker] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-04-27 11:22:52.263  INFO 3212 --- [    Test worker] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.26]
+2020-04-27 11:22:52.452  INFO 3212 --- [    Test worker] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-04-27 11:22:52.453  INFO 3212 --- [    Test worker] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2928 ms
+2020-04-27 11:22:52.799  INFO 3212 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-04-27 11:22:53.016  INFO 3212 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-04-27 11:22:53.164  INFO 3212 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2020-04-27 11:22:53.307  INFO 3212 --- [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate Core {5.3.12.Final}
+2020-04-27 11:22:53.311  INFO 3212 --- [    Test worker] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2020-04-27 11:22:53.586  INFO 3212 --- [    Test worker] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2020-04-27 11:22:53.651 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration boolean -> org.hibernate.type.BooleanType@4a20d39b
+2020-04-27 11:22:53.651 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration boolean -> org.hibernate.type.BooleanType@4a20d39b
+2020-04-27 11:22:53.651 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Boolean -> org.hibernate.type.BooleanType@4a20d39b
+2020-04-27 11:22:53.653 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration numeric_boolean -> org.hibernate.type.NumericBooleanType@70bcaf7
+2020-04-27 11:22:53.654 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration true_false -> org.hibernate.type.TrueFalseType@3feb426f
+2020-04-27 11:22:53.656 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration yes_no -> org.hibernate.type.YesNoType@640de52f
+2020-04-27 11:22:53.679 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration byte -> org.hibernate.type.ByteType@20edec70
+2020-04-27 11:22:53.679 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration byte -> org.hibernate.type.ByteType@20edec70
+2020-04-27 11:22:53.680 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Byte -> org.hibernate.type.ByteType@20edec70
+2020-04-27 11:22:53.683 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration character -> org.hibernate.type.CharacterType@1d1ee4af
+2020-04-27 11:22:53.683 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration char -> org.hibernate.type.CharacterType@1d1ee4af
+2020-04-27 11:22:53.683 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Character -> org.hibernate.type.CharacterType@1d1ee4af
+2020-04-27 11:22:53.685 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration short -> org.hibernate.type.ShortType@556251b6
+2020-04-27 11:22:53.685 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration short -> org.hibernate.type.ShortType@556251b6
+2020-04-27 11:22:53.685 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Short -> org.hibernate.type.ShortType@556251b6
+2020-04-27 11:22:53.687 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration integer -> org.hibernate.type.IntegerType@1a79f50e
+2020-04-27 11:22:53.688 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration int -> org.hibernate.type.IntegerType@1a79f50e
+2020-04-27 11:22:53.688 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Integer -> org.hibernate.type.IntegerType@1a79f50e
+2020-04-27 11:22:53.690 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration long -> org.hibernate.type.LongType@607b3ad6
+2020-04-27 11:22:53.690 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration long -> org.hibernate.type.LongType@607b3ad6
+2020-04-27 11:22:53.691 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Long -> org.hibernate.type.LongType@607b3ad6
+2020-04-27 11:22:53.694 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration float -> org.hibernate.type.FloatType@7519cb4d
+2020-04-27 11:22:53.695 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration float -> org.hibernate.type.FloatType@7519cb4d
+2020-04-27 11:22:53.695 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Float -> org.hibernate.type.FloatType@7519cb4d
+2020-04-27 11:22:53.699 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration double -> org.hibernate.type.DoubleType@1a8d34a2
+2020-04-27 11:22:53.700 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration double -> org.hibernate.type.DoubleType@1a8d34a2
+2020-04-27 11:22:53.700 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Double -> org.hibernate.type.DoubleType@1a8d34a2
+2020-04-27 11:22:53.703 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration big_decimal -> org.hibernate.type.BigDecimalType@b896742
+2020-04-27 11:22:53.703 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.math.BigDecimal -> org.hibernate.type.BigDecimalType@b896742
+2020-04-27 11:22:53.705 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration big_integer -> org.hibernate.type.BigIntegerType@5564885
+2020-04-27 11:22:53.705 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.math.BigInteger -> org.hibernate.type.BigIntegerType@5564885
+2020-04-27 11:22:53.706 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration string -> org.hibernate.type.StringType@37e8d62
+2020-04-27 11:22:53.707 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.String -> org.hibernate.type.StringType@37e8d62
+2020-04-27 11:22:53.708 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration nstring -> org.hibernate.type.StringNVarcharType@24292ce6
+2020-04-27 11:22:53.709 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration ncharacter -> org.hibernate.type.CharacterNCharType@34306bb3
+2020-04-27 11:22:53.712 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration url -> org.hibernate.type.UrlType@64734792
+2020-04-27 11:22:53.712 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.net.URL -> org.hibernate.type.UrlType@64734792
+2020-04-27 11:22:53.714 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration Duration -> org.hibernate.type.DurationType@4e84f4af
+2020-04-27 11:22:53.715 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.Duration -> org.hibernate.type.DurationType@4e84f4af
+2020-04-27 11:22:53.737 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration Instant -> org.hibernate.type.InstantType@3924378a
+2020-04-27 11:22:53.738 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.Instant -> org.hibernate.type.InstantType@3924378a
+2020-04-27 11:22:53.739 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration LocalDateTime -> org.hibernate.type.LocalDateTimeType@3679529f
+2020-04-27 11:22:53.740 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.LocalDateTime -> org.hibernate.type.LocalDateTimeType@3679529f
+2020-04-27 11:22:53.741 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration LocalDate -> org.hibernate.type.LocalDateType@704b7796
+2020-04-27 11:22:53.741 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.LocalDate -> org.hibernate.type.LocalDateType@704b7796
+2020-04-27 11:22:53.743 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration LocalTime -> org.hibernate.type.LocalTimeType@a8ab071
+2020-04-27 11:22:53.743 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.LocalTime -> org.hibernate.type.LocalTimeType@a8ab071
+2020-04-27 11:22:53.745 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration OffsetDateTime -> org.hibernate.type.OffsetDateTimeType@367dc01e
+2020-04-27 11:22:53.745 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.OffsetDateTime -> org.hibernate.type.OffsetDateTimeType@367dc01e
+2020-04-27 11:22:53.746 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration OffsetTime -> org.hibernate.type.OffsetTimeType@631539fa
+2020-04-27 11:22:53.747 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.OffsetTime -> org.hibernate.type.OffsetTimeType@631539fa
+2020-04-27 11:22:53.749 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration ZonedDateTime -> org.hibernate.type.ZonedDateTimeType@5dd0b276
+2020-04-27 11:22:53.750 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.ZonedDateTime -> org.hibernate.type.ZonedDateTimeType@5dd0b276
+2020-04-27 11:22:53.751 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration date -> org.hibernate.type.DateType@702ec911
+2020-04-27 11:22:53.752 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Date -> org.hibernate.type.DateType@702ec911
+2020-04-27 11:22:53.753 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration time -> org.hibernate.type.TimeType@ca7c7ad
+2020-04-27 11:22:53.753 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Time -> org.hibernate.type.TimeType@ca7c7ad
+2020-04-27 11:22:53.754 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration timestamp -> org.hibernate.type.TimestampType@262a05b0
+2020-04-27 11:22:53.755 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Timestamp -> org.hibernate.type.TimestampType@262a05b0
+2020-04-27 11:22:53.755 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.Date -> org.hibernate.type.TimestampType@262a05b0
+2020-04-27 11:22:53.756 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration dbtimestamp -> org.hibernate.type.DbTimestampType@1e86508d
+2020-04-27 11:22:53.758 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration calendar -> org.hibernate.type.CalendarType@b09b612
+2020-04-27 11:22:53.758 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.Calendar -> org.hibernate.type.CalendarType@b09b612
+2020-04-27 11:22:53.758 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.GregorianCalendar -> org.hibernate.type.CalendarType@b09b612
+2020-04-27 11:22:53.759 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration calendar_date -> org.hibernate.type.CalendarDateType@22828f51
+2020-04-27 11:22:53.760 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration locale -> org.hibernate.type.LocaleType@488082ac
+2020-04-27 11:22:53.760 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.Locale -> org.hibernate.type.LocaleType@488082ac
+2020-04-27 11:22:53.761 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration currency -> org.hibernate.type.CurrencyType@55bdf5f2
+2020-04-27 11:22:53.762 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.Currency -> org.hibernate.type.CurrencyType@55bdf5f2
+2020-04-27 11:22:53.763 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration timezone -> org.hibernate.type.TimeZoneType@56537a15
+2020-04-27 11:22:53.763 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.TimeZone -> org.hibernate.type.TimeZoneType@56537a15
+2020-04-27 11:22:53.765 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration class -> org.hibernate.type.ClassType@39417c49
+2020-04-27 11:22:53.765 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Class -> org.hibernate.type.ClassType@39417c49
+2020-04-27 11:22:53.766 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration uuid-binary -> org.hibernate.type.UUIDBinaryType@2612131a
+2020-04-27 11:22:53.766 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.UUID -> org.hibernate.type.UUIDBinaryType@2612131a
+2020-04-27 11:22:53.767 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration uuid-char -> org.hibernate.type.UUIDCharType@65ce2638
+2020-04-27 11:22:53.769 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration binary -> org.hibernate.type.BinaryType@dca9e6a
+2020-04-27 11:22:53.769 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration byte[] -> org.hibernate.type.BinaryType@dca9e6a
+2020-04-27 11:22:53.769 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration [B -> org.hibernate.type.BinaryType@dca9e6a
+2020-04-27 11:22:53.770 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration wrapper-binary -> org.hibernate.type.WrapperBinaryType@5fac7742
+2020-04-27 11:22:53.770 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration Byte[] -> org.hibernate.type.WrapperBinaryType@5fac7742
+2020-04-27 11:22:53.770 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration [Ljava.lang.Byte; -> org.hibernate.type.WrapperBinaryType@5fac7742
+2020-04-27 11:22:53.772 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration row_version -> org.hibernate.type.RowVersionType@181b1524
+2020-04-27 11:22:53.773 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration image -> org.hibernate.type.ImageType@18964ce8
+2020-04-27 11:22:53.774 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration characters -> org.hibernate.type.CharArrayType@20e4318e
+2020-04-27 11:22:53.774 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration char[] -> org.hibernate.type.CharArrayType@20e4318e
+2020-04-27 11:22:53.774 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration [C -> org.hibernate.type.CharArrayType@20e4318e
+2020-04-27 11:22:53.776 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration wrapper-characters -> org.hibernate.type.CharacterArrayType@2736b679
+2020-04-27 11:22:53.776 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration [Ljava.lang.Character; -> org.hibernate.type.CharacterArrayType@2736b679
+2020-04-27 11:22:53.776 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration Character[] -> org.hibernate.type.CharacterArrayType@2736b679
+2020-04-27 11:22:53.777 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration text -> org.hibernate.type.TextType@4cb713d8
+2020-04-27 11:22:53.778 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration ntext -> org.hibernate.type.NTextType@4d2ce955
+2020-04-27 11:22:53.780 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration blob -> org.hibernate.type.BlobType@5d0763ba
+2020-04-27 11:22:53.780 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Blob -> org.hibernate.type.BlobType@5d0763ba
+2020-04-27 11:22:53.781 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration materialized_blob -> org.hibernate.type.MaterializedBlobType@6b1b9076
+2020-04-27 11:22:53.782 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration clob -> org.hibernate.type.ClobType@33b28c1e
+2020-04-27 11:22:53.783 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Clob -> org.hibernate.type.ClobType@33b28c1e
+2020-04-27 11:22:53.785 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration nclob -> org.hibernate.type.NClobType@6baa1e7c
+2020-04-27 11:22:53.785 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.NClob -> org.hibernate.type.NClobType@6baa1e7c
+2020-04-27 11:22:53.786 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration materialized_clob -> org.hibernate.type.MaterializedClobType@4afd34a6
+2020-04-27 11:22:53.787 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration materialized_nclob -> org.hibernate.type.MaterializedNClobType@23d9a769
+2020-04-27 11:22:53.789 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration serializable -> org.hibernate.type.SerializableType@8d27289
+2020-04-27 11:22:53.794 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration object -> org.hibernate.type.ObjectType@5b4d4ed7
+2020-04-27 11:22:53.795 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Object -> org.hibernate.type.ObjectType@5b4d4ed7
+2020-04-27 11:22:53.795 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_date -> org.hibernate.type.AdaptedImmutableType@34b4275d
+2020-04-27 11:22:53.795 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_time -> org.hibernate.type.AdaptedImmutableType@5befcea
+2020-04-27 11:22:53.795 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_timestamp -> org.hibernate.type.AdaptedImmutableType@65eeff1
+2020-04-27 11:22:53.796 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_dbtimestamp -> org.hibernate.type.AdaptedImmutableType@6eb707c3
+2020-04-27 11:22:53.796 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_calendar -> org.hibernate.type.AdaptedImmutableType@7b2c5b87
+2020-04-27 11:22:53.796 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_calendar_date -> org.hibernate.type.AdaptedImmutableType@907b1a4
+2020-04-27 11:22:53.796 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_binary -> org.hibernate.type.AdaptedImmutableType@78d7e612
+2020-04-27 11:22:53.796 DEBUG 3212 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_serializable -> org.hibernate.type.AdaptedImmutableType@2e087fd4
+2020-04-27 11:22:53.974  INFO 3212 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2020-04-27 11:22:54.083 DEBUG 3212 --- [    Test worker] o.h.type.spi.TypeConfiguration$Scope     : Scoping TypeConfiguration [org.hibernate.type.spi.TypeConfiguration@f4842f0] to MetadataBuildingContext [org.hibernate.boot.internal.MetadataBuildingContextRootImpl@233766a8]
+2020-04-27 11:22:54.628 DEBUG 3212 --- [    Test worker] o.h.type.spi.TypeConfiguration$Scope     : Scoping TypeConfiguration [org.hibernate.type.spi.TypeConfiguration@f4842f0] to SessionFactoryImpl [org.hibernate.internal.SessionFactoryImpl@369c8f27]
+Hibernate: alter table quiz drop foreign key FKsd7bmnd3hkmva99wpo2dc3mq7
+2020-04-27 11:22:55.168  WARN 3212 --- [    Test worker] o.h.t.s.i.ExceptionHandlerLoggedImpl     : GenerationTarget encountered exception accepting command : Error executing DDL "alter table quiz drop foreign key FKsd7bmnd3hkmva99wpo2dc3mq7" via JDBC Statement
+
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "alter table quiz drop foreign key FKsd7bmnd3hkmva99wpo2dc3mq7" via JDBC Statement
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:67) ~[hibernate-core-5.3.12.Final.jar:5.3.12.Final]
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.applySqlString(SchemaDropperImpl.java:375) [hibernate-core-5.3.12.Final.jar:5.3.12.Final]
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.applySqlStrings(SchemaDropperImpl.java:359) [hibernate-core-5.3.12.Final.jar:5.3.12.Final]
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.applyConstraintDropping(SchemaDropperImpl.java:331) [hibernate-core-5.3.12.Final.jar:5.3.12.Final]
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.dropFromMetadata(SchemaDropperImpl.java:230) [hibernate-core-5.3.12.Final.jar:5.3.12.Final]
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.performDrop(SchemaDropperImpl.java:154) [hibernate-core-5.3.12.Final.jar:5.3.12.Final]
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.doDrop(SchemaDropperImpl.java:126) [hibernate-core-5.3.12.Final.jar:5.3.12.Final]
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.doDrop(SchemaDropperImpl.java:112) [hibernate-core-5.3.12.Final.jar:5.3.12.Final]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:144) [hibernate-core-5.3.12.Final.jar:5.3.12.Final]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:72) [hibernate-core-5.3.12.Final.jar:5.3.12.Final]
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:310) [hibernate-core-5.3.12.Final.jar:5.3.12.Final]
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:467) [hibernate-core-5.3.12.Final.jar:5.3.12.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:939) [hibernate-core-5.3.12.Final.jar:5.3.12.Final]
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:58) [spring-orm-5.1.10.RELEASE.jar:5.1.10.RELEASE]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:365) [spring-orm-5.1.10.RELEASE.jar:5.1.10.RELEASE]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:391) [spring-orm-5.1.10.RELEASE.jar:5.1.10.RELEASE]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:378) [spring-orm-5.1.10.RELEASE.jar:5.1.10.RELEASE]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:341) [spring-orm-5.1.10.RELEASE.jar:5.1.10.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1837) [spring-beans-5.1.10.RELEASE.jar:5.1.10.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1774) [spring-beans-5.1.10.RELEASE.jar:5.1.10.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:593) [spring-beans-5.1.10.RELEASE.jar:5.1.10.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:515) [spring-beans-5.1.10.RELEASE.jar:5.1.10.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:320) [spring-beans-5.1.10.RELEASE.jar:5.1.10.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222) ~[spring-beans-5.1.10.RELEASE.jar:5.1.10.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:318) [spring-beans-5.1.10.RELEASE.jar:5.1.10.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:224) [spring-beans-5.1.10.RELEASE.jar:5.1.10.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveNamedBean(DefaultListableBeanFactory.java:1123) ~[spring-beans-5.1.10.RELEASE.jar:5.1.10.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveBean(DefaultListableBeanFactory.java:413) ~[spring-beans-5.1.10.RELEASE.jar:5.1.10.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.getBean(DefaultListableBeanFactory.java:346) ~[spring-beans-5.1.10.RELEASE.jar:5.1.10.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.getBean(DefaultListableBeanFactory.java:339) ~[spring-beans-5.1.10.RELEASE.jar:5.1.10.RELEASE]
+	at org.springframework.orm.jpa.EntityManagerFactoryUtils.findEntityManagerFactory(EntityManagerFactoryUtils.java:121) ~[spring-orm-5.1.10.RELEASE.jar:5.1.10.RELEASE]
+	at org.springframework.orm.jpa.JpaTransactionManager.setBeanFactory(JpaTransactionManager.java:314) ~[spring-orm-5.1.10.RELEASE.jar:5.1.10.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeAwareMethods(AbstractAutowireCapableBeanFactory.java:1800) [spring-beans-5.1.10.RELEASE.jar:5.1.10.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1765) [spring-beans-5.1.10.RELEASE.jar:5.1.10.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:593) [spring-beans-5.1.10.RELEASE.jar:5.1.10.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:515) [spring-beans-5.1.10.RELEASE.jar:5.1.10.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:320) [spring-beans-5.1.10.RELEASE.jar:5.1.10.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222) ~[spring-beans-5.1.10.RELEASE.jar:5.1.10.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:318) [spring-beans-5.1.10.RELEASE.jar:5.1.10.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) [spring-beans-5.1.10.RELEASE.jar:5.1.10.RELEASE]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:277) ~[spring-beans-5.1.10.RELEASE.jar:5.1.10.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1255) ~[spring-beans-5.1.10.RELEASE.jar:5.1.10.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1175) ~[spring-beans-5.1.10.RELEASE.jar:5.1.10.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredMethodElement.inject(AutowiredAnnotationBeanPostProcessor.java:670) ~[spring-beans-5.1.10.RELEASE.jar:5.1.10.RELEASE]
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:90) ~[spring-beans-5.1.10.RELEASE.jar:5.1.10.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:376) ~[spring-beans-5.1.10.RELEASE.jar:5.1.10.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1411) [spring-beans-5.1.10.RELEASE.jar:5.1.10.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:592) [spring-beans-5.1.10.RELEASE.jar:5.1.10.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:515) [spring-beans-5.1.10.RELEASE.jar:5.1.10.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:320) [spring-beans-5.1.10.RELEASE.jar:5.1.10.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222) ~[spring-beans-5.1.10.RELEASE.jar:5.1.10.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:318) [spring-beans-5.1.10.RELEASE.jar:5.1.10.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) [spring-beans-5.1.10.RELEASE.jar:5.1.10.RELEASE]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:392) ~[spring-beans-5.1.10.RELEASE.jar:5.1.10.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1321) [spring-beans-5.1.10.RELEASE.jar:5.1.10.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1160) [spring-beans-5.1.10.RELEASE.jar:5.1.10.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:555) [spring-beans-5.1.10.RELEASE.jar:5.1.10.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:515) [spring-beans-5.1.10.RELEASE.jar:5.1.10.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:320) [spring-beans-5.1.10.RELEASE.jar:5.1.10.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222) ~[spring-beans-5.1.10.RELEASE.jar:5.1.10.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:318) [spring-beans-5.1.10.RELEASE.jar:5.1.10.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) [spring-beans-5.1.10.RELEASE.jar:5.1.10.RELEASE]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:277) ~[spring-beans-5.1.10.RELEASE.jar:5.1.10.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1255) ~[spring-beans-5.1.10.RELEASE.jar:5.1.10.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1175) ~[spring-beans-5.1.10.RELEASE.jar:5.1.10.RELEASE]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:857) ~[spring-beans-5.1.10.RELEASE.jar:5.1.10.RELEASE]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:760) ~[spring-beans-5.1.10.RELEASE.jar:5.1.10.RELEASE]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:509) ~[spring-beans-5.1.10.RELEASE.jar:5.1.10.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1321) [spring-beans-5.1.10.RELEASE.jar:5.1.10.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1160) [spring-beans-5.1.10.RELEASE.jar:5.1.10.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:555) [spring-beans-5.1.10.RELEASE.jar:5.1.10.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:515) [spring-beans-5.1.10.RELEASE.jar:5.1.10.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:320) [spring-beans-5.1.10.RELEASE.jar:5.1.10.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222) ~[spring-beans-5.1.10.RELEASE.jar:5.1.10.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:318) [spring-beans-5.1.10.RELEASE.jar:5.1.10.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:204) [spring-beans-5.1.10.RELEASE.jar:5.1.10.RELEASE]
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.getOrderedBeansOfType(ServletContextInitializerBeans.java:211) ~[spring-boot-2.1.9.RELEASE.jar:2.1.9.RELEASE]
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.getOrderedBeansOfType(ServletContextInitializerBeans.java:202) ~[spring-boot-2.1.9.RELEASE.jar:2.1.9.RELEASE]
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addServletContextInitializerBeans(ServletContextInitializerBeans.java:96) ~[spring-boot-2.1.9.RELEASE.jar:2.1.9.RELEASE]
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.<init>(ServletContextInitializerBeans.java:85) ~[spring-boot-2.1.9.RELEASE.jar:2.1.9.RELEASE]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.getServletContextInitializerBeans(ServletWebServerApplicationContext.java:253) ~[spring-boot-2.1.9.RELEASE.jar:2.1.9.RELEASE]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.selfInitialize(ServletWebServerApplicationContext.java:227) ~[spring-boot-2.1.9.RELEASE.jar:2.1.9.RELEASE]
+	at org.springframework.boot.web.embedded.tomcat.TomcatStarter.onStartup(TomcatStarter.java:53) ~[spring-boot-2.1.9.RELEASE.jar:2.1.9.RELEASE]
+	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:5135) ~[tomcat-embed-core-9.0.26.jar:9.0.26]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183) ~[tomcat-embed-core-9.0.26.jar:9.0.26]
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1384) ~[tomcat-embed-core-9.0.26.jar:9.0.26]
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1374) ~[tomcat-embed-core-9.0.26.jar:9.0.26]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) ~[na:1.8.0_241]
+	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:75) ~[tomcat-embed-core-9.0.26.jar:9.0.26]
+	at java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:134) ~[na:1.8.0_241]
+	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:909) ~[tomcat-embed-core-9.0.26.jar:9.0.26]
+	at org.apache.catalina.core.StandardHost.startInternal(StandardHost.java:841) ~[tomcat-embed-core-9.0.26.jar:9.0.26]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183) ~[tomcat-embed-core-9.0.26.jar:9.0.26]
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1384) ~[tomcat-embed-core-9.0.26.jar:9.0.26]
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1374) ~[tomcat-embed-core-9.0.26.jar:9.0.26]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) ~[na:1.8.0_241]
+	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:75) ~[tomcat-embed-core-9.0.26.jar:9.0.26]
+	at java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:134) ~[na:1.8.0_241]
+	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:909) ~[tomcat-embed-core-9.0.26.jar:9.0.26]
+	at org.apache.catalina.core.StandardEngine.startInternal(StandardEngine.java:262) ~[tomcat-embed-core-9.0.26.jar:9.0.26]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183) ~[tomcat-embed-core-9.0.26.jar:9.0.26]
+	at org.apache.catalina.core.StandardService.startInternal(StandardService.java:421) ~[tomcat-embed-core-9.0.26.jar:9.0.26]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183) ~[tomcat-embed-core-9.0.26.jar:9.0.26]
+	at org.apache.catalina.core.StandardServer.startInternal(StandardServer.java:932) ~[tomcat-embed-core-9.0.26.jar:9.0.26]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183) ~[tomcat-embed-core-9.0.26.jar:9.0.26]
+	at org.apache.catalina.startup.Tomcat.start(Tomcat.java:459) ~[tomcat-embed-core-9.0.26.jar:9.0.26]
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize(TomcatWebServer.java:105) ~[spring-boot-2.1.9.RELEASE.jar:2.1.9.RELEASE]
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.<init>(TomcatWebServer.java:86) ~[spring-boot-2.1.9.RELEASE.jar:2.1.9.RELEASE]
+	at org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory.getTomcatWebServer(TomcatServletWebServerFactory.java:416) ~[spring-boot-2.1.9.RELEASE.jar:2.1.9.RELEASE]
+	at org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory.getWebServer(TomcatServletWebServerFactory.java:180) ~[spring-boot-2.1.9.RELEASE.jar:2.1.9.RELEASE]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.createWebServer(ServletWebServerApplicationContext.java:180) ~[spring-boot-2.1.9.RELEASE.jar:2.1.9.RELEASE]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.onRefresh(ServletWebServerApplicationContext.java:153) ~[spring-boot-2.1.9.RELEASE.jar:2.1.9.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:543) ~[spring-context-5.1.10.RELEASE.jar:5.1.10.RELEASE]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:141) ~[spring-boot-2.1.9.RELEASE.jar:2.1.9.RELEASE]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:744) ~[spring-boot-2.1.9.RELEASE.jar:2.1.9.RELEASE]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:391) ~[spring-boot-2.1.9.RELEASE.jar:2.1.9.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:312) ~[spring-boot-2.1.9.RELEASE.jar:2.1.9.RELEASE]
+	at org.springframework.boot.test.context.SpringBootContextLoader.loadContext(SpringBootContextLoader.java:120) ~[spring-boot-test-2.1.9.RELEASE.jar:2.1.9.RELEASE]
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContextInternal(DefaultCacheAwareContextLoaderDelegate.java:99) ~[spring-test-5.1.10.RELEASE.jar:5.1.10.RELEASE]
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:117) ~[spring-test-5.1.10.RELEASE.jar:5.1.10.RELEASE]
+	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:108) ~[spring-test-5.1.10.RELEASE.jar:5.1.10.RELEASE]
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.injectDependencies(DependencyInjectionTestExecutionListener.java:118) ~[spring-test-5.1.10.RELEASE.jar:5.1.10.RELEASE]
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.prepareTestInstance(DependencyInjectionTestExecutionListener.java:83) ~[spring-test-5.1.10.RELEASE.jar:5.1.10.RELEASE]
+	at org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener.prepareTestInstance(SpringBootDependencyInjectionTestExecutionListener.java:43) ~[spring-boot-test-autoconfigure-2.1.9.RELEASE.jar:2.1.9.RELEASE]
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:246) ~[spring-test-5.1.10.RELEASE.jar:5.1.10.RELEASE]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.createTest(SpringJUnit4ClassRunner.java:227) ~[spring-test-5.1.10.RELEASE.jar:5.1.10.RELEASE]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner$1.runReflectiveCall(SpringJUnit4ClassRunner.java:289) ~[spring-test-5.1.10.RELEASE.jar:5.1.10.RELEASE]
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12) ~[junit-4.12.jar:4.12]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.methodBlock(SpringJUnit4ClassRunner.java:291) ~[spring-test-5.1.10.RELEASE.jar:5.1.10.RELEASE]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:246) ~[spring-test-5.1.10.RELEASE.jar:5.1.10.RELEASE]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:97) ~[spring-test-5.1.10.RELEASE.jar:5.1.10.RELEASE]
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290) ~[junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71) ~[junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288) ~[junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58) ~[junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268) ~[junit-4.12.jar:4.12]
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61) ~[spring-test-5.1.10.RELEASE.jar:5.1.10.RELEASE]
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:70) ~[spring-test-5.1.10.RELEASE.jar:5.1.10.RELEASE]
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363) ~[junit-4.12.jar:4.12]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:190) ~[spring-test-5.1.10.RELEASE.jar:5.1.10.RELEASE]
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.runTestClass(JUnitTestClassExecutor.java:106) ~[na:na]
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:58) ~[na:na]
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:38) ~[na:na]
+	at org.gradle.api.internal.tasks.testing.junit.AbstractJUnitTestClassProcessor.processTestClass(AbstractJUnitTestClassProcessor.java:66) ~[na:na]
+	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.processTestClass(SuiteTestClassProcessor.java:51) ~[na:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_241]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_241]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_241]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_241]
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35) ~[na:na]
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24) ~[na:na]
+	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:32) ~[na:na]
+	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:93) ~[na:na]
+	at com.sun.proxy.$Proxy2.processTestClass(Unknown Source) ~[na:na]
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.processTestClass(TestWorker.java:117) ~[na:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_241]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_241]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_241]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_241]
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35) ~[na:na]
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24) ~[na:na]
+	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:155) ~[na:na]
+	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:137) ~[na:na]
+	at org.gradle.internal.remote.internal.hub.MessageHub$Handler.run(MessageHub.java:404) ~[na:na]
+	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:63) ~[na:na]
+	at org.gradle.internal.concurrent.ManagedExecutorImpl$1.run(ManagedExecutorImpl.java:46) ~[na:na]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) ~[na:1.8.0_241]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) ~[na:1.8.0_241]
+	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:55) ~[na:na]
+	at java.lang.Thread.run(Thread.java:748) ~[na:1.8.0_241]
+Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "QUIZ" not found; SQL statement:
+alter table quiz drop foreign key FKsd7bmnd3hkmva99wpo2dc3mq7 [42102-199]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:451) ~[h2-1.4.199.jar:1.4.199]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:427) ~[h2-1.4.199.jar:1.4.199]
+	at org.h2.message.DbException.get(DbException.java:205) ~[h2-1.4.199.jar:1.4.199]
+	at org.h2.message.DbException.get(DbException.java:181) ~[h2-1.4.199.jar:1.4.199]
+	at org.h2.command.Parser.tableIfTableExists(Parser.java:7497) ~[h2-1.4.199.jar:1.4.199]
+	at org.h2.command.Parser.commandIfTableExists(Parser.java:7510) ~[h2-1.4.199.jar:1.4.199]
+	at org.h2.command.Parser.parseAlterTable(Parser.java:7277) ~[h2-1.4.199.jar:1.4.199]
+	at org.h2.command.Parser.parseAlter(Parser.java:6546) ~[h2-1.4.199.jar:1.4.199]
+	at org.h2.command.Parser.parsePrepared(Parser.java:828) ~[h2-1.4.199.jar:1.4.199]
+	at org.h2.command.Parser.parse(Parser.java:788) ~[h2-1.4.199.jar:1.4.199]
+	at org.h2.command.Parser.parse(Parser.java:760) ~[h2-1.4.199.jar:1.4.199]
+	at org.h2.command.Parser.prepareCommand(Parser.java:683) ~[h2-1.4.199.jar:1.4.199]
+	at org.h2.engine.Session.prepareLocal(Session.java:627) ~[h2-1.4.199.jar:1.4.199]
+	at org.h2.engine.Session.prepareCommand(Session.java:565) ~[h2-1.4.199.jar:1.4.199]
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1292) ~[h2-1.4.199.jar:1.4.199]
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:217) ~[h2-1.4.199.jar:1.4.199]
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:205) ~[h2-1.4.199.jar:1.4.199]
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:95) ~[HikariCP-3.2.0.jar:na]
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java) ~[HikariCP-3.2.0.jar:na]
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54) ~[hibernate-core-5.3.12.Final.jar:5.3.12.Final]
+	... 169 common frames omitted
+
+Hibernate: drop table if exists puzzle
+Hibernate: drop table if exists quiz
+Hibernate: create table puzzle (p_seq bigint not null auto_increment, created_date datetime, modified_date datetime, category_grade integer not null, category_subject varchar(255), p_desc TEXT, p_keyword TEXT, title varchar(255) not null, primary key (p_seq)) engine=InnoDB
+Hibernate: create table quiz (q_seq bigint not null auto_increment, created_date datetime, modified_date datetime, hint TEXT, q_desc TEXT not null, q_keyword TEXT, word varchar(255) not null, puzzle_p_seq bigint, primary key (q_seq)) engine=InnoDB
+Hibernate: alter table puzzle add constraint UK_ciln9hknd6sd6f9xi8edwht59 unique (title)
+Hibernate: alter table quiz add constraint FKsd7bmnd3hkmva99wpo2dc3mq7 foreign key (puzzle_p_seq) references puzzle (p_seq)
+2020-04-27 11:22:55.225  INFO 3212 --- [    Test worker] o.h.t.schema.internal.SchemaCreatorImpl  : HHH000476: Executing import script 'org.hibernate.tool.schema.internal.exec.ScriptSourceInputNonExistentImpl@25b6ae53'
+2020-04-27 11:22:55.231 TRACE 3212 --- [    Test worker] o.h.type.spi.TypeConfiguration$Scope     : Handling #sessionFactoryCreated from [org.hibernate.internal.SessionFactoryImpl@369c8f27] for TypeConfiguration
+2020-04-27 11:22:55.236  INFO 3212 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-04-27 11:22:56.573  INFO 3212 --- [    Test worker] o.h.h.i.QueryTranslatorFactoryInitiator  : HHH000397: Using ASTQueryTranslatorFactory
+2020-04-27 11:22:57.523  INFO 3212 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-04-27 11:22:57.605  WARN 3212 --- [    Test worker] aWebConfiguration$JpaWebMvcConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-04-27 11:22:57.684  INFO 3212 --- [    Test worker] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2020-04-27 11:22:58.190  INFO 3212 --- [    Test worker] s.a.ScheduledAnnotationBeanPostProcessor : No TaskScheduler/ScheduledExecutorService bean found for scheduled processing
+2020-04-27 11:22:58.229  INFO 3212 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 55038 (http) with context path ''
+2020-04-27 11:22:58.232  INFO 3212 --- [    Test worker] i.b.g.c.web.CrosswordApiControllerTest   : Started CrosswordApiControllerTest in 9.207 seconds (JVM running for 10.976)
+Hibernate: insert into puzzle (created_date, modified_date, category_grade, category_subject, p_desc, p_keyword, title) values (?, ?, ?, ?, ?, ?, ?)
+2020-04-27 11:22:58.472 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [TIMESTAMP] - [2020-04-27T11:22:58.424]
+2020-04-27 11:22:58.477 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [TIMESTAMP] - [2020-04-27T11:22:58.424]
+2020-04-27 11:22:58.479 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [INTEGER] - [9]
+2020-04-27 11:22:58.481 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [VARCHAR] - [영어]
+2020-04-27 11:22:58.481 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [5] as [VARCHAR] - [테스트 퍼즐 설명입니다.]
+2020-04-27 11:22:58.482 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [6] as [VARCHAR] - [테스트]
+2020-04-27 11:22:58.482 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [7] as [VARCHAR] - [테스트 퍼즐]
+Hibernate: insert into quiz (created_date, modified_date, hint, puzzle_p_seq, q_desc, q_keyword, word) values (?, ?, ?, ?, ?, ?, ?)
+2020-04-27 11:22:58.546 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [TIMESTAMP] - [2020-04-27T11:22:58.545]
+2020-04-27 11:22:58.547 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [TIMESTAMP] - [2020-04-27T11:22:58.545]
+2020-04-27 11:22:58.548 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [VARCHAR] - [단어0에 대한 힌트]
+2020-04-27 11:22:58.549 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [BIGINT] - [1]
+2020-04-27 11:22:58.549 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [5] as [VARCHAR] - [단어0에 대한 설명]
+2020-04-27 11:22:58.550 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [6] as [VARCHAR] - [테스트]
+2020-04-27 11:22:58.550 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [7] as [VARCHAR] - [단어0]
+Hibernate: insert into quiz (created_date, modified_date, hint, puzzle_p_seq, q_desc, q_keyword, word) values (?, ?, ?, ?, ?, ?, ?)
+2020-04-27 11:22:58.557 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [TIMESTAMP] - [2020-04-27T11:22:58.556]
+2020-04-27 11:22:58.558 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [TIMESTAMP] - [2020-04-27T11:22:58.556]
+2020-04-27 11:22:58.559 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [VARCHAR] - [단어1에 대한 힌트]
+2020-04-27 11:22:58.559 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [BIGINT] - [1]
+2020-04-27 11:22:58.559 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [5] as [VARCHAR] - [단어1에 대한 설명]
+2020-04-27 11:22:58.559 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [6] as [VARCHAR] - [테스트]
+2020-04-27 11:22:58.559 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [7] as [VARCHAR] - [단어1]
+Hibernate: insert into quiz (created_date, modified_date, hint, puzzle_p_seq, q_desc, q_keyword, word) values (?, ?, ?, ?, ?, ?, ?)
+2020-04-27 11:22:58.570 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [TIMESTAMP] - [2020-04-27T11:22:58.569]
+2020-04-27 11:22:58.571 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [TIMESTAMP] - [2020-04-27T11:22:58.569]
+2020-04-27 11:22:58.571 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [VARCHAR] - [단어2에 대한 힌트]
+2020-04-27 11:22:58.571 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [BIGINT] - [1]
+2020-04-27 11:22:58.571 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [5] as [VARCHAR] - [단어2에 대한 설명]
+2020-04-27 11:22:58.571 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [6] as [VARCHAR] - [테스트]
+2020-04-27 11:22:58.571 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [7] as [VARCHAR] - [단어2]
+Hibernate: insert into quiz (created_date, modified_date, hint, puzzle_p_seq, q_desc, q_keyword, word) values (?, ?, ?, ?, ?, ?, ?)
+2020-04-27 11:22:58.585 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [TIMESTAMP] - [2020-04-27T11:22:58.584]
+2020-04-27 11:22:58.586 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [TIMESTAMP] - [2020-04-27T11:22:58.584]
+2020-04-27 11:22:58.586 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [VARCHAR] - [단어3에 대한 힌트]
+2020-04-27 11:22:58.586 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [BIGINT] - [1]
+2020-04-27 11:22:58.587 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [5] as [VARCHAR] - [단어3에 대한 설명]
+2020-04-27 11:22:58.587 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [6] as [VARCHAR] - [테스트]
+2020-04-27 11:22:58.587 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [7] as [VARCHAR] - [단어3]
+Hibernate: insert into quiz (created_date, modified_date, hint, puzzle_p_seq, q_desc, q_keyword, word) values (?, ?, ?, ?, ?, ?, ?)
+2020-04-27 11:22:58.610 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [TIMESTAMP] - [2020-04-27T11:22:58.609]
+2020-04-27 11:22:58.610 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [TIMESTAMP] - [2020-04-27T11:22:58.609]
+2020-04-27 11:22:58.610 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [VARCHAR] - [단어4에 대한 힌트]
+2020-04-27 11:22:58.610 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [BIGINT] - [1]
+2020-04-27 11:22:58.610 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [5] as [VARCHAR] - [단어4에 대한 설명]
+2020-04-27 11:22:58.610 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [6] as [VARCHAR] - [테스트]
+2020-04-27 11:22:58.611 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [7] as [VARCHAR] - [단어4]
+Hibernate: insert into quiz (created_date, modified_date, hint, puzzle_p_seq, q_desc, q_keyword, word) values (?, ?, ?, ?, ?, ?, ?)
+2020-04-27 11:22:58.617 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [TIMESTAMP] - [2020-04-27T11:22:58.616]
+2020-04-27 11:22:58.618 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [TIMESTAMP] - [2020-04-27T11:22:58.616]
+2020-04-27 11:22:58.618 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [VARCHAR] - [단어5에 대한 힌트]
+2020-04-27 11:22:58.618 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [BIGINT] - [1]
+2020-04-27 11:22:58.618 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [5] as [VARCHAR] - [단어5에 대한 설명]
+2020-04-27 11:22:58.618 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [6] as [VARCHAR] - [테스트]
+2020-04-27 11:22:58.619 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [7] as [VARCHAR] - [단어5]
+Hibernate: insert into quiz (created_date, modified_date, hint, puzzle_p_seq, q_desc, q_keyword, word) values (?, ?, ?, ?, ?, ?, ?)
+2020-04-27 11:22:58.623 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [TIMESTAMP] - [2020-04-27T11:22:58.622]
+2020-04-27 11:22:58.623 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [TIMESTAMP] - [2020-04-27T11:22:58.622]
+2020-04-27 11:22:58.631 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [VARCHAR] - [단어6에 대한 힌트]
+2020-04-27 11:22:58.631 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [BIGINT] - [1]
+2020-04-27 11:22:58.631 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [5] as [VARCHAR] - [단어6에 대한 설명]
+2020-04-27 11:22:58.631 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [6] as [VARCHAR] - [테스트]
+2020-04-27 11:22:58.631 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [7] as [VARCHAR] - [단어6]
+Hibernate: insert into quiz (created_date, modified_date, hint, puzzle_p_seq, q_desc, q_keyword, word) values (?, ?, ?, ?, ?, ?, ?)
+2020-04-27 11:22:58.639 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [TIMESTAMP] - [2020-04-27T11:22:58.638]
+2020-04-27 11:22:58.639 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [TIMESTAMP] - [2020-04-27T11:22:58.638]
+2020-04-27 11:22:58.641 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [VARCHAR] - [단어7에 대한 힌트]
+2020-04-27 11:22:58.642 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [BIGINT] - [1]
+2020-04-27 11:22:58.643 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [5] as [VARCHAR] - [단어7에 대한 설명]
+2020-04-27 11:22:58.643 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [6] as [VARCHAR] - [테스트]
+2020-04-27 11:22:58.645 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [7] as [VARCHAR] - [단어7]
+Hibernate: insert into quiz (created_date, modified_date, hint, puzzle_p_seq, q_desc, q_keyword, word) values (?, ?, ?, ?, ?, ?, ?)
+2020-04-27 11:22:58.656 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [TIMESTAMP] - [2020-04-27T11:22:58.652]
+2020-04-27 11:22:58.672 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [TIMESTAMP] - [2020-04-27T11:22:58.652]
+2020-04-27 11:22:58.677 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [VARCHAR] - [단어8에 대한 힌트]
+2020-04-27 11:22:58.683 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [BIGINT] - [1]
+2020-04-27 11:22:58.684 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [5] as [VARCHAR] - [단어8에 대한 설명]
+2020-04-27 11:22:58.685 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [6] as [VARCHAR] - [테스트]
+2020-04-27 11:22:58.685 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [7] as [VARCHAR] - [단어8]
+Hibernate: insert into quiz (created_date, modified_date, hint, puzzle_p_seq, q_desc, q_keyword, word) values (?, ?, ?, ?, ?, ?, ?)
+2020-04-27 11:22:58.692 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [TIMESTAMP] - [2020-04-27T11:22:58.691]
+2020-04-27 11:22:58.692 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [TIMESTAMP] - [2020-04-27T11:22:58.691]
+2020-04-27 11:22:58.692 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [VARCHAR] - [단어9에 대한 힌트]
+2020-04-27 11:22:58.692 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [BIGINT] - [1]
+2020-04-27 11:22:58.693 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [5] as [VARCHAR] - [단어9에 대한 설명]
+2020-04-27 11:22:58.693 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [6] as [VARCHAR] - [테스트]
+2020-04-27 11:22:58.693 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [7] as [VARCHAR] - [단어9]
+2020-04-27 11:22:59.101  INFO 3212 --- [o-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-04-27 11:22:59.102  INFO 3212 --- [o-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-04-27 11:22:59.144  INFO 3212 --- [o-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 42 ms
+Hibernate: select puzzle0_.p_seq as p_seq1_0_0_, quizzes1_.q_seq as q_seq1_1_1_, puzzle0_.created_date as created_2_0_0_, puzzle0_.modified_date as modified3_0_0_, puzzle0_.category_grade as category4_0_0_, puzzle0_.category_subject as category5_0_0_, puzzle0_.p_desc as p_desc6_0_0_, puzzle0_.p_keyword as p_keywor7_0_0_, puzzle0_.title as title8_0_0_, quizzes1_.created_date as created_2_1_1_, quizzes1_.modified_date as modified3_1_1_, quizzes1_.hint as hint4_1_1_, quizzes1_.puzzle_p_seq as puzzle_p8_1_1_, quizzes1_.q_desc as q_desc5_1_1_, quizzes1_.q_keyword as q_keywor6_1_1_, quizzes1_.word as word7_1_1_, quizzes1_.puzzle_p_seq as puzzle_p8_1_0__, quizzes1_.q_seq as q_seq1_1_0__ from puzzle puzzle0_ left outer join quiz quizzes1_ on puzzle0_.p_seq=quizzes1_.puzzle_p_seq where puzzle0_.p_seq=?
+2020-04-27 11:22:59.571 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [1]
+2020-04-27 11:22:59.585 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([p_seq1_0_0_] : [BIGINT]) - [1]
+2020-04-27 11:22:59.586 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([q_seq1_1_1_] : [BIGINT]) - [1]
+2020-04-27 11:22:59.593 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([created_2_0_0_] : [TIMESTAMP]) - [2020-04-27T11:22:58.424]
+2020-04-27 11:22:59.594 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([modified3_0_0_] : [TIMESTAMP]) - [2020-04-27T11:22:58.424]
+2020-04-27 11:22:59.596 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([category4_0_0_] : [INTEGER]) - [9]
+2020-04-27 11:22:59.597 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([category5_0_0_] : [VARCHAR]) - [영어]
+2020-04-27 11:22:59.598 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([p_desc6_0_0_] : [VARCHAR]) - [테스트 퍼즐 설명입니다.]
+2020-04-27 11:22:59.598 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([p_keywor7_0_0_] : [VARCHAR]) - [테스트]
+2020-04-27 11:22:59.598 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([title8_0_0_] : [VARCHAR]) - [테스트 퍼즐]
+2020-04-27 11:22:59.599 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([created_2_1_1_] : [TIMESTAMP]) - [2020-04-27T11:22:58.545]
+2020-04-27 11:22:59.599 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([modified3_1_1_] : [TIMESTAMP]) - [2020-04-27T11:22:58.545]
+2020-04-27 11:22:59.599 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([hint4_1_1_] : [VARCHAR]) - [단어0에 대한 힌트]
+2020-04-27 11:22:59.599 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([puzzle_p8_1_1_] : [BIGINT]) - [1]
+2020-04-27 11:22:59.599 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([q_desc5_1_1_] : [VARCHAR]) - [단어0에 대한 설명]
+2020-04-27 11:22:59.600 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([q_keywor6_1_1_] : [VARCHAR]) - [테스트]
+2020-04-27 11:22:59.600 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([word7_1_1_] : [VARCHAR]) - [단어0]
+2020-04-27 11:22:59.600 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([puzzle_p8_1_0__] : [BIGINT]) - [1]
+2020-04-27 11:22:59.606 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([q_seq1_1_0__] : [BIGINT]) - [1]
+2020-04-27 11:22:59.609 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([p_seq1_0_0_] : [BIGINT]) - [1]
+2020-04-27 11:22:59.610 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([q_seq1_1_1_] : [BIGINT]) - [2]
+2020-04-27 11:22:59.610 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([created_2_1_1_] : [TIMESTAMP]) - [2020-04-27T11:22:58.556]
+2020-04-27 11:22:59.610 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([modified3_1_1_] : [TIMESTAMP]) - [2020-04-27T11:22:58.556]
+2020-04-27 11:22:59.611 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([hint4_1_1_] : [VARCHAR]) - [단어1에 대한 힌트]
+2020-04-27 11:22:59.611 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([puzzle_p8_1_1_] : [BIGINT]) - [1]
+2020-04-27 11:22:59.611 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([q_desc5_1_1_] : [VARCHAR]) - [단어1에 대한 설명]
+2020-04-27 11:22:59.611 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([q_keywor6_1_1_] : [VARCHAR]) - [테스트]
+2020-04-27 11:22:59.611 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([word7_1_1_] : [VARCHAR]) - [단어1]
+2020-04-27 11:22:59.611 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([puzzle_p8_1_0__] : [BIGINT]) - [1]
+2020-04-27 11:22:59.611 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([q_seq1_1_0__] : [BIGINT]) - [2]
+2020-04-27 11:22:59.612 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([p_seq1_0_0_] : [BIGINT]) - [1]
+2020-04-27 11:22:59.612 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([q_seq1_1_1_] : [BIGINT]) - [3]
+2020-04-27 11:22:59.612 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([created_2_1_1_] : [TIMESTAMP]) - [2020-04-27T11:22:58.569]
+2020-04-27 11:22:59.613 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([modified3_1_1_] : [TIMESTAMP]) - [2020-04-27T11:22:58.569]
+2020-04-27 11:22:59.613 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([hint4_1_1_] : [VARCHAR]) - [단어2에 대한 힌트]
+2020-04-27 11:22:59.613 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([puzzle_p8_1_1_] : [BIGINT]) - [1]
+2020-04-27 11:22:59.613 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([q_desc5_1_1_] : [VARCHAR]) - [단어2에 대한 설명]
+2020-04-27 11:22:59.613 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([q_keywor6_1_1_] : [VARCHAR]) - [테스트]
+2020-04-27 11:22:59.613 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([word7_1_1_] : [VARCHAR]) - [단어2]
+2020-04-27 11:22:59.613 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([puzzle_p8_1_0__] : [BIGINT]) - [1]
+2020-04-27 11:22:59.613 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([q_seq1_1_0__] : [BIGINT]) - [3]
+2020-04-27 11:22:59.614 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([p_seq1_0_0_] : [BIGINT]) - [1]
+2020-04-27 11:22:59.614 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([q_seq1_1_1_] : [BIGINT]) - [4]
+2020-04-27 11:22:59.614 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([created_2_1_1_] : [TIMESTAMP]) - [2020-04-27T11:22:58.584]
+2020-04-27 11:22:59.614 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([modified3_1_1_] : [TIMESTAMP]) - [2020-04-27T11:22:58.584]
+2020-04-27 11:22:59.615 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([hint4_1_1_] : [VARCHAR]) - [단어3에 대한 힌트]
+2020-04-27 11:22:59.615 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([puzzle_p8_1_1_] : [BIGINT]) - [1]
+2020-04-27 11:22:59.615 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([q_desc5_1_1_] : [VARCHAR]) - [단어3에 대한 설명]
+2020-04-27 11:22:59.615 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([q_keywor6_1_1_] : [VARCHAR]) - [테스트]
+2020-04-27 11:22:59.615 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([word7_1_1_] : [VARCHAR]) - [단어3]
+2020-04-27 11:22:59.615 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([puzzle_p8_1_0__] : [BIGINT]) - [1]
+2020-04-27 11:22:59.615 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([q_seq1_1_0__] : [BIGINT]) - [4]
+2020-04-27 11:22:59.616 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([p_seq1_0_0_] : [BIGINT]) - [1]
+2020-04-27 11:22:59.616 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([q_seq1_1_1_] : [BIGINT]) - [5]
+2020-04-27 11:22:59.616 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([created_2_1_1_] : [TIMESTAMP]) - [2020-04-27T11:22:58.609]
+2020-04-27 11:22:59.617 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([modified3_1_1_] : [TIMESTAMP]) - [2020-04-27T11:22:58.609]
+2020-04-27 11:22:59.617 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([hint4_1_1_] : [VARCHAR]) - [단어4에 대한 힌트]
+2020-04-27 11:22:59.617 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([puzzle_p8_1_1_] : [BIGINT]) - [1]
+2020-04-27 11:22:59.617 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([q_desc5_1_1_] : [VARCHAR]) - [단어4에 대한 설명]
+2020-04-27 11:22:59.617 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([q_keywor6_1_1_] : [VARCHAR]) - [테스트]
+2020-04-27 11:22:59.617 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([word7_1_1_] : [VARCHAR]) - [단어4]
+2020-04-27 11:22:59.617 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([puzzle_p8_1_0__] : [BIGINT]) - [1]
+2020-04-27 11:22:59.620 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([q_seq1_1_0__] : [BIGINT]) - [5]
+2020-04-27 11:22:59.620 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([p_seq1_0_0_] : [BIGINT]) - [1]
+2020-04-27 11:22:59.620 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([q_seq1_1_1_] : [BIGINT]) - [6]
+2020-04-27 11:22:59.621 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([created_2_1_1_] : [TIMESTAMP]) - [2020-04-27T11:22:58.616]
+2020-04-27 11:22:59.621 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([modified3_1_1_] : [TIMESTAMP]) - [2020-04-27T11:22:58.616]
+2020-04-27 11:22:59.621 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([hint4_1_1_] : [VARCHAR]) - [단어5에 대한 힌트]
+2020-04-27 11:22:59.622 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([puzzle_p8_1_1_] : [BIGINT]) - [1]
+2020-04-27 11:22:59.622 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([q_desc5_1_1_] : [VARCHAR]) - [단어5에 대한 설명]
+2020-04-27 11:22:59.622 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([q_keywor6_1_1_] : [VARCHAR]) - [테스트]
+2020-04-27 11:22:59.622 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([word7_1_1_] : [VARCHAR]) - [단어5]
+2020-04-27 11:22:59.622 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([puzzle_p8_1_0__] : [BIGINT]) - [1]
+2020-04-27 11:22:59.622 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([q_seq1_1_0__] : [BIGINT]) - [6]
+2020-04-27 11:22:59.622 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([p_seq1_0_0_] : [BIGINT]) - [1]
+2020-04-27 11:22:59.622 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([q_seq1_1_1_] : [BIGINT]) - [7]
+2020-04-27 11:22:59.623 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([created_2_1_1_] : [TIMESTAMP]) - [2020-04-27T11:22:58.622]
+2020-04-27 11:22:59.623 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([modified3_1_1_] : [TIMESTAMP]) - [2020-04-27T11:22:58.622]
+2020-04-27 11:22:59.623 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([hint4_1_1_] : [VARCHAR]) - [단어6에 대한 힌트]
+2020-04-27 11:22:59.623 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([puzzle_p8_1_1_] : [BIGINT]) - [1]
+2020-04-27 11:22:59.624 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([q_desc5_1_1_] : [VARCHAR]) - [단어6에 대한 설명]
+2020-04-27 11:22:59.624 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([q_keywor6_1_1_] : [VARCHAR]) - [테스트]
+2020-04-27 11:22:59.624 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([word7_1_1_] : [VARCHAR]) - [단어6]
+2020-04-27 11:22:59.624 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([puzzle_p8_1_0__] : [BIGINT]) - [1]
+2020-04-27 11:22:59.624 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([q_seq1_1_0__] : [BIGINT]) - [7]
+2020-04-27 11:22:59.624 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([p_seq1_0_0_] : [BIGINT]) - [1]
+2020-04-27 11:22:59.624 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([q_seq1_1_1_] : [BIGINT]) - [8]
+2020-04-27 11:22:59.625 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([created_2_1_1_] : [TIMESTAMP]) - [2020-04-27T11:22:58.638]
+2020-04-27 11:22:59.625 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([modified3_1_1_] : [TIMESTAMP]) - [2020-04-27T11:22:58.638]
+2020-04-27 11:22:59.625 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([hint4_1_1_] : [VARCHAR]) - [단어7에 대한 힌트]
+2020-04-27 11:22:59.625 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([puzzle_p8_1_1_] : [BIGINT]) - [1]
+2020-04-27 11:22:59.625 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([q_desc5_1_1_] : [VARCHAR]) - [단어7에 대한 설명]
+2020-04-27 11:22:59.625 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([q_keywor6_1_1_] : [VARCHAR]) - [테스트]
+2020-04-27 11:22:59.625 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([word7_1_1_] : [VARCHAR]) - [단어7]
+2020-04-27 11:22:59.625 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([puzzle_p8_1_0__] : [BIGINT]) - [1]
+2020-04-27 11:22:59.626 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([q_seq1_1_0__] : [BIGINT]) - [8]
+2020-04-27 11:22:59.626 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([p_seq1_0_0_] : [BIGINT]) - [1]
+2020-04-27 11:22:59.626 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([q_seq1_1_1_] : [BIGINT]) - [9]
+2020-04-27 11:22:59.626 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([created_2_1_1_] : [TIMESTAMP]) - [2020-04-27T11:22:58.652]
+2020-04-27 11:22:59.626 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([modified3_1_1_] : [TIMESTAMP]) - [2020-04-27T11:22:58.652]
+2020-04-27 11:22:59.626 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([hint4_1_1_] : [VARCHAR]) - [단어8에 대한 힌트]
+2020-04-27 11:22:59.626 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([puzzle_p8_1_1_] : [BIGINT]) - [1]
+2020-04-27 11:22:59.626 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([q_desc5_1_1_] : [VARCHAR]) - [단어8에 대한 설명]
+2020-04-27 11:22:59.627 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([q_keywor6_1_1_] : [VARCHAR]) - [테스트]
+2020-04-27 11:22:59.627 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([word7_1_1_] : [VARCHAR]) - [단어8]
+2020-04-27 11:22:59.627 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([puzzle_p8_1_0__] : [BIGINT]) - [1]
+2020-04-27 11:22:59.627 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([q_seq1_1_0__] : [BIGINT]) - [9]
+2020-04-27 11:22:59.627 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([p_seq1_0_0_] : [BIGINT]) - [1]
+2020-04-27 11:22:59.627 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([q_seq1_1_1_] : [BIGINT]) - [10]
+2020-04-27 11:22:59.628 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([created_2_1_1_] : [TIMESTAMP]) - [2020-04-27T11:22:58.691]
+2020-04-27 11:22:59.628 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([modified3_1_1_] : [TIMESTAMP]) - [2020-04-27T11:22:58.691]
+2020-04-27 11:22:59.628 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([hint4_1_1_] : [VARCHAR]) - [단어9에 대한 힌트]
+2020-04-27 11:22:59.628 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([puzzle_p8_1_1_] : [BIGINT]) - [1]
+2020-04-27 11:22:59.628 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([q_desc5_1_1_] : [VARCHAR]) - [단어9에 대한 설명]
+2020-04-27 11:22:59.628 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([q_keywor6_1_1_] : [VARCHAR]) - [테스트]
+2020-04-27 11:22:59.628 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([word7_1_1_] : [VARCHAR]) - [단어9]
+2020-04-27 11:22:59.628 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([puzzle_p8_1_0__] : [BIGINT]) - [1]
+2020-04-27 11:22:59.628 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([q_seq1_1_0__] : [BIGINT]) - [10]
+Hibernate: DELETE FROM quiz i where i.puzzle_p_seq= ?
+2020-04-27 11:22:59.776 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [1]
+Hibernate: insert into quiz (created_date, modified_date, hint, puzzle_p_seq, q_desc, q_keyword, word) values (?, ?, ?, ?, ?, ?, ?)
+2020-04-27 11:22:59.783 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [TIMESTAMP] - [2020-04-27T11:22:59.782]
+2020-04-27 11:22:59.783 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [TIMESTAMP] - [2020-04-27T11:22:59.782]
+2020-04-27 11:22:59.783 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [VARCHAR] - [수정0에 대한 힌트]
+2020-04-27 11:22:59.784 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [BIGINT] - [1]
+2020-04-27 11:22:59.784 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [5] as [VARCHAR] - [수정0에 대한 설명]
+2020-04-27 11:22:59.784 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [6] as [VARCHAR] - [테스트]
+2020-04-27 11:22:59.784 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [7] as [VARCHAR] - [수정0]
+Hibernate: insert into quiz (created_date, modified_date, hint, puzzle_p_seq, q_desc, q_keyword, word) values (?, ?, ?, ?, ?, ?, ?)
+2020-04-27 11:22:59.788 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [TIMESTAMP] - [2020-04-27T11:22:59.787]
+2020-04-27 11:22:59.789 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [TIMESTAMP] - [2020-04-27T11:22:59.787]
+2020-04-27 11:22:59.789 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [VARCHAR] - [수정1에 대한 힌트]
+2020-04-27 11:22:59.789 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [BIGINT] - [1]
+2020-04-27 11:22:59.789 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [5] as [VARCHAR] - [수정1에 대한 설명]
+2020-04-27 11:22:59.789 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [6] as [VARCHAR] - [테스트]
+2020-04-27 11:22:59.789 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [7] as [VARCHAR] - [수정1]
+Hibernate: insert into quiz (created_date, modified_date, hint, puzzle_p_seq, q_desc, q_keyword, word) values (?, ?, ?, ?, ?, ?, ?)
+2020-04-27 11:22:59.792 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [TIMESTAMP] - [2020-04-27T11:22:59.791]
+2020-04-27 11:22:59.793 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [TIMESTAMP] - [2020-04-27T11:22:59.791]
+2020-04-27 11:22:59.793 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [VARCHAR] - [수정2에 대한 힌트]
+2020-04-27 11:22:59.793 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [BIGINT] - [1]
+2020-04-27 11:22:59.793 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [5] as [VARCHAR] - [수정2에 대한 설명]
+2020-04-27 11:22:59.793 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [6] as [VARCHAR] - [테스트]
+2020-04-27 11:22:59.793 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [7] as [VARCHAR] - [수정2]
+Hibernate: insert into quiz (created_date, modified_date, hint, puzzle_p_seq, q_desc, q_keyword, word) values (?, ?, ?, ?, ?, ?, ?)
+2020-04-27 11:22:59.797 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [TIMESTAMP] - [2020-04-27T11:22:59.796]
+2020-04-27 11:22:59.798 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [TIMESTAMP] - [2020-04-27T11:22:59.796]
+2020-04-27 11:22:59.798 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [VARCHAR] - [수정3에 대한 힌트]
+2020-04-27 11:22:59.798 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [BIGINT] - [1]
+2020-04-27 11:22:59.798 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [5] as [VARCHAR] - [수정3에 대한 설명]
+2020-04-27 11:22:59.798 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [6] as [VARCHAR] - [테스트]
+2020-04-27 11:22:59.798 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [7] as [VARCHAR] - [수정3]
+Hibernate: insert into quiz (created_date, modified_date, hint, puzzle_p_seq, q_desc, q_keyword, word) values (?, ?, ?, ?, ?, ?, ?)
+2020-04-27 11:22:59.801 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [TIMESTAMP] - [2020-04-27T11:22:59.800]
+2020-04-27 11:22:59.801 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [TIMESTAMP] - [2020-04-27T11:22:59.800]
+2020-04-27 11:22:59.802 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [VARCHAR] - [수정4에 대한 힌트]
+2020-04-27 11:22:59.802 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [BIGINT] - [1]
+2020-04-27 11:22:59.802 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [5] as [VARCHAR] - [수정4에 대한 설명]
+2020-04-27 11:22:59.802 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [6] as [VARCHAR] - [테스트]
+2020-04-27 11:22:59.802 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [7] as [VARCHAR] - [수정4]
+Hibernate: insert into quiz (created_date, modified_date, hint, puzzle_p_seq, q_desc, q_keyword, word) values (?, ?, ?, ?, ?, ?, ?)
+2020-04-27 11:22:59.806 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [TIMESTAMP] - [2020-04-27T11:22:59.806]
+2020-04-27 11:22:59.807 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [TIMESTAMP] - [2020-04-27T11:22:59.806]
+2020-04-27 11:22:59.807 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [VARCHAR] - [수정5에 대한 힌트]
+2020-04-27 11:22:59.807 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [BIGINT] - [1]
+2020-04-27 11:22:59.807 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [5] as [VARCHAR] - [수정5에 대한 설명]
+2020-04-27 11:22:59.807 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [6] as [VARCHAR] - [테스트]
+2020-04-27 11:22:59.807 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [7] as [VARCHAR] - [수정5]
+Hibernate: insert into quiz (created_date, modified_date, hint, puzzle_p_seq, q_desc, q_keyword, word) values (?, ?, ?, ?, ?, ?, ?)
+2020-04-27 11:22:59.809 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [TIMESTAMP] - [2020-04-27T11:22:59.808]
+2020-04-27 11:22:59.809 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [TIMESTAMP] - [2020-04-27T11:22:59.808]
+2020-04-27 11:22:59.810 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [VARCHAR] - [수정6에 대한 힌트]
+2020-04-27 11:22:59.810 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [BIGINT] - [1]
+2020-04-27 11:22:59.810 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [5] as [VARCHAR] - [수정6에 대한 설명]
+2020-04-27 11:22:59.810 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [6] as [VARCHAR] - [테스트]
+2020-04-27 11:22:59.811 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [7] as [VARCHAR] - [수정6]
+Hibernate: insert into quiz (created_date, modified_date, hint, puzzle_p_seq, q_desc, q_keyword, word) values (?, ?, ?, ?, ?, ?, ?)
+2020-04-27 11:22:59.816 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [TIMESTAMP] - [2020-04-27T11:22:59.813]
+2020-04-27 11:22:59.816 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [TIMESTAMP] - [2020-04-27T11:22:59.813]
+2020-04-27 11:22:59.816 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [VARCHAR] - [수정7에 대한 힌트]
+2020-04-27 11:22:59.816 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [BIGINT] - [1]
+2020-04-27 11:22:59.816 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [5] as [VARCHAR] - [수정7에 대한 설명]
+2020-04-27 11:22:59.816 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [6] as [VARCHAR] - [테스트]
+2020-04-27 11:22:59.816 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [7] as [VARCHAR] - [수정7]
+Hibernate: insert into quiz (created_date, modified_date, hint, puzzle_p_seq, q_desc, q_keyword, word) values (?, ?, ?, ?, ?, ?, ?)
+2020-04-27 11:22:59.822 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [TIMESTAMP] - [2020-04-27T11:22:59.820]
+2020-04-27 11:22:59.822 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [TIMESTAMP] - [2020-04-27T11:22:59.820]
+2020-04-27 11:22:59.822 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [VARCHAR] - [수정8에 대한 힌트]
+2020-04-27 11:22:59.824 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [BIGINT] - [1]
+2020-04-27 11:22:59.824 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [5] as [VARCHAR] - [수정8에 대한 설명]
+2020-04-27 11:22:59.825 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [6] as [VARCHAR] - [테스트]
+2020-04-27 11:22:59.825 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [7] as [VARCHAR] - [수정8]
+Hibernate: update puzzle set created_date=?, modified_date=?, category_grade=?, category_subject=?, p_desc=?, p_keyword=?, title=? where p_seq=?
+2020-04-27 11:22:59.839 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [TIMESTAMP] - [2020-04-27T11:22:58.424]
+2020-04-27 11:22:59.839 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [TIMESTAMP] - [2020-04-27T11:22:59.826]
+2020-04-27 11:22:59.840 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [INTEGER] - [9]
+2020-04-27 11:22:59.840 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [VARCHAR] - [수정 영어]
+2020-04-27 11:22:59.840 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [5] as [VARCHAR] - [null]
+2020-04-27 11:22:59.840 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [6] as [VARCHAR] - [null]
+2020-04-27 11:22:59.840 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [7] as [VARCHAR] - [테스트 퍼즐2]
+2020-04-27 11:22:59.840 TRACE 3212 --- [o-auto-1-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [8] as [BIGINT] - [1]
+Hibernate: select puzzle0_.p_seq as p_seq1_0_0_, quizzes1_.q_seq as q_seq1_1_1_, puzzle0_.created_date as created_2_0_0_, puzzle0_.modified_date as modified3_0_0_, puzzle0_.category_grade as category4_0_0_, puzzle0_.category_subject as category5_0_0_, puzzle0_.p_desc as p_desc6_0_0_, puzzle0_.p_keyword as p_keywor7_0_0_, puzzle0_.title as title8_0_0_, quizzes1_.created_date as created_2_1_1_, quizzes1_.modified_date as modified3_1_1_, quizzes1_.hint as hint4_1_1_, quizzes1_.puzzle_p_seq as puzzle_p8_1_1_, quizzes1_.q_desc as q_desc5_1_1_, quizzes1_.q_keyword as q_keywor6_1_1_, quizzes1_.word as word7_1_1_, quizzes1_.puzzle_p_seq as puzzle_p8_1_0__, quizzes1_.q_seq as q_seq1_1_0__ from puzzle puzzle0_ left outer join quiz quizzes1_ on puzzle0_.p_seq=quizzes1_.puzzle_p_seq where puzzle0_.p_seq=?
+2020-04-27 11:23:00.045 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [1]
+2020-04-27 11:23:00.047 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([p_seq1_0_0_] : [BIGINT]) - [1]
+2020-04-27 11:23:00.047 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([q_seq1_1_1_] : [BIGINT]) - [11]
+2020-04-27 11:23:00.048 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([created_2_0_0_] : [TIMESTAMP]) - [2020-04-27T11:22:58.424]
+2020-04-27 11:23:00.048 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([modified3_0_0_] : [TIMESTAMP]) - [2020-04-27T11:22:59.826]
+2020-04-27 11:23:00.048 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([category4_0_0_] : [INTEGER]) - [9]
+2020-04-27 11:23:00.048 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([category5_0_0_] : [VARCHAR]) - [수정 영어]
+2020-04-27 11:23:00.048 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([p_desc6_0_0_] : [VARCHAR]) - [null]
+2020-04-27 11:23:00.049 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([p_keywor7_0_0_] : [VARCHAR]) - [null]
+2020-04-27 11:23:00.049 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([title8_0_0_] : [VARCHAR]) - [테스트 퍼즐2]
+2020-04-27 11:23:00.049 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([created_2_1_1_] : [TIMESTAMP]) - [2020-04-27T11:22:59.782]
+2020-04-27 11:23:00.049 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([modified3_1_1_] : [TIMESTAMP]) - [2020-04-27T11:22:59.782]
+2020-04-27 11:23:00.049 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([hint4_1_1_] : [VARCHAR]) - [수정0에 대한 힌트]
+2020-04-27 11:23:00.050 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([puzzle_p8_1_1_] : [BIGINT]) - [1]
+2020-04-27 11:23:00.050 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([q_desc5_1_1_] : [VARCHAR]) - [수정0에 대한 설명]
+2020-04-27 11:23:00.050 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([q_keywor6_1_1_] : [VARCHAR]) - [테스트]
+2020-04-27 11:23:00.050 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([word7_1_1_] : [VARCHAR]) - [수정0]
+2020-04-27 11:23:00.050 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([puzzle_p8_1_0__] : [BIGINT]) - [1]
+2020-04-27 11:23:00.051 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([q_seq1_1_0__] : [BIGINT]) - [11]
+2020-04-27 11:23:00.052 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([p_seq1_0_0_] : [BIGINT]) - [1]
+2020-04-27 11:23:00.053 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([q_seq1_1_1_] : [BIGINT]) - [12]
+2020-04-27 11:23:00.055 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([created_2_1_1_] : [TIMESTAMP]) - [2020-04-27T11:22:59.787]
+2020-04-27 11:23:00.055 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([modified3_1_1_] : [TIMESTAMP]) - [2020-04-27T11:22:59.787]
+2020-04-27 11:23:00.055 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([hint4_1_1_] : [VARCHAR]) - [수정1에 대한 힌트]
+2020-04-27 11:23:00.055 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([puzzle_p8_1_1_] : [BIGINT]) - [1]
+2020-04-27 11:23:00.055 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([q_desc5_1_1_] : [VARCHAR]) - [수정1에 대한 설명]
+2020-04-27 11:23:00.055 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([q_keywor6_1_1_] : [VARCHAR]) - [테스트]
+2020-04-27 11:23:00.055 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([word7_1_1_] : [VARCHAR]) - [수정1]
+2020-04-27 11:23:00.055 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([puzzle_p8_1_0__] : [BIGINT]) - [1]
+2020-04-27 11:23:00.056 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([q_seq1_1_0__] : [BIGINT]) - [12]
+2020-04-27 11:23:00.056 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([p_seq1_0_0_] : [BIGINT]) - [1]
+2020-04-27 11:23:00.056 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([q_seq1_1_1_] : [BIGINT]) - [13]
+2020-04-27 11:23:00.057 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([created_2_1_1_] : [TIMESTAMP]) - [2020-04-27T11:22:59.791]
+2020-04-27 11:23:00.057 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([modified3_1_1_] : [TIMESTAMP]) - [2020-04-27T11:22:59.791]
+2020-04-27 11:23:00.057 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([hint4_1_1_] : [VARCHAR]) - [수정2에 대한 힌트]
+2020-04-27 11:23:00.057 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([puzzle_p8_1_1_] : [BIGINT]) - [1]
+2020-04-27 11:23:00.057 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([q_desc5_1_1_] : [VARCHAR]) - [수정2에 대한 설명]
+2020-04-27 11:23:00.057 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([q_keywor6_1_1_] : [VARCHAR]) - [테스트]
+2020-04-27 11:23:00.057 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([word7_1_1_] : [VARCHAR]) - [수정2]
+2020-04-27 11:23:00.058 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([puzzle_p8_1_0__] : [BIGINT]) - [1]
+2020-04-27 11:23:00.058 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([q_seq1_1_0__] : [BIGINT]) - [13]
+2020-04-27 11:23:00.058 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([p_seq1_0_0_] : [BIGINT]) - [1]
+2020-04-27 11:23:00.058 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([q_seq1_1_1_] : [BIGINT]) - [14]
+2020-04-27 11:23:00.058 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([created_2_1_1_] : [TIMESTAMP]) - [2020-04-27T11:22:59.796]
+2020-04-27 11:23:00.061 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([modified3_1_1_] : [TIMESTAMP]) - [2020-04-27T11:22:59.796]
+2020-04-27 11:23:00.061 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([hint4_1_1_] : [VARCHAR]) - [수정3에 대한 힌트]
+2020-04-27 11:23:00.062 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([puzzle_p8_1_1_] : [BIGINT]) - [1]
+2020-04-27 11:23:00.062 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([q_desc5_1_1_] : [VARCHAR]) - [수정3에 대한 설명]
+2020-04-27 11:23:00.062 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([q_keywor6_1_1_] : [VARCHAR]) - [테스트]
+2020-04-27 11:23:00.062 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([word7_1_1_] : [VARCHAR]) - [수정3]
+2020-04-27 11:23:00.063 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([puzzle_p8_1_0__] : [BIGINT]) - [1]
+2020-04-27 11:23:00.063 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([q_seq1_1_0__] : [BIGINT]) - [14]
+2020-04-27 11:23:00.063 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([p_seq1_0_0_] : [BIGINT]) - [1]
+2020-04-27 11:23:00.063 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([q_seq1_1_1_] : [BIGINT]) - [15]
+2020-04-27 11:23:00.081 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([created_2_1_1_] : [TIMESTAMP]) - [2020-04-27T11:22:59.800]
+2020-04-27 11:23:00.081 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([modified3_1_1_] : [TIMESTAMP]) - [2020-04-27T11:22:59.800]
+2020-04-27 11:23:00.081 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([hint4_1_1_] : [VARCHAR]) - [수정4에 대한 힌트]
+2020-04-27 11:23:00.081 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([puzzle_p8_1_1_] : [BIGINT]) - [1]
+2020-04-27 11:23:00.082 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([q_desc5_1_1_] : [VARCHAR]) - [수정4에 대한 설명]
+2020-04-27 11:23:00.082 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([q_keywor6_1_1_] : [VARCHAR]) - [테스트]
+2020-04-27 11:23:00.082 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([word7_1_1_] : [VARCHAR]) - [수정4]
+2020-04-27 11:23:00.082 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([puzzle_p8_1_0__] : [BIGINT]) - [1]
+2020-04-27 11:23:00.082 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([q_seq1_1_0__] : [BIGINT]) - [15]
+2020-04-27 11:23:00.082 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([p_seq1_0_0_] : [BIGINT]) - [1]
+2020-04-27 11:23:00.082 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([q_seq1_1_1_] : [BIGINT]) - [16]
+2020-04-27 11:23:00.083 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([created_2_1_1_] : [TIMESTAMP]) - [2020-04-27T11:22:59.806]
+2020-04-27 11:23:00.083 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([modified3_1_1_] : [TIMESTAMP]) - [2020-04-27T11:22:59.806]
+2020-04-27 11:23:00.083 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([hint4_1_1_] : [VARCHAR]) - [수정5에 대한 힌트]
+2020-04-27 11:23:00.083 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([puzzle_p8_1_1_] : [BIGINT]) - [1]
+2020-04-27 11:23:00.083 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([q_desc5_1_1_] : [VARCHAR]) - [수정5에 대한 설명]
+2020-04-27 11:23:00.083 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([q_keywor6_1_1_] : [VARCHAR]) - [테스트]
+2020-04-27 11:23:00.091 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([word7_1_1_] : [VARCHAR]) - [수정5]
+2020-04-27 11:23:00.091 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([puzzle_p8_1_0__] : [BIGINT]) - [1]
+2020-04-27 11:23:00.091 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([q_seq1_1_0__] : [BIGINT]) - [16]
+2020-04-27 11:23:00.091 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([p_seq1_0_0_] : [BIGINT]) - [1]
+2020-04-27 11:23:00.092 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([q_seq1_1_1_] : [BIGINT]) - [17]
+2020-04-27 11:23:00.092 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([created_2_1_1_] : [TIMESTAMP]) - [2020-04-27T11:22:59.808]
+2020-04-27 11:23:00.092 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([modified3_1_1_] : [TIMESTAMP]) - [2020-04-27T11:22:59.808]
+2020-04-27 11:23:00.092 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([hint4_1_1_] : [VARCHAR]) - [수정6에 대한 힌트]
+2020-04-27 11:23:00.093 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([puzzle_p8_1_1_] : [BIGINT]) - [1]
+2020-04-27 11:23:00.093 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([q_desc5_1_1_] : [VARCHAR]) - [수정6에 대한 설명]
+2020-04-27 11:23:00.093 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([q_keywor6_1_1_] : [VARCHAR]) - [테스트]
+2020-04-27 11:23:00.093 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([word7_1_1_] : [VARCHAR]) - [수정6]
+2020-04-27 11:23:00.093 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([puzzle_p8_1_0__] : [BIGINT]) - [1]
+2020-04-27 11:23:00.093 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([q_seq1_1_0__] : [BIGINT]) - [17]
+2020-04-27 11:23:00.093 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([p_seq1_0_0_] : [BIGINT]) - [1]
+2020-04-27 11:23:00.093 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([q_seq1_1_1_] : [BIGINT]) - [18]
+2020-04-27 11:23:00.094 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([created_2_1_1_] : [TIMESTAMP]) - [2020-04-27T11:22:59.813]
+2020-04-27 11:23:00.094 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([modified3_1_1_] : [TIMESTAMP]) - [2020-04-27T11:22:59.813]
+2020-04-27 11:23:00.099 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([hint4_1_1_] : [VARCHAR]) - [수정7에 대한 힌트]
+2020-04-27 11:23:00.100 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([puzzle_p8_1_1_] : [BIGINT]) - [1]
+2020-04-27 11:23:00.100 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([q_desc5_1_1_] : [VARCHAR]) - [수정7에 대한 설명]
+2020-04-27 11:23:00.100 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([q_keywor6_1_1_] : [VARCHAR]) - [테스트]
+2020-04-27 11:23:00.100 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([word7_1_1_] : [VARCHAR]) - [수정7]
+2020-04-27 11:23:00.100 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([puzzle_p8_1_0__] : [BIGINT]) - [1]
+2020-04-27 11:23:00.100 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([q_seq1_1_0__] : [BIGINT]) - [18]
+2020-04-27 11:23:00.101 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([p_seq1_0_0_] : [BIGINT]) - [1]
+2020-04-27 11:23:00.101 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([q_seq1_1_1_] : [BIGINT]) - [19]
+2020-04-27 11:23:00.101 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([created_2_1_1_] : [TIMESTAMP]) - [2020-04-27T11:22:59.820]
+2020-04-27 11:23:00.101 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([modified3_1_1_] : [TIMESTAMP]) - [2020-04-27T11:22:59.820]
+2020-04-27 11:23:00.104 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([hint4_1_1_] : [VARCHAR]) - [수정8에 대한 힌트]
+2020-04-27 11:23:00.104 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([puzzle_p8_1_1_] : [BIGINT]) - [1]
+2020-04-27 11:23:00.104 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([q_desc5_1_1_] : [VARCHAR]) - [수정8에 대한 설명]
+2020-04-27 11:23:00.106 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([q_keywor6_1_1_] : [VARCHAR]) - [테스트]
+2020-04-27 11:23:00.107 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([word7_1_1_] : [VARCHAR]) - [수정8]
+2020-04-27 11:23:00.108 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([puzzle_p8_1_0__] : [BIGINT]) - [1]
+2020-04-27 11:23:00.108 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([q_seq1_1_0__] : [BIGINT]) - [19]
+Hibernate: select quiz0_.q_seq as q_seq1_1_, quiz0_.created_date as created_2_1_, quiz0_.modified_date as modified3_1_, quiz0_.hint as hint4_1_, quiz0_.puzzle_p_seq as puzzle_p8_1_, quiz0_.q_desc as q_desc5_1_, quiz0_.q_keyword as q_keywor6_1_, quiz0_.word as word7_1_ from quiz quiz0_
+2020-04-27 11:23:00.159 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([q_seq1_1_] : [BIGINT]) - [11]
+2020-04-27 11:23:00.160 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([created_2_1_] : [TIMESTAMP]) - [2020-04-27T11:22:59.782]
+2020-04-27 11:23:00.161 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([modified3_1_] : [TIMESTAMP]) - [2020-04-27T11:22:59.782]
+2020-04-27 11:23:00.161 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([hint4_1_] : [VARCHAR]) - [수정0에 대한 힌트]
+2020-04-27 11:23:00.161 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([puzzle_p8_1_] : [BIGINT]) - [1]
+2020-04-27 11:23:00.161 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([q_desc5_1_] : [VARCHAR]) - [수정0에 대한 설명]
+2020-04-27 11:23:00.161 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([q_keywor6_1_] : [VARCHAR]) - [테스트]
+2020-04-27 11:23:00.161 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([word7_1_] : [VARCHAR]) - [수정0]
+2020-04-27 11:23:00.162 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([q_seq1_1_] : [BIGINT]) - [12]
+2020-04-27 11:23:00.163 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([created_2_1_] : [TIMESTAMP]) - [2020-04-27T11:22:59.787]
+2020-04-27 11:23:00.164 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([modified3_1_] : [TIMESTAMP]) - [2020-04-27T11:22:59.787]
+2020-04-27 11:23:00.165 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([hint4_1_] : [VARCHAR]) - [수정1에 대한 힌트]
+2020-04-27 11:23:00.165 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([puzzle_p8_1_] : [BIGINT]) - [1]
+2020-04-27 11:23:00.165 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([q_desc5_1_] : [VARCHAR]) - [수정1에 대한 설명]
+2020-04-27 11:23:00.165 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([q_keywor6_1_] : [VARCHAR]) - [테스트]
+2020-04-27 11:23:00.165 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([word7_1_] : [VARCHAR]) - [수정1]
+2020-04-27 11:23:00.165 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([q_seq1_1_] : [BIGINT]) - [13]
+2020-04-27 11:23:00.173 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([created_2_1_] : [TIMESTAMP]) - [2020-04-27T11:22:59.791]
+2020-04-27 11:23:00.173 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([modified3_1_] : [TIMESTAMP]) - [2020-04-27T11:22:59.791]
+2020-04-27 11:23:00.174 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([hint4_1_] : [VARCHAR]) - [수정2에 대한 힌트]
+2020-04-27 11:23:00.174 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([puzzle_p8_1_] : [BIGINT]) - [1]
+2020-04-27 11:23:00.174 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([q_desc5_1_] : [VARCHAR]) - [수정2에 대한 설명]
+2020-04-27 11:23:00.174 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([q_keywor6_1_] : [VARCHAR]) - [테스트]
+2020-04-27 11:23:00.174 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([word7_1_] : [VARCHAR]) - [수정2]
+2020-04-27 11:23:00.174 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([q_seq1_1_] : [BIGINT]) - [14]
+2020-04-27 11:23:00.174 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([created_2_1_] : [TIMESTAMP]) - [2020-04-27T11:22:59.796]
+2020-04-27 11:23:00.174 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([modified3_1_] : [TIMESTAMP]) - [2020-04-27T11:22:59.796]
+2020-04-27 11:23:00.174 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([hint4_1_] : [VARCHAR]) - [수정3에 대한 힌트]
+2020-04-27 11:23:00.174 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([puzzle_p8_1_] : [BIGINT]) - [1]
+2020-04-27 11:23:00.175 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([q_desc5_1_] : [VARCHAR]) - [수정3에 대한 설명]
+2020-04-27 11:23:00.175 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([q_keywor6_1_] : [VARCHAR]) - [테스트]
+2020-04-27 11:23:00.175 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([word7_1_] : [VARCHAR]) - [수정3]
+2020-04-27 11:23:00.175 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([q_seq1_1_] : [BIGINT]) - [15]
+2020-04-27 11:23:00.175 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([created_2_1_] : [TIMESTAMP]) - [2020-04-27T11:22:59.800]
+2020-04-27 11:23:00.175 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([modified3_1_] : [TIMESTAMP]) - [2020-04-27T11:22:59.800]
+2020-04-27 11:23:00.175 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([hint4_1_] : [VARCHAR]) - [수정4에 대한 힌트]
+2020-04-27 11:23:00.175 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([puzzle_p8_1_] : [BIGINT]) - [1]
+2020-04-27 11:23:00.175 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([q_desc5_1_] : [VARCHAR]) - [수정4에 대한 설명]
+2020-04-27 11:23:00.176 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([q_keywor6_1_] : [VARCHAR]) - [테스트]
+2020-04-27 11:23:00.176 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([word7_1_] : [VARCHAR]) - [수정4]
+2020-04-27 11:23:00.176 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([q_seq1_1_] : [BIGINT]) - [16]
+2020-04-27 11:23:00.176 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([created_2_1_] : [TIMESTAMP]) - [2020-04-27T11:22:59.806]
+2020-04-27 11:23:00.176 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([modified3_1_] : [TIMESTAMP]) - [2020-04-27T11:22:59.806]
+2020-04-27 11:23:00.176 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([hint4_1_] : [VARCHAR]) - [수정5에 대한 힌트]
+2020-04-27 11:23:00.176 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([puzzle_p8_1_] : [BIGINT]) - [1]
+2020-04-27 11:23:00.176 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([q_desc5_1_] : [VARCHAR]) - [수정5에 대한 설명]
+2020-04-27 11:23:00.176 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([q_keywor6_1_] : [VARCHAR]) - [테스트]
+2020-04-27 11:23:00.176 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([word7_1_] : [VARCHAR]) - [수정5]
+2020-04-27 11:23:00.177 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([q_seq1_1_] : [BIGINT]) - [17]
+2020-04-27 11:23:00.177 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([created_2_1_] : [TIMESTAMP]) - [2020-04-27T11:22:59.808]
+2020-04-27 11:23:00.177 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([modified3_1_] : [TIMESTAMP]) - [2020-04-27T11:22:59.808]
+2020-04-27 11:23:00.177 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([hint4_1_] : [VARCHAR]) - [수정6에 대한 힌트]
+2020-04-27 11:23:00.177 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([puzzle_p8_1_] : [BIGINT]) - [1]
+2020-04-27 11:23:00.177 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([q_desc5_1_] : [VARCHAR]) - [수정6에 대한 설명]
+2020-04-27 11:23:00.177 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([q_keywor6_1_] : [VARCHAR]) - [테스트]
+2020-04-27 11:23:00.177 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([word7_1_] : [VARCHAR]) - [수정6]
+2020-04-27 11:23:00.177 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([q_seq1_1_] : [BIGINT]) - [18]
+2020-04-27 11:23:00.178 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([created_2_1_] : [TIMESTAMP]) - [2020-04-27T11:22:59.813]
+2020-04-27 11:23:00.178 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([modified3_1_] : [TIMESTAMP]) - [2020-04-27T11:22:59.813]
+2020-04-27 11:23:00.179 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([hint4_1_] : [VARCHAR]) - [수정7에 대한 힌트]
+2020-04-27 11:23:00.180 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([puzzle_p8_1_] : [BIGINT]) - [1]
+2020-04-27 11:23:00.182 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([q_desc5_1_] : [VARCHAR]) - [수정7에 대한 설명]
+2020-04-27 11:23:00.183 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([q_keywor6_1_] : [VARCHAR]) - [테스트]
+2020-04-27 11:23:00.184 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([word7_1_] : [VARCHAR]) - [수정7]
+2020-04-27 11:23:00.188 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([q_seq1_1_] : [BIGINT]) - [19]
+2020-04-27 11:23:00.189 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([created_2_1_] : [TIMESTAMP]) - [2020-04-27T11:22:59.820]
+2020-04-27 11:23:00.189 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([modified3_1_] : [TIMESTAMP]) - [2020-04-27T11:22:59.820]
+2020-04-27 11:23:00.189 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([hint4_1_] : [VARCHAR]) - [수정8에 대한 힌트]
+2020-04-27 11:23:00.190 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([puzzle_p8_1_] : [BIGINT]) - [1]
+2020-04-27 11:23:00.190 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([q_desc5_1_] : [VARCHAR]) - [수정8에 대한 설명]
+2020-04-27 11:23:00.190 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([q_keywor6_1_] : [VARCHAR]) - [테스트]
+2020-04-27 11:23:00.190 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([word7_1_] : [VARCHAR]) - [수정8]
+Hibernate: select puzzle0_.p_seq as p_seq1_0_0_, puzzle0_.created_date as created_2_0_0_, puzzle0_.modified_date as modified3_0_0_, puzzle0_.category_grade as category4_0_0_, puzzle0_.category_subject as category5_0_0_, puzzle0_.p_desc as p_desc6_0_0_, puzzle0_.p_keyword as p_keywor7_0_0_, puzzle0_.title as title8_0_0_ from puzzle puzzle0_ where puzzle0_.p_seq=?
+2020-04-27 11:23:00.192 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [1]
+2020-04-27 11:23:00.201 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([created_2_0_0_] : [TIMESTAMP]) - [2020-04-27T11:22:58.424]
+2020-04-27 11:23:00.201 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([modified3_0_0_] : [TIMESTAMP]) - [2020-04-27T11:22:59.826]
+2020-04-27 11:23:00.201 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([category4_0_0_] : [INTEGER]) - [9]
+2020-04-27 11:23:00.201 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([category5_0_0_] : [VARCHAR]) - [수정 영어]
+2020-04-27 11:23:00.201 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([p_desc6_0_0_] : [VARCHAR]) - [null]
+2020-04-27 11:23:00.202 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([p_keywor7_0_0_] : [VARCHAR]) - [null]
+2020-04-27 11:23:00.202 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([title8_0_0_] : [VARCHAR]) - [테스트 퍼즐2]
+2020-04-27 11:23:00.206 TRACE 3212 --- [    Test worker] org.hibernate.type.CollectionType        : Created collection wrapper: [io.botle.game.crossword.domain.puzzle.Puzzle.quizzes#1]
+Hibernate: delete from quiz where q_seq=?
+2020-04-27 11:23:00.230 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [11]
+Hibernate: delete from quiz where q_seq=?
+2020-04-27 11:23:00.233 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [12]
+Hibernate: delete from quiz where q_seq=?
+2020-04-27 11:23:00.234 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [13]
+Hibernate: delete from quiz where q_seq=?
+2020-04-27 11:23:00.235 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [14]
+Hibernate: delete from quiz where q_seq=?
+2020-04-27 11:23:00.237 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [15]
+Hibernate: delete from quiz where q_seq=?
+2020-04-27 11:23:00.238 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [16]
+Hibernate: delete from quiz where q_seq=?
+2020-04-27 11:23:00.238 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [17]
+Hibernate: delete from quiz where q_seq=?
+2020-04-27 11:23:00.239 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [18]
+Hibernate: delete from quiz where q_seq=?
+2020-04-27 11:23:00.240 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [19]
+Hibernate: select puzzle0_.p_seq as p_seq1_0_, puzzle0_.created_date as created_2_0_, puzzle0_.modified_date as modified3_0_, puzzle0_.category_grade as category4_0_, puzzle0_.category_subject as category5_0_, puzzle0_.p_desc as p_desc6_0_, puzzle0_.p_keyword as p_keywor7_0_, puzzle0_.title as title8_0_ from puzzle puzzle0_
+2020-04-27 11:23:00.245 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([p_seq1_0_] : [BIGINT]) - [1]
+2020-04-27 11:23:00.246 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([created_2_0_] : [TIMESTAMP]) - [2020-04-27T11:22:58.424]
+2020-04-27 11:23:00.247 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([modified3_0_] : [TIMESTAMP]) - [2020-04-27T11:22:59.826]
+2020-04-27 11:23:00.247 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([category4_0_] : [INTEGER]) - [9]
+2020-04-27 11:23:00.247 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([category5_0_] : [VARCHAR]) - [수정 영어]
+2020-04-27 11:23:00.247 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([p_desc6_0_] : [VARCHAR]) - [null]
+2020-04-27 11:23:00.247 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([p_keywor7_0_] : [VARCHAR]) - [null]
+2020-04-27 11:23:00.247 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([title8_0_] : [VARCHAR]) - [테스트 퍼즐2]
+2020-04-27 11:23:00.247 TRACE 3212 --- [    Test worker] org.hibernate.type.CollectionType        : Created collection wrapper: [io.botle.game.crossword.domain.puzzle.Puzzle.quizzes#1]
+Hibernate: select quizzes0_.puzzle_p_seq as puzzle_p8_1_0_, quizzes0_.q_seq as q_seq1_1_0_, quizzes0_.q_seq as q_seq1_1_1_, quizzes0_.created_date as created_2_1_1_, quizzes0_.modified_date as modified3_1_1_, quizzes0_.hint as hint4_1_1_, quizzes0_.puzzle_p_seq as puzzle_p8_1_1_, quizzes0_.q_desc as q_desc5_1_1_, quizzes0_.q_keyword as q_keywor6_1_1_, quizzes0_.word as word7_1_1_ from quiz quizzes0_ where quizzes0_.puzzle_p_seq=?
+2020-04-27 11:23:00.250 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [1]
+Hibernate: delete from puzzle where p_seq=?
+2020-04-27 11:23:00.252 TRACE 3212 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [1]
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -6,10 +6,7 @@ import io.botle.game.crossword.domain.puzzle.PuzzleRepositorySupport;
 import io.botle.game.crossword.domain.quiz.Quiz;
 import io.botle.game.crossword.domain.quiz.QuizRepository;
 import io.botle.game.crossword.util.CrosswordMod;
-import io.botle.game.crossword.web.dto.CrosswordResponseDto;
-import io.botle.game.crossword.web.dto.CrosswordSaveRequestDto;
-import io.botle.game.crossword.web.dto.PuzzleListResponseDto;
-import io.botle.game.crossword.web.dto.QuizSaveRequestDto;
+import io.botle.game.crossword.web.dto.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -82,5 +79,44 @@ public class CrosswordService {
         map.put("info", dto);
 
         return map;
+    }
+
+    @Transactional
+    public Long update(Long p_seq, PuzzleUpdateRequestDto requestDto) {
+        Puzzle puzzle = puzzleRepositorySupport.findPuzzleBySeq2(p_seq);
+
+        List<Quiz> quizzes = puzzle.getQuizzes();
+        List<QuizUpdateRequestDto> quizUpdateRequestDtos = requestDto.getQuizzes();
+        // 퀴즈 삭제도 고려해야 함. 전부 삭제했다가 다시 넣는 것은 어떨까?
+        if(quizzes != null){
+            quizRepository.deleteAllByPuzzleSeq(p_seq);
+
+            for(int i=0;i<quizUpdateRequestDtos.size();i++){
+                Quiz quiz = quizUpdateRequestDtos.get(i).toEntity();
+                puzzle.addQuiz(quiz);
+            }
+        }
+        // 이건 update 하면 그냥 될 것 같고
+        puzzle.update(requestDto.getTitle(),
+                requestDto.getCategory_grade(),
+                requestDto.getP_desc(),
+                requestDto.getCategory_subject(),
+                requestDto.getP_keyword()
+        );
+
+
+        return p_seq;
+    }
+
+    @Transactional
+    public void delete (Long p_seq) {
+        // quiz는 싹 다 삭제
+        Puzzle puzzle = puzzleRepositorySupport.findPuzzleBySeq2(p_seq);
+
+        List<Quiz> quizzes = puzzle.getQuizzes();
+        if(quizzes != null) {
+            quizRepository.deleteAllByPuzzleSeq(p_seq);
+            puzzleRepository.delete(puzzle);
+        }
     }
 }
