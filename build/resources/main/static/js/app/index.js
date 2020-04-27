@@ -55,6 +55,25 @@ var index = {
         }
       }
     });
+    // 학년 제대로 표시해주기
+    const select_grades = document.getElementsByClassName(
+      "puzzle_category_grade"
+    );
+    console.log(select_grades);
+    if (select_grades.length > 0) {
+      for (let i = 0; i < select_grades.length; i++) {
+        const select_grade = select_grades[i];
+        const grade_val = parseInt(select_grade.innerHTML);
+        if (grade_val < 7) {
+          grade_val = `초 ${grade_val}`;
+        } else if (grade_val >= 7 && grade_val < 10) {
+          grade_val = `중 ${grade_val - 6}`;
+        } else {
+          grade_val = `고 ${grade_val - 9}`;
+        }
+        select_grade.innerHTML = grade_val;
+      }
+    }
   },
   save: function () {
     // 유효성 체크들을 먼저 해볼까?

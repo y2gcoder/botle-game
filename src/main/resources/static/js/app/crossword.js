@@ -368,6 +368,8 @@ const crossword = {
     }
   },
   showQuiz: function (input) {
+    document.getElementById("quiz-keyword").innerHTML = "";
+
     const block = input.parentNode;
     const blockArray = block.getAttribute("id").split("-");
     const quiz_across = blockArray[0];
@@ -385,10 +387,31 @@ const crossword = {
       const quiz = quizzes[i];
       if (word == quiz.word) {
         const desc = quiz.q_desc;
-        const keyword = `#${quiz.q_keyword}`;
+        const keywords = quiz.q_keyword.split(",");
+        console.log(keywords);
+        for (let j = 0; j < keywords.length; j++) {
+          const keyword = keywords[j].trim();
+          console.log(keyword);
+
+          let tagA = document.createElement("a");
+          tagA.setAttribute(
+            "href",
+            `https://www.google.com/search?q=${keyword}`
+          );
+          tagA.setAttribute("target", "_blank");
+          tagA.setAttribute("title", keyword);
+          tagA.innerText = `#${keyword}`;
+          document.getElementById("quiz-keyword").appendChild(tagA);
+
+          // let html = `<a href='https://www.google.com/search?q=`;
+          // html += `${keyword}' target='_blank' title='${keyword}'>`;
+          // html += `#${keyword}`;
+          // html += `</a>`;
+          // document.getElementById("quiz-keyword").innerHTML = html;
+        }
 
         document.getElementById("quiz-desc").innerText = desc;
-        document.getElementById("quiz-keyword").innerText = keyword;
+
         break;
       }
     }

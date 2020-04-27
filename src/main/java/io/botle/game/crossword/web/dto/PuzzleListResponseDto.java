@@ -11,7 +11,7 @@ import java.util.List;
 public class PuzzleListResponseDto {
     private Long p_seq;
     private String title;
-    private Integer category_grade;
+    private String category_grade;
     private String p_desc;
     private String category_subject;
     private String p_keyword;
@@ -21,10 +21,24 @@ public class PuzzleListResponseDto {
     public PuzzleListResponseDto(Puzzle entity) {
         this.p_seq = entity.getP_seq();
         this.title = entity.getTitle();
-        this.category_grade = entity.getCategory_grade();
+        this.category_grade = convertToString(entity.getCategory_grade());
         this.p_desc = entity.getP_desc();
         this.category_subject = entity.getCategory_subject();
         this.p_keyword = entity.getP_keyword();
 //        this.quizzes = entity.getQuizzes();
     }
+
+    private String convertToString(Integer category_grade) {
+        if (category_grade < 7) {
+            return "초"+category_grade;
+        }else if(category_grade >= 7 && category_grade < 10){
+            return "중"+(category_grade-6);
+        }else if(category_grade >=10 && category_grade < 13) {
+            return "고"+(category_grade-9);
+        }else {
+            return "미정";
+        }
+
+    }
+
 }
