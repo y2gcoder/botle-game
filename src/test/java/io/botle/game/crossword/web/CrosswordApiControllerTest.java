@@ -151,88 +151,88 @@ public class CrosswordApiControllerTest {
 
     }
 
-    @Test
-    public void Puzzle들_불러오기() throws Exception {
-
-        //given
-        String title = "테스트 퍼즐";
-        Integer category_grade = 9;
-
-        String p_desc = "테스트 퍼즐 설명입니다.";
-        String category_subject = "영어";
-        String p_keyword = "테스트";
-
-        Puzzle puzzle = puzzleRepository.save(Puzzle.builder()
-                .title(title)
-                .p_desc(p_desc)
-                .category_grade(category_grade)
-                .category_subject(category_subject)
-                .p_keyword(p_keyword)
-                .build()
-        );
-
-        for(int i=0;i<10;i++){
-            String word = "단어"+i;
-            String q_desc = word+"에 대한 설명";
-            String hint = word+"에 대한 힌트";
-            String q_keyword = "테스트";
-
-            Quiz quiz = Quiz.builder()
-                    .word(word)
-                    .q_desc(q_desc)
-                    .hint(hint)
-                    .q_keyword(q_keyword)
-                    .build();
-            quiz.setPuzzle(puzzle);
-
-            quizRepository.save(quiz);
-        }
-
-        String url = "http://localhost:"+port+"/api/v1/puzzle";
-
-//        ResponseEntity<List<PuzzleListResponseDto>> responseEntity = restTemplate.getForEntity(url, List<PuzzleListResponseDto>.class);
-
-        //then
-//        assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
-
-
-    }
-
-    @Test
-    public void Puzzle_불러오기() throws Exception{
-        //given
-        String title = "테스트 퍼즐";
-        Integer category_grade = 9;
-
-        String p_desc = "테스트 퍼즐 설명입니다.";
-        String category_subject = "영어";
-        String p_keyword = "테스트";
-
-        Puzzle puzzle = puzzleRepository.save(Puzzle.builder()
-                .title(title)
-                .p_desc(p_desc)
-                .category_grade(category_grade)
-                .category_subject(category_subject)
-                .p_keyword(p_keyword)
-                .build()
-        );
-
-        for(int i=0;i<10;i++){
-            String word = "단어"+i;
-            String q_desc = word+"에 대한 설명";
-            String hint = word+"에 대한 힌트";
-            String q_keyword = "테스트";
-
-            Quiz quiz = Quiz.builder()
-                    .word(word)
-                    .q_desc(q_desc)
-                    .hint(hint)
-                    .q_keyword(q_keyword)
-                    .build();
-            quiz.setPuzzle(puzzle);
-
-            quizRepository.save(quiz);
-        }
+//    @Test
+//    public void Puzzle들_불러오기() throws Exception {
+//
+//        //given
+//        String title = "테스트 퍼즐";
+//        Integer category_grade = 9;
+//
+//        String p_desc = "테스트 퍼즐 설명입니다.";
+//        String category_subject = "영어";
+//        String p_keyword = "테스트";
+//
+//        Puzzle puzzle = puzzleRepository.save(Puzzle.builder()
+//                .title(title)
+//                .p_desc(p_desc)
+//                .category_grade(category_grade)
+//                .category_subject(category_subject)
+//                .p_keyword(p_keyword)
+//                .build()
+//        );
+//
+//        for(int i=0;i<10;i++){
+//            String word = "단어"+i;
+//            String q_desc = word+"에 대한 설명";
+//            String hint = word+"에 대한 힌트";
+//            String q_keyword = "테스트";
+//
+//            Quiz quiz = Quiz.builder()
+//                    .word(word)
+//                    .q_desc(q_desc)
+//                    .hint(hint)
+//                    .q_keyword(q_keyword)
+//                    .build();
+//            quiz.setPuzzle(puzzle);
+//
+//            quizRepository.save(quiz);
+//        }
+//
+//        String url = "http://localhost:"+port+"/api/v1/puzzle";
+//
+////        ResponseEntity<List<PuzzleListResponseDto>> responseEntity = restTemplate.getForEntity(url, List<PuzzleListResponseDto>.class);
+//
+//        //then
+////        assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
+//
+//
+//    }
+//
+//    @Test
+//    public void Puzzle_불러오기() throws Exception{
+//        //given
+//        String title = "테스트 퍼즐";
+//        Integer category_grade = 9;
+//
+//        String p_desc = "테스트 퍼즐 설명입니다.";
+//        String category_subject = "영어";
+//        String p_keyword = "테스트";
+//
+//        Puzzle puzzle = puzzleRepository.save(Puzzle.builder()
+//                .title(title)
+//                .p_desc(p_desc)
+//                .category_grade(category_grade)
+//                .category_subject(category_subject)
+//                .p_keyword(p_keyword)
+//                .build()
+//        );
+//
+//        for(int i=0;i<10;i++){
+//            String word = "단어"+i;
+//            String q_desc = word+"에 대한 설명";
+//            String hint = word+"에 대한 힌트";
+//            String q_keyword = "테스트";
+//
+//            Quiz quiz = Quiz.builder()
+//                    .word(word)
+//                    .q_desc(q_desc)
+//                    .hint(hint)
+//                    .q_keyword(q_keyword)
+//                    .build();
+//            quiz.setPuzzle(puzzle);
+//
+//            quizRepository.save(quiz);
+//        }
 
         // 불러오기
 //        List<CrosswordResponseDto> crosswordResponseDtoList = puzzleRepositorySupport.findPuzzles();
@@ -250,7 +250,7 @@ public class CrosswordApiControllerTest {
 //        //then
 //        assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
 
-    }
+//    }
     @Test
     public void Puzzle_수정된다() throws Exception {
         //given

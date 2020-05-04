@@ -1,0 +1,25 @@
+body {
+  padding: 0;
+  margin: 0;
+  font-family: AppleSDGothicNeo-Regular, "Malgun Gothic", "맑은 고딕", dotum,
+    "돋움", sans-serif;
+  background-color: #fff;
+}
+.app {
+  width: 100%;
+}
+
+.navbar {
+  height: 99px;
+  border-bottom: 1px solid #052156;
+}
+
+.nav-link {
+}
+
+.navbar-collapse .navbar-nav .nav-item .btn-botle-round-red {
+  color: #fff;
+  background-color: #ff4f60;
+  border-color: #ff4f60;
+  border-radius: 20px;
+}
